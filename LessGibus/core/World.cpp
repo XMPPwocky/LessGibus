@@ -12,5 +12,5 @@ World& World::getInstance()
 }
 
 void World::registerProcessor(const Processor& proc) {
-	//processors.push_back(proc);
+	processors.push_back(&proc);
 }
