@@ -79,6 +79,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleLogMessage.h" />
     <ClInclude Include="core.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MessageChannel.h" />
@@ -90,6 +91,7 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleLogMessage.cpp" />
     <ClCompile Include="core.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
