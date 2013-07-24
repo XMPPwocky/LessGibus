@@ -1,9 +1,9 @@
 #pragma once
-
+#include "core.h"
 #include <vector>
 
 
-class  Processor
+class CORE_API Processor
 {
 public:
 	Processor(void);

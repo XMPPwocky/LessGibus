@@ -1,8 +1,8 @@
 #pragma once
 
+#include "core.h"
 
-
-class  MessageSubscriber
+class CORE_API MessageSubscriber
 {
 public:
 	MessageSubscriber(void);

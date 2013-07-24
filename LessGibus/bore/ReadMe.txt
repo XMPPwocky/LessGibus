@@ -1,8 +1,8 @@
 ========================================================================
-    STATIC LIBRARY : core Project Overview
+    DYNAMIC LINK LIBRARY : core Project Overview
 ========================================================================
 
-AppWizard has created this core library project for you.
+AppWizard has created this core DLL for you.
 
 This file contains a summary of what you will find in each of the files that
 make up your core application.
@@ -21,8 +21,11 @@ core.vcxproj.filters
     similar extensions under a specific node (for e.g. ".cpp" files are associated with the
     "Source Files" filter).
 
+core.cpp
+    This is the main DLL source file.
 
 /////////////////////////////////////////////////////////////////////////////
+Other standard files:
 
 StdAfx.h, StdAfx.cpp
     These files are used to build a precompiled header (PCH) file

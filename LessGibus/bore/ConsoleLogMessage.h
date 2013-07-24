@@ -1,7 +1,8 @@
 #pragma once
 #include "message.h"
+#include "core.h"
 #include <string>
-class  ConsoleLogMessage :
+class CORE_API ConsoleLogMessage :
 	public Message
 {
 public:

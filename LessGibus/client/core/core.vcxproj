@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{62519E2C-353D-471D-A049-2F3F5DDF5DCC}</ProjectGuid>
+    <ProjectGuid>{F5528B6B-85B6-440B-9ABF-BD7B27263E38}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>core</RootNamespace>
   </PropertyGroup>
@@ -74,28 +74,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConsoleLogMessage.h" />
-    <ClInclude Include="Message.h" />
-    <ClInclude Include="MessageChannel.h" />
-    <ClInclude Include="MessagePublisher.h" />
-    <ClInclude Include="MessageSubscriber.h" />
-    <ClInclude Include="Processor.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleLogMessage.cpp" />
-    <ClCompile Include="Message.cpp" />
-    <ClCompile Include="MessageChannel.cpp" />
-    <ClCompile Include="MessagePublisher.cpp" />
-    <ClCompile Include="MessageSubscriber.cpp" />
-    <ClCompile Include="Processor.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

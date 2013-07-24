@@ -1,9 +1,9 @@
 #pragma once
-
+#include "core.h"
 #include "Message.h"
 #include "MessageSubscriber.h"
 
-class  MessageChannel
+class CORE_API MessageChannel
 {
 public:
 	MessageChannel(void);

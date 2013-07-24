@@ -1,10 +1,12 @@
 #pragma once
 
 #include <vector>
-
+#include "core.h"
 #include "Processor.h"
 
-class  World
+template class EXPORT std::vector<Processor>;
+
+class CORE_API World
 {
 	// Singleton that makes the entity-component-processor system work.
 

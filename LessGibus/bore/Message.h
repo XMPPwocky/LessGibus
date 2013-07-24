@@ -1,6 +1,6 @@
 #pragma once
-
-class  Message
+#include "core.h"
+class CORE_API Message
 {
 public:
 	Message(void);

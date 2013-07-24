@@ -1,6 +1,6 @@
 #pragma once
-
-class  MessagePublisher
+#include "core.h"
+class CORE_API MessagePublisher
 {
 public:
 	MessagePublisher(void);
