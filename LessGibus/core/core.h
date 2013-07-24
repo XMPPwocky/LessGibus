@@ -10,13 +10,3 @@
 #define CORE_API __declspec(dllimport)
 #endif
 
-// This class is exported from the core.dll
-class CORE_API Ccore {
-public:
-	Ccore(void);
-	// TODO: add your methods here.
-};
-
-extern CORE_API int ncore;
-
-CORE_API int fncore(void);
