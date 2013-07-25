@@ -12,5 +12,6 @@ public:
 	BroadcastMessageChannelTester(void);
 	virtual ~BroadcastMessageChannelTester(void);
 	void test(void);
+	std::string getTestName() const;
 };
 
