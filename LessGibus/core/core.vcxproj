@@ -74,6 +74,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BadArgumentException.cpp" />
     <ClCompile Include="BroadcastMessageChannel.cpp" />
     <ClCompile Include="ConsoleInputMessage.cpp" />
     <ClCompile Include="ConsoleMessageChannel.cpp" />
@@ -90,6 +91,7 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BadArgumentException.h" />
     <ClInclude Include="BroadcastMessageChannel.h" />
     <ClInclude Include="ConsoleInputMessage.h" />
     <ClInclude Include="ConsoleMessageChannel.h" />

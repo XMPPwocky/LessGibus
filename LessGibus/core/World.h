@@ -1,15 +1,15 @@
 #pragma once
 
-#include <set>
-#include <memory>
+#include <vector>
 
 #include "Processor.h"
+#include "BadArgumentException.h"
 
-using std::shared_ptr;
+
 class World
 {
 	// Singleton that makes the entity-component-processor system work.
-    std::set<Processor *> processors;
+    std::vector<Processor *> processors;
     
 public:
     static World& getInstance();

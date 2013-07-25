@@ -1,6 +1,7 @@
 #pragma once
 #include "messagechannel.h"
-#include <set>
+#include "BadArgumentException.h"
+#include <vector>
 #include <memory>
 
 using std::shared_ptr;
@@ -8,13 +9,13 @@ using std::shared_ptr;
 class BroadcastMessageChannel :
 	public MessageChannel
 {
-	std::set<MessageSubscriber *> subscribers;
+	std::vector<MessageSubscriber *> subscribers;
 public:
 	BroadcastMessageChannel(void);
 	virtual ~BroadcastMessageChannel(void);
 
 	virtual bool publish(const Message& msg);
-	virtual bool registerSubscriber(MessageSubscriber *sub);
-	virtual bool deregisterSubscriber(MessageSubscriber *sub);
+	virtual bool registerSubscriber(MessageSubscriber *sub_ptr);
+	virtual bool deregisterSubscriber(MessageSubscriber *sub_ptr);
 };
 
