@@ -3,18 +3,18 @@
 #include <set>
 #include <memory>
 
-using std::unique_ptr;
+using std::shared_ptr;
 
 class BroadcastMessageChannel :
 	public MessageChannel
 {
-	std::set<MessageSubscriber *> subscribers;
+	std::set<shared_ptr<MessageSubscriber>> subscribers;
 public:
 	BroadcastMessageChannel(void);
 	virtual ~BroadcastMessageChannel(void);
 
 	virtual bool publish(const Message& msg);
-	virtual bool registerSubscriber(MessageSubscriber *sub);
-	virtual bool deregisterSubscriber(MessageSubscriber *sub);
+	virtual bool registerSubscriber(shared_ptr<MessageSubscriber> sub);
+	virtual bool deregisterSubscriber(shared_ptr<MessageSubscriber> sub);
 };
 

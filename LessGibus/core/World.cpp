@@ -11,6 +11,9 @@ World& World::getInstance()
     return instance;
 }
 
-void World::registerProcessor(Processor *proc_ptr) {
+void World::registerProcessor(shared_ptr<Processor> proc_ptr) {
 	processors.insert(proc_ptr);
+}
+void World::deregisterProcessor(shared_ptr<Processor> proc_ptr) {
+	processors.erase(proc_ptr);
 }

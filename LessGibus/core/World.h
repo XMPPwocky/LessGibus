@@ -5,15 +5,16 @@
 
 #include "Processor.h"
 
-using std::unique_ptr;
+using std::shared_ptr;
 class World
 {
 	// Singleton that makes the entity-component-processor system work.
-    std::set<Processor *> processors;
+    std::set<shared_ptr<Processor>> processors;
     
 public:
     static World& getInstance();
-    void registerProcessor(Processor *proc_ptr);
+    void registerProcessor(shared_ptr<Processor> proc_ptr);
+	void deregisterProcessor(shared_ptr<Processor> proc_ptr);
 private:
     World();                
     World(World const&);
