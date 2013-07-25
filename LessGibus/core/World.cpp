@@ -11,6 +11,6 @@ World& World::getInstance()
     return instance;
 }
 
-void World::registerProcessor(const Processor& proc) {
-	processors.push_back(&proc);
+void World::registerProcessor(Processor *proc_ptr) {
+	processors.insert(proc_ptr);
 }

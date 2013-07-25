@@ -1,17 +1,19 @@
 #pragma once
 
-#include <vector>
+#include <set>
+#include <memory>
 
 #include "Processor.h"
 
-class  World
+using std::unique_ptr;
+class World
 {
 	// Singleton that makes the entity-component-processor system work.
-    std::vector<Processor *> processors;
+    std::set<Processor *> processors;
     
 public:
     static World& getInstance();
-    void World::registerProcessor(const Processor& proc);
+    void registerProcessor(Processor *proc_ptr);
 private:
     World();                
     World(World const&);
