@@ -9,13 +9,14 @@ using std::shared_ptr;
 class BroadcastMessageChannel :
 	public MessageChannel
 {
-	std::vector<MessageSubscriber *> subscribers;
+		std::vector<shared_ptr<MessageSubscriber>> subscribers;
+
 public:
 	BroadcastMessageChannel(void);
 	virtual ~BroadcastMessageChannel(void);
 
 	virtual bool publish(const Message& msg);
-	virtual bool registerSubscriber(MessageSubscriber *sub_ptr);
-	virtual bool deregisterSubscriber(MessageSubscriber *sub_ptr);
+	virtual bool registerSubscriber(shared_ptr<MessageSubscriber> sub);
+	virtual bool deregisterSubscriber(shared_ptr<MessageSubscriber> sub);
 };
 

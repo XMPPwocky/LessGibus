@@ -1,20 +1,23 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 #include "Processor.h"
 #include "BadArgumentException.h"
 
+using std::shared_ptr;
 
 class World
 {
 	// Singleton that makes the entity-component-processor system work.
-    std::vector<Processor *> processors;
-    
+
+    std::vector<shared_ptr<Processor>> processors;
+
 public:
     static World& getInstance();
-    void registerProcessor(Processor *proc_ptr);
-	void deregisterProcessor(Processor *proc_ptr);
+    void registerProcessor(shared_ptr<Processor> proc_ptr);
+	void deregisterProcessor(shared_ptr<Processor> proc_ptr);
 private:
     World();                
     World(World const&);

@@ -11,8 +11,8 @@ World& World::getInstance()
     return instance;
 }
 
-void World::registerProcessor(Processor *proc_ptr) {
-	std::vector<Processor *>::const_iterator i;
+void World::registerProcessor(shared_ptr<Processor> proc_ptr) {
+	std::vector<shared_ptr<Processor>>::const_iterator i;
 	for (
 		i = processors.begin();
 		i != processors.end();
@@ -27,8 +27,8 @@ void World::registerProcessor(Processor *proc_ptr) {
 	// okay, it wasn't in there, add it
 	processors.push_back(proc_ptr);
 }
-void World::deregisterProcessor(Processor *proc_ptr) {
-		std::vector<Processor *>::const_iterator i;
+void World::deregisterProcessor(shared_ptr<Processor> proc_ptr) {
+		std::vector<shared_ptr<Processor>>::const_iterator i;
 	for (
 		i = processors.begin();
 		i != processors.end();

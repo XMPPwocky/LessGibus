@@ -12,8 +12,7 @@ BroadcastMessageChannel::~BroadcastMessageChannel(void)
 }
 
 bool BroadcastMessageChannel::publish(const Message &msg) {
-	std::vector<MessageSubscriber *>::iterator subscriber_iterator;
-
+	std::vector<shared_ptr<MessageSubscriber>>::iterator subscriber_iterator;
 	for (subscriber_iterator = subscribers.begin();
 			subscriber_iterator != subscribers.end();
 			subscriber_iterator++)
@@ -24,8 +23,9 @@ bool BroadcastMessageChannel::publish(const Message &msg) {
 	return true;
 }
 
-bool BroadcastMessageChannel::registerSubscriber(MessageSubscriber *sub_ptr) {
-	std::vector<MessageSubscriber *>::const_iterator i;
+
+bool BroadcastMessageChannel::registerSubscriber(shared_ptr<MessageSubscriber> sub_ptr) {
+	std::vector<shared_ptr<MessageSubscriber>>::const_iterator i;
 	for (
 		i = subscribers.begin();
 		i != subscribers.end();
@@ -41,8 +41,8 @@ bool BroadcastMessageChannel::registerSubscriber(MessageSubscriber *sub_ptr) {
 	subscribers.push_back(sub_ptr);
 	return true;
 }
-bool BroadcastMessageChannel::deregisterSubscriber(MessageSubscriber *sub_ptr) {
-	std::vector<MessageSubscriber *>::const_iterator i;
+bool BroadcastMessageChannel::deregisterSubscriber(shared_ptr<MessageSubscriber> sub_ptr) {
+	std::vector<shared_ptr<MessageSubscriber>>::const_iterator i;
 	
 	for (
 		i = subscribers.begin();
@@ -53,5 +53,6 @@ bool BroadcastMessageChannel::deregisterSubscriber(MessageSubscriber *sub_ptr) {
 			subscribers.erase(i);
 		}		
 	}
+
 	return true;
 }
