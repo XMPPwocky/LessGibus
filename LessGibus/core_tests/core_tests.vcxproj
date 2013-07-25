@@ -81,14 +81,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\core\BroadcastMessageChannel.h" />
-    <ClInclude Include="..\core\ConsoleInputMessage.h" />
-    <ClInclude Include="..\core\ConsoleMessageChannel.h" />
-    <ClInclude Include="..\core\ConsoleOutputMessage.h" />
-    <ClInclude Include="..\core\Message.h" />
-    <ClInclude Include="..\core\MessageChannel.h" />
-    <ClInclude Include="..\core\MessagePublisher.h" />
-    <ClInclude Include="..\core\MessageSubscriber.h" />
     <ClInclude Include="..\core\Processor.h" />
     <ClInclude Include="..\core\World.h" />
     <ClInclude Include="BroadcastMessageChannelTester.h" />
@@ -100,8 +92,6 @@
     <ClInclude Include="TestFailedException.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BroadcastMessageChannelTester.cpp" />
-    <ClCompile Include="ConsoleOutputMessageTester.cpp" />
     <ClCompile Include="core_tests.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

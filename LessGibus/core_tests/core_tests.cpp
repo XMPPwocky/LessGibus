@@ -8,11 +8,10 @@
 #include "TestFailedException.h"
 #include <array>
 
-const unsigned int NUM_TESTS = 1;
+const unsigned int NUM_TESTS = 0;
 typedef std::array<Tester *, NUM_TESTS> test_array_t;
 test_array_t TESTS = 
 {
-	new ConsoleOutputMessageTester(),
 };
 int _tmain(int argc, _TCHAR* argv[])
 {
