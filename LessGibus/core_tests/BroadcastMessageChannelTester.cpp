@@ -19,6 +19,6 @@ void BroadcastMessageChannelTester::test(void)
 
 }
 
-std::string BroadcastMessageChannelTester::getTestName(void) const {
-	return "BroadcastMessageChannel";
+std::wstring BroadcastMessageChannelTester::getTestName(void) const {
+	return L"BroadcastMessageChannel";
 }

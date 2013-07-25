@@ -2,7 +2,7 @@
 #include "TestFailedException.h"
 
 
-TestFailedException::TestFailedException(char *text)
+TestFailedException::TestFailedException(std::wstring text)
 {
 	message = text;
 }
@@ -12,10 +12,10 @@ TestFailedException::~TestFailedException(void)
 {
 }
 
-char *TestFailedException::what() {
-	return message;
+const wchar_t *TestFailedException::what() {
+	return message.c_str();
 }
 
-void FAIL(char *message) {
+void FAIL(std::wstring message) {
 	throw TestFailedException(message);
 }

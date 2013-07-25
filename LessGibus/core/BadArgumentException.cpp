@@ -2,9 +2,9 @@
 #include "BadArgumentException.h"
 
 
-BadArgumentException::BadArgumentException(char *msg)
+BadArgumentException::BadArgumentException(std::wstring message)
 {
-	text = msg;
+	text = message;
 }
 
 
@@ -13,6 +13,6 @@ BadArgumentException::~BadArgumentException(void)
 }
 
 
-char *BadArgumentException::what(void) {
-	return text;
+const wchar_t *BadArgumentException::what(void) {
+	return text.c_str();
 }

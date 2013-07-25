@@ -20,7 +20,7 @@ void World::registerProcessor(shared_ptr<Processor> proc_ptr) {
 	) {
 		if (*i == proc_ptr) {
 			// can't register the same processor multiple times
-			throw BadArgumentException("Tried to register processor, but it was already registered!");
+			throw BadArgumentException(L"Tried to register processor, but it was already registered!");
 		}
 		
 	}

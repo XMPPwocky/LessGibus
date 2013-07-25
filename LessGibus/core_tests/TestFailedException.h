@@ -1,13 +1,14 @@
 #pragma once
 #include "testexception.h"
+#include <string>
 class TestFailedException :
 	public TestException
 {
-	char *message;
+	std::wstring message;
 public:
-	TestFailedException(char *message);
+	TestFailedException(std::wstring message = L"?");
 	~TestFailedException(void);
-	char *what(void);
+	const wchar_t *what(void);
 };
 
-void FAIL(char *message);
+void FAIL(std::wstring message);

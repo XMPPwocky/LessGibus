@@ -22,19 +22,19 @@ int _tmain(int argc, _TCHAR* argv[])
 	try {
 		for (i = TESTS.begin(); i != TESTS.end(); i++) {
 			(**i).test();
-			std::cout << "[PASS]\t" << ((**i).getTestName())<< "\n";
+			std::wcout << L"[PASS]\t" << ((**i).getTestName())<< L"\n";
 		}
 	}
 	catch (TestFailedException& e) {
 		failed++;
-		std::cout << "[FAIL]\t" << ((**i).getTestName()) << ":\t" << e.what() << "\n";
+		std::wcout << L"[FAIL]\t" << ((**i).getTestName()) << L":\t" << e.what() << L"\n";
 	}
 
 	if (failed == 0) {
-		std::cout << "All tests passed!\n";
+		std::wcout << L"All tests passed!\n";
 	}
 	else {
-		std::cout << failed << " tests of " << NUM_TESTS << " failed.\n";
+		std::wcout << failed << L" tests of " << NUM_TESTS << L" failed.\n";
 	}
 	getc(stdin);
 

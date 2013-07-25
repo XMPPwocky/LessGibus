@@ -1,14 +1,15 @@
 #pragma once
 #include <exception>
+#include <string>
 
 class BadArgumentException :
 	public std::exception
 {
-	char *text;
+	std::wstring text;
 public:
-	BadArgumentException(char *msg);
+	BadArgumentException(std::wstring message = L"?");
 	virtual ~BadArgumentException(void);
 
-	virtual char *what(void);
+	virtual const wchar_t *what(void);
 };
 

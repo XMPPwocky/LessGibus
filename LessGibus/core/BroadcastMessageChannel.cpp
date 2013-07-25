@@ -31,7 +31,7 @@ void BroadcastMessageChannel::registerSubscriber(shared_ptr<MessageSubscriber> s
 	) {
 		if (*i == sub_ptr) {
 			// can't register the same subscriber multiple times
-			throw BadArgumentException("Tried to register subscriber, but it was already registered!");
+			throw BadArgumentException(L"Tried to register subscriber, but it was already registered!");
 		}
 		
 	}
