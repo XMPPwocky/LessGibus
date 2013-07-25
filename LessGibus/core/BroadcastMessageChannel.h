@@ -8,13 +8,13 @@ using std::shared_ptr;
 class BroadcastMessageChannel :
 	public MessageChannel
 {
-	std::set<shared_ptr<MessageSubscriber>> subscribers;
+	std::set<MessageSubscriber *> subscribers;
 public:
 	BroadcastMessageChannel(void);
 	virtual ~BroadcastMessageChannel(void);
 
 	virtual bool publish(const Message& msg);
-	virtual bool registerSubscriber(shared_ptr<MessageSubscriber> sub);
-	virtual bool deregisterSubscriber(shared_ptr<MessageSubscriber> sub);
+	virtual bool registerSubscriber(MessageSubscriber *sub);
+	virtual bool deregisterSubscriber(MessageSubscriber *sub);
 };
 

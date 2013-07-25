@@ -12,7 +12,7 @@ BroadcastMessageChannel::~BroadcastMessageChannel(void)
 }
 
 bool BroadcastMessageChannel::publish(const Message &msg) {
-	std::set<shared_ptr<MessageSubscriber>>::iterator subscriber_iterator;
+	std::set<MessageSubscriber *>::iterator subscriber_iterator;
 
 	for (subscriber_iterator = subscribers.begin();
 			subscriber_iterator != subscribers.end();
@@ -24,12 +24,12 @@ bool BroadcastMessageChannel::publish(const Message &msg) {
 	return true;
 }
 
-bool BroadcastMessageChannel::registerSubscriber(shared_ptr<MessageSubscriber> sub) {
+bool BroadcastMessageChannel::registerSubscriber(MessageSubscriber *sub) {
 	subscribers.insert(sub);
 	return true;
 }
 
-bool BroadcastMessageChannel::deregisterSubscriber(shared_ptr<MessageSubscriber> sub) {
+bool BroadcastMessageChannel::deregisterSubscriber(MessageSubscriber *sub) {
 	subscribers.erase(sub);
 	return true;
 }
