@@ -14,7 +14,7 @@ ConsoleOutputMessageTester::~ConsoleOutputMessageTester(void)
 {
 }
 
-bool ConsoleOutputMessageTester::test(void) throw (TestFailedException) {
+void ConsoleOutputMessageTester::test(void) {
 	std::unique_ptr<ConsoleOutputMessage> foo(new ConsoleOutputMessage(L"hello world"));
 	if (!foo) {
 		FAIL("Couldn't allocate memory!");
@@ -26,7 +26,6 @@ bool ConsoleOutputMessageTester::test(void) throw (TestFailedException) {
 		FAIL("getText() didn't return constructor");
 	}
 
-	return true;
 }
 
 std::string ConsoleOutputMessageTester::getTestName() {

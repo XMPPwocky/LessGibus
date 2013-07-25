@@ -11,7 +11,7 @@ BroadcastMessageChannel::~BroadcastMessageChannel(void)
 {
 }
 
-bool BroadcastMessageChannel::publish(const Message &msg) {
+void BroadcastMessageChannel::publish(const Message &msg) {
 	std::vector<shared_ptr<MessageSubscriber>>::iterator subscriber_iterator;
 	for (subscriber_iterator = subscribers.begin();
 			subscriber_iterator != subscribers.end();
@@ -19,12 +19,10 @@ bool BroadcastMessageChannel::publish(const Message &msg) {
 	{
 		(**subscriber_iterator).handle(msg);
 	}
-
-	return true;
 }
 
 
-bool BroadcastMessageChannel::registerSubscriber(shared_ptr<MessageSubscriber> sub_ptr) {
+void BroadcastMessageChannel::registerSubscriber(shared_ptr<MessageSubscriber> sub_ptr) {
 	std::vector<shared_ptr<MessageSubscriber>>::const_iterator i;
 	for (
 		i = subscribers.begin();
@@ -39,9 +37,8 @@ bool BroadcastMessageChannel::registerSubscriber(shared_ptr<MessageSubscriber> s
 	}
 	// okay, it wasn't in there, add it
 	subscribers.push_back(sub_ptr);
-	return true;
 }
-bool BroadcastMessageChannel::deregisterSubscriber(shared_ptr<MessageSubscriber> sub_ptr) {
+void BroadcastMessageChannel::deregisterSubscriber(shared_ptr<MessageSubscriber> sub_ptr) {
 	std::vector<shared_ptr<MessageSubscriber>>::const_iterator i;
 	
 	for (
@@ -53,6 +50,4 @@ bool BroadcastMessageChannel::deregisterSubscriber(shared_ptr<MessageSubscriber>
 			subscribers.erase(i);
 		}		
 	}
-
-	return true;
 }

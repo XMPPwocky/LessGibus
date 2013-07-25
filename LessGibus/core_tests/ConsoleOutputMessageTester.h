@@ -9,7 +9,7 @@ public:
 	ConsoleOutputMessageTester(void);
 	~ConsoleOutputMessageTester(void);
 
-	bool test(void); 
+	void test(void); 
 	std::string getTestName(void);
 };
 

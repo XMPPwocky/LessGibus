@@ -71,9 +71,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="BadArgumentException.cpp" />
     <ClCompile Include="BroadcastMessageChannel.cpp" />
     <ClCompile Include="ConsoleInputMessage.cpp" />

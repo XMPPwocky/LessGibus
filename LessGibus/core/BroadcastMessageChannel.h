@@ -15,8 +15,8 @@ public:
 	BroadcastMessageChannel(void);
 	virtual ~BroadcastMessageChannel(void);
 
-	virtual bool publish(const Message& msg);
-	virtual bool registerSubscriber(shared_ptr<MessageSubscriber> sub);
-	virtual bool deregisterSubscriber(shared_ptr<MessageSubscriber> sub);
+	virtual void publish(const Message& msg);
+	virtual void registerSubscriber(shared_ptr<MessageSubscriber> sub);
+	virtual void deregisterSubscriber(shared_ptr<MessageSubscriber> sub);
 };
 
