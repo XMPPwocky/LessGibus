@@ -28,6 +28,6 @@ void ConsoleOutputMessageTester::test(void) {
 
 }
 
-std::string ConsoleOutputMessageTester::getTestName() {
+std::string ConsoleOutputMessageTester::getTestName() const {
 	return "ConsoleOutputMessage";
 }

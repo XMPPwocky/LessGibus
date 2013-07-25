@@ -10,6 +10,6 @@ public:
 	~ConsoleOutputMessageTester(void);
 
 	void test(void); 
-	std::string getTestName(void);
+	std::string getTestName (void) const;
 };
 
