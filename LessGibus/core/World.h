@@ -5,6 +5,7 @@
 
 #include "Processor.h"
 #include "BadArgumentException.h"
+#include "EntityManager.h"
 
 using std::shared_ptr;
 

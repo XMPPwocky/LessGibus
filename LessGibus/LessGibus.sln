@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{E1405819-2AD7-4BBD-948B-3CD10BEB451A}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "server", "server\server.vcxproj", "{41C20C1B-F59E-4BB2-B997-48E3D70DC0BC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62519E2C-353D-471D-A049-2F3F5DDF5DCC} = {62519E2C-353D-471D-A049-2F3F5DDF5DCC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "core\core.vcxproj", "{62519E2C-353D-471D-A049-2F3F5DDF5DCC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core_tests", "core_tests\core_tests.vcxproj", "{FA2859D4-95E6-4BC9-89B6-37F95D83B437}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{0853764F-A9EA-4EC8-BEC9-E524794F445C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62519E2C-353D-471D-A049-2F3F5DDF5DCC} = {62519E2C-353D-471D-A049-2F3F5DDF5DCC}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +19,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E1405819-2AD7-4BBD-948B-3CD10BEB451A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E1405819-2AD7-4BBD-948B-3CD10BEB451A}.Debug|Win32.Build.0 = Debug|Win32
-		{E1405819-2AD7-4BBD-948B-3CD10BEB451A}.Release|Win32.ActiveCfg = Release|Win32
-		{E1405819-2AD7-4BBD-948B-3CD10BEB451A}.Release|Win32.Build.0 = Release|Win32
 		{41C20C1B-F59E-4BB2-B997-48E3D70DC0BC}.Debug|Win32.ActiveCfg = Debug|Win32
 		{41C20C1B-F59E-4BB2-B997-48E3D70DC0BC}.Debug|Win32.Build.0 = Debug|Win32
 		{41C20C1B-F59E-4BB2-B997-48E3D70DC0BC}.Release|Win32.ActiveCfg = Release|Win32
@@ -27,10 +27,10 @@ Global
 		{62519E2C-353D-471D-A049-2F3F5DDF5DCC}.Debug|Win32.Build.0 = Debug|Win32
 		{62519E2C-353D-471D-A049-2F3F5DDF5DCC}.Release|Win32.ActiveCfg = Release|Win32
 		{62519E2C-353D-471D-A049-2F3F5DDF5DCC}.Release|Win32.Build.0 = Release|Win32
-		{FA2859D4-95E6-4BC9-89B6-37F95D83B437}.Debug|Win32.ActiveCfg = Debug|Win32
-		{FA2859D4-95E6-4BC9-89B6-37F95D83B437}.Debug|Win32.Build.0 = Debug|Win32
-		{FA2859D4-95E6-4BC9-89B6-37F95D83B437}.Release|Win32.ActiveCfg = Release|Win32
-		{FA2859D4-95E6-4BC9-89B6-37F95D83B437}.Release|Win32.Build.0 = Release|Win32
+		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Debug|Win32.Build.0 = Debug|Win32
+		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Release|Win32.ActiveCfg = Release|Win32
+		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
