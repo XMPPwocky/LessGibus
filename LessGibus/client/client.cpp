@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "client.h"
 
+#include <iostream>
+#include <fstream>
+
 #define MAX_LOADSTRING 100
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
@@ -16,26 +19,32 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hInstance);
 	UNREFERENCED_PARAMETER(nCmdShow);
 
-	SDL_Init(SDL_INIT_VIDEO);
-	atexit(SDL_Quit);
+	//SDL_Init(SDL_INIT_VIDEO);
+	//atexit(SDL_Quit);
+    //SDL_Window* displayWindow;
+    //SDL_Renderer* displayRenderer;
+    //SDL_RendererInfo displayRendererInfo;
+    //SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_OPENGL, &displayWindow, &displayRenderer);
+    //SDL_GetRendererInfo(displayRenderer, &displayRendererInfo);
+    ///*TODO: Check that we have OpenGL */
+    //if ((displayRendererInfo.flags & SDL_RENDERER_ACCELERATED) == 0 || 
+    //    (displayRendererInfo.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
+    //    /*TODO: Handle this. We have no render surface and not accelerated. */
+    //}
+    //
 
+    //SDL_Delay(5000);
+    //SDL_Quit();
+	std::ofstream log;
+	log.open("log.txt");
 
-    SDL_Window* displayWindow;
-    SDL_Renderer* displayRenderer;
-    SDL_RendererInfo displayRendererInfo;
-    SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_OPENGL, &displayWindow, &displayRenderer);
-    SDL_GetRendererInfo(displayRenderer, &displayRendererInfo);
-    /*TODO: Check that we have OpenGL */
-    if ((displayRendererInfo.flags & SDL_RENDERER_ACCELERATED) == 0 || 
-        (displayRendererInfo.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
-        /*TODO: Handle this. We have no render surface and not accelerated. */
-    }
-    
+	EntityManager ent_mgr;
 
-    SDL_Delay(5000);
-    SDL_Quit();
-    
-    return 0;
+	Entity ent1(ent_mgr);
+	Entity ent2(ent_mgr);
+	
+	log.close();
+	return 0;
 
 
 

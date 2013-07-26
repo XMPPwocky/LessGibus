@@ -16,9 +16,8 @@ class Entity
 	EntityManager* m_mgr;
 	ent_id_t m_id;
 public:
-	Entity(EntityManager *mgr_ptr);
-	Entity(void);
-	~Entity(void);
+	Entity(EntityManager &mgr_ptr);
+	virtual ~Entity(void);
 	ent_id_t getID(void) const;
 };
 

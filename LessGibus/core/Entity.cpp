@@ -2,9 +2,9 @@
 #include "Entity.h"
 
 
-Entity::Entity(EntityManager* mgr_ptr)
+Entity::Entity(EntityManager& mgr_ptr)
 {
-	m_mgr = mgr_ptr;
+	m_mgr = &mgr_ptr;
 	m_id = m_mgr->registerEntity();
 }
 

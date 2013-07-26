@@ -13,7 +13,6 @@ EntityManager::EntityManager(void)
 	}
 }
 
-
 EntityManager::~EntityManager(void)
 {
 }
@@ -25,12 +24,16 @@ ent_id_t EntityManager::registerEntity(void)
 		i != entities.size();
 		i++)
 	{
-		if (entities[i])
+		if (!entities[i])
 		{
-			continue;
+			entities[i] = true;
+			break;
 		}
 	}
-
+	if (i == entities.size())
+	{
+		throw Exception(L"Out of entity IDs!");
+	}
 	return i;
 }
 
