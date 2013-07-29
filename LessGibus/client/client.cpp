@@ -4,10 +4,23 @@
 #include "stdafx.h"
 #include "client.h"
 
+
 #include <iostream>
 #include <fstream>
 
 #define MAX_LOADSTRING 100
+
+class Butt
+{
+public:
+	Butt(void);
+	~Butt(void);
+};
+
+Butt::Butt(){};
+Butt::~Butt() {
+	int foo = 1;
+}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -39,13 +52,16 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	log.open("log.txt");
 
 	EntityManager ent_mgr;
+	ProcessorManager proc_mgr;
 
-	Entity ent1(ent_mgr);
-	Entity ent2(ent_mgr);
-	
-	log.close();
+	Entity *butt = new Entity(ent_mgr);
+	Entity booty = *butt;
+
+	std::unique_ptr<Butt> anus(new Butt);
+	anus = NULL;
+	delete butt;
+
 	return 0;
-
 
 
 }

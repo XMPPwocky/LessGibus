@@ -5,19 +5,20 @@
 typedef uint16_t ent_id_t;
 class EntityManager;
 
-#include "EntityManager.h"
-
-
-
-typedef EntityManager butt;
 
 class Entity
 {
 	EntityManager* m_mgr;
-	ent_id_t m_id;
+
 public:
-	Entity(EntityManager &mgr_ptr);
+	Entity(EntityManager &mgr);
+	Entity(const Entity &original);
+	Entity &operator=(const Entity &original);
+	operator const ent_id_t() const;
 	virtual ~Entity(void);
-	ent_id_t getID(void) const;
+
+	EntityManager &getManager(void) const;
+	ent_id_t m_id;
 };
 
+#include "EntityManager.h"
