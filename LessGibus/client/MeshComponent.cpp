@@ -2,7 +2,7 @@
 #include "MeshComponent.h"
 
 
-MeshComponent::MeshComponent(void)
+MeshComponent::MeshComponent(const Entity &ent) : Component(ent)
 {
 }
 

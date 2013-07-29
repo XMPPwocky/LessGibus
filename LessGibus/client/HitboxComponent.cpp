@@ -2,7 +2,7 @@
 #include "HitboxComponent.h"
 
 
-HitboxComponent::HitboxComponent(void)
+HitboxComponent::HitboxComponent(const Entity &ent) : Component(ent)
 {
 }
 

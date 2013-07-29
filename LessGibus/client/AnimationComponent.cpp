@@ -2,7 +2,7 @@
 #include "AnimationComponent.h"
 
 
-AnimationComponent::AnimationComponent(void)
+AnimationComponent::AnimationComponent(const Entity &ent) : Component(ent)
 {
 }
 
