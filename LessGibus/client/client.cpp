@@ -1,26 +1,13 @@
-// client.cpp : Defines the entry point for the application.
+﻿// client.cpp : Defines the entry point for the application.
 //
 
 #include "stdafx.h"
 #include "client.h"
 
-
 #include <iostream>
 #include <fstream>
 
 #define MAX_LOADSTRING 100
-
-class Butt
-{
-public:
-	Butt(void);
-	~Butt(void);
-};
-
-Butt::Butt(){};
-Butt::~Butt() {
-	int foo = 1;
-}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -31,36 +18,72 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
 	UNREFERENCED_PARAMETER(hInstance);
 	UNREFERENCED_PARAMETER(nCmdShow);
+	
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
 
-	//SDL_Init(SDL_INIT_VIDEO);
-	//atexit(SDL_Quit);
-    //SDL_Window* displayWindow;
-    //SDL_Renderer* displayRenderer;
-    //SDL_RendererInfo displayRendererInfo;
-    //SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_OPENGL, &displayWindow, &displayRenderer);
-    //SDL_GetRendererInfo(displayRenderer, &displayRendererInfo);
-    ///*TODO: Check that we have OpenGL */
-    //if ((displayRendererInfo.flags & SDL_RENDERER_ACCELERATED) == 0 || 
-    //    (displayRendererInfo.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
-    //    /*TODO: Handle this. We have no render surface and not accelerated. */
-    //}
-    //
+	SDL_Init(SDL_INIT_VIDEO); // Init SDL2 (you should check for errors)
 
-    //SDL_Delay(5000);
-    //SDL_Quit();
-	std::ofstream log;
+	// Create a window. Window mode MUST include SDL_WINDOW_OPENGL for use with OpenGL.
+	SDL_Window *window = SDL_CreateWindow(
+		"SDL2/OpenGL Demo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_OPENGL
+		);
+
+	// Create an OpenGL context associated with the window.
+	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
+	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
+	// Now, regular OpenGL functions ...
+	glMatrixMode(GL_PROJECTION|GL_MODELVIEW);
+	glLoadIdentity();
+
+	// ... can be used alongside SDL2.
+	float x = 0.0, y = 30.0;
+
+	// make our world
+	coment::World world;
+
+	MeshRenderSystem mesh_render_system(window, &glcontext);
+	world.registerSystem(mesh_render_system);
+
+	coment::Entity e = world.createEntity();
+	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
+
+
+	SDL_Event event; 
+	Uint8 done = 0;
+	Uint32 last_tick = SDL_GetTicks();
+	while(!done)  // Enter main loop.
+	{
+
+		Uint32 curr_tick = SDL_GetTicks();
+		Uint32 delta = (curr_tick - last_tick);
+		last_tick = curr_tick;
+
+		while(SDL_PollEvent(&event))      // Check for events.
+		{
+			if(event.type == SDL_QUIT || event.type == SDL_QUIT)
+				done = 1;
+		}
+
+		world.loopStart();
+		world.setDelta(delta);
+		world.update();
+
+
+				
+		//SDL_Delay(std::max((Sint32)(1 - delta), 0));              // Pause briefly before moving on to the next cycle.
+	} 
+
+	// Once finished with OpenGL functions, the SDL_GLContext can be deleted.
+	SDL_GL_DeleteContext(glcontext);  
+
+	// Done! Close the window, clean-up and exit the program. 
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+	return 0;
+	std::wfstream log;
 	log.open("log.txt");
-
-	EntityManager ent_mgr;
-	ProcessorManager proc_mgr;
-
-	Entity *butt = new Entity(ent_mgr);
-	Entity booty = *butt;
-
-	std::unique_ptr<Butt> anus(new Butt);
-	anus = NULL;
-	delete butt;
-
+	log << L"hello world!";
 	return 0;
 
 

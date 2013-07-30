@@ -30,16 +30,10 @@
     <ClInclude Include="client.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\core\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MeshComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HitboxComponent.h">
+    <ClInclude Include="MeshRenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,10 +47,7 @@
     <ClCompile Include="MeshComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HitboxComponent.cpp">
+    <ClCompile Include="MeshRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
