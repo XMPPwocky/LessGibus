@@ -48,7 +48,10 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	coment::Entity e = world.createEntity();
 	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
 
-
+	VertexDeclaration foo;
+	foo._components = (VertexDeclaration::POSITION | VertexDeclaration::COLOR1);
+	int bx = foo.size();
+	int cx = foo.offset(VertexDeclaration::COLOR1);
 	SDL_Event event; 
 	Uint8 done = 0;
 	Uint32 last_tick = SDL_GetTicks();
@@ -66,7 +69,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		}
 
 		world.loopStart();
-		world.setDelta(delta);
+		world.setDelta(delta/(1000.0f));
 		world.update();
 
 
