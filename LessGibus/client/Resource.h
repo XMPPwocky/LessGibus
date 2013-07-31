@@ -3,7 +3,7 @@
 // Used by client.rc
 //
 
-#define IDS_APP_TITLE			103
+#define IDS_APPITLE			103
 
 #define IDR_MAINFRAME			128
 #define IDD_CLIENT_DIALOG	102
