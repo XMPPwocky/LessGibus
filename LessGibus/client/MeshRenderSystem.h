@@ -4,9 +4,9 @@
 #include <SDL_video.h>
 #include <gl/GL.h>
 #include <gl/GLU.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 #include <coment/Entity.h>
 #include <coment/systems/EntityProcessingSystem.h>
 

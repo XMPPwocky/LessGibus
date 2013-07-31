@@ -2,8 +2,8 @@
 #include "Mesh.h"
 
 #include <coment/Component.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/quaternion.hpp>
+#include <glm.hpp>
+#include <gtc/quaternion.hpp>
 #include <vector>
 #include <array>
 #include <tuple>

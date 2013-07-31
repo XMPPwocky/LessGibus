@@ -2,8 +2,8 @@
 #include "Joint.h"
 #include "VertexDeclaration.h"
 #include <gl/GL.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/quaternion.hpp>
+#include <glm.hpp>
+#include <gtc/quaternion.hpp>
 #include <array>
 #include <tuple>
 #include <vector>
