@@ -16,18 +16,18 @@ class MeshFileFormat
 	template<class Archive>
 	void serialize(Archive & ar, const unsigned int version)
 	{
-		ar & shader_names;
-		ar & texture;
-
-		ar & vertices_format;
-		ar & vertex_data;
-		ar & joints;
-		ar & triangles;
+		ar & BOOST_SERIALIZATION_NVP(shader_names)
+			& BOOST_SERIALIZATION_NVP(texture_filenames)
+			& BOOST_SERIALIZATION_NVP(vertices_format)
+			& BOOST_SERIALIZATION_NVP(vertex_data)
+			& BOOST_SERIALIZATION_NVP(joints)
+			& BOOST_SERIALIZATION_NVP(triangles);
 	}
 
 
 	std::vector<std::wstring> shader_names;
-	std::wstring texture;
+	std::vector<std::string> texture_filenames;
+
 
 	VertexDeclaration vertices_format;
 	std::string vertex_data;

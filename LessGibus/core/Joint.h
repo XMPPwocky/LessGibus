@@ -15,9 +15,9 @@ private:
 	template<class Archive>
 	void serialize(Archive & ar, const unsigned int version)
 	{
-		ar & position;
-		ar & orientation;
-		ar & parent;
+		ar & BOOST_SERIALIZATION_NVP(position)
+			& BOOST_SERIALIZATION_NVP(orientation)
+			& BOOST_SERIALIZATION_NVP(parent);
 	}
 
 public:

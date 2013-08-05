@@ -17,14 +17,13 @@ public:
 	template<class Archive>
 	void serialize(Archive & ar, const unsigned int version)
 	{
-		ar & shader_inputs;
-		ar & shader_filenames;
-		ar & texture_filenames;
+		ar & BOOST_SERIALIZATION_NVP(shader_inputs)
+			& BOOST_SERIALIZATION_NVP(shader_filenames)
+			& BOOST_SERIALIZATION_NVP(texture_filenames);
 	}
 
 	VertexDeclaration vertex_shader_inputs;
 	std::vector<std::string> shader_filenames;
-	std::vector<std::string> texture_filenames;
 
 };
 

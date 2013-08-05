@@ -59,10 +59,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	std::wfstream log;
 	log.open("log.txt");
 	
-	std::ofstream butt("test.txt");
-	MeshFileFormat f;
-	boost::archive::text_oarchive oa(butt);
-	oa << f;
+
 
 	SDL_Event event; 
 	Uint8 done = 0;
