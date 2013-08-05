@@ -42,6 +42,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	// make our world
 	coment::World world;
 
+	ResourceManager resourceManager;
+	world.registerManager(resourceManager);
+	
 	MeshRenderSystem mesh_render_system(window, &glcontext);
 	world.registerSystem(mesh_render_system);
 
@@ -52,6 +55,15 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	foo._components = (VertexDeclaration::POSITION | VertexDeclaration::COLOR1);
 	int bx = foo.size();
 	int cx = foo.offset(VertexDeclaration::COLOR1);
+
+	std::wfstream log;
+	log.open("log.txt");
+	
+	std::ofstream butt("test.txt");
+	MeshFileFormat f;
+	boost::archive::text_oarchive oa(butt);
+	oa << f;
+
 	SDL_Event event; 
 	Uint8 done = 0;
 	Uint32 last_tick = SDL_GetTicks();
@@ -84,8 +96,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 	return 0;
-	std::wfstream log;
-	log.open("log.txt");
+	
 	log << L"hello world!";
 	return 0;
 

@@ -5,6 +5,8 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <coment/World.h>
+#include "MeshFileFormat.h"
+#include "ResourceManager.h"
 #include <gl/GLU.h>
 #include <string>
 #include <iostream>

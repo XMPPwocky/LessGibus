@@ -23,6 +23,36 @@
     <ClCompile Include="src\systems\EntitySystem.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\coment\Component.h" />
+    <ClInclude Include="include\coment\Entity.h" />
+    <ClInclude Include="include\coment\EntityInfo.h" />
+    <ClInclude Include="include\coment\exceptions\BitcountOutOfRange.h" />
+    <ClInclude Include="include\coment\exceptions\BitIndexOutOfBounds.h" />
+    <ClInclude Include="include\coment\exceptions\CompMapUnregistered.h" />
+    <ClInclude Include="include\coment\exceptions\DeadEntity.h" />
+    <ClInclude Include="include\coment\exceptions\IndexOutOfBounds.h" />
+    <ClInclude Include="include\coment\exceptions\NotImplemented.h" />
+    <ClInclude Include="include\coment\exceptions\UninitialisedEntity.h" />
+    <ClInclude Include="include\coment\managers\ComponentManager.h" />
+    <ClInclude Include="include\coment\managers\ComponentTypeManager.h" />
+    <ClInclude Include="include\coment\managers\EntityManager.h" />
+    <ClInclude Include="include\coment\managers\GroupManager.h" />
+    <ClInclude Include="include\coment\managers\Manager.h" />
+    <ClInclude Include="include\coment\managers\ManagerManager.h" />
+    <ClInclude Include="include\coment\managers\SystemManager.h" />
+    <ClInclude Include="include\coment\managers\TagManager.h" />
+    <ClInclude Include="include\coment\managers\VariableManager.h" />
+    <ClInclude Include="include\coment\scenes\Scene.h" />
+    <ClInclude Include="include\coment\systems\EntityProcessingSystem.h" />
+    <ClInclude Include="include\coment\systems\EntitySystem.h" />
+    <ClInclude Include="include\coment\utils\BitMask.h" />
+    <ClInclude Include="include\coment\utils\Bitset.h" />
+    <ClInclude Include="include\coment\utils\Functions.h" />
+    <ClInclude Include="include\coment\utils\Map.h" />
+    <ClInclude Include="include\coment\utils\SharedPtr.h" />
+    <ClInclude Include="include\coment\World.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EACED591-60FE-4017-9136-C6BE8C7B4E3D}</ProjectGuid>
     <RootNamespace>Coment</RootNamespace>
