@@ -1,6 +1,8 @@
 SDL2/
 libboost/
 glm/
+assets/
+boost/
 
 #################
 ## Eclipse
