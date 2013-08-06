@@ -3,6 +3,7 @@ libboost/
 glm/
 assets/
 boost/
+protobuf/
 
 #################
 ## Eclipse

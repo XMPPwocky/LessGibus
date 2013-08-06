@@ -11,26 +11,25 @@
 
 #include <Shlwapi.h>
 
-class MeshFileFormat;
+class UnloadedMesh;
 
-class Mesh
+// A mesh that has been loaded into VAOs, VBOs, etc
+class LoadedMesh
 {
 public:
-	Mesh(const MeshFileFormat &data);
-	Mesh(const Mesh &original);
-	~Mesh();
-	Mesh &operator=(const Mesh &original);
-
-	static const int MAX_JOINTS_PER_VERTEX = 4;
-
+	LoadedMesh(const UnloadedMesh &data);
+	LoadedMesh(const LoadedMesh &original);
+	~LoadedMesh();
+	LoadedMesh &operator=(const LoadedMesh &original);
 
 	std::vector<Joint> joints;
 
 	VertexDeclaration vertices_format;
-	typedef glm::uint vert_id;
 	GLuint vertex_buffer;
 	
 	GLuint elem_buffer;
+
+	typedef std::shared_ptr<LoadedMesh> ptr;
 
 };
 

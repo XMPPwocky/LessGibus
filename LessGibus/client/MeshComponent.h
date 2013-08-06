@@ -1,5 +1,5 @@
 #pragma once
-#include "Mesh.h"
+#include "LoadedMesh.h"
 
 #include <coment/Component.h>
 #include <glm.hpp>
@@ -12,5 +12,5 @@
 struct MeshComponent :
 	public coment::Component
 {
-	std::shared_ptr<Mesh> mesh;
+	LoadedMesh::ptr mesh;
 };

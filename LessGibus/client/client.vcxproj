@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>../../protobuf/include/;C:/Boost/include/boost-1_54/;../../glm/include/;../../SDL2/include;../coment/include;../core;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -82,6 +83,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LoadedMesh.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="MeshRenderSystem.h" />
@@ -90,6 +92,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LoadedMesh.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="MeshRenderSystem.cpp" />
