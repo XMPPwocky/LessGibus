@@ -1,0 +1,36 @@
+package protobuf;
+
+message VertexDeclaration
+{
+	message Component
+	{
+		enum Format
+		{
+			FORMAT_HALF_PRECISION_FLOAT = 1;
+			FORMAT_SINGLE_PRECISION_FLOAT = 2;
+			FORMAT_DOUBLE_PRECISION_FLOAT = 3;
+			FORMAT_SIGNED_BYTE = 4;
+			FORMAT_UNSIGNED_BYTE = 5;
+			FORMAT_SIGNED_SHORT = 6;
+			FORMAT_UNSIGNED_SHORT = 7;
+			FORMAT_SIGNED_INT = 8;
+			FORMAT_UNSIGNED_INT = 9;
+		}
+
+		enum Interpretation
+		{
+			INTERPRET_FLOAT = 1;
+			INTERPRET_NORM_FLOAT = 2;
+			INTERPRET_INT = 3;
+			INTERPRET_DOUBLE = 4;
+		}
+
+		required Format format = 1;
+		required Interpretation interpretation = 2; 
+		required uint32 repeats = 3;
+		required uint32 attrib_id = 4;
+		optional string name = 5;
+	}
+
+	repeated Component components = 1;
+}

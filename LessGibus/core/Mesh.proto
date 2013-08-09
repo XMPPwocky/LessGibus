@@ -1,31 +1,22 @@
 package protobuf;
 
+import "VertexDeclaration.proto";
+import "Skeleton.proto";
 
-message Joint
-{
-	repeated Joint children = 1;
-
-	// 4x4 matrix, row-by-row
-	repeated float jointspace_transform = 2 [packed=true];
-	repeated float worldspace_to_jointspace_transform = 3 [packed=true];
-}
-
-message Triangle
-{
+message Triangle {
 	required uint32 vert1 = 1;
 	required uint32 vert2 = 2;
 	required uint32 vert3 = 3;
 }
 
-message Mesh
-{
+message Mesh {
 	required string material = 1;
-	repeated string texture = 2;
+	repeated string textures = 2;
 
-	required uint32 vertices_format = 3; // bitset
-	required bytes vertices_data = 4;
+	required VertexDeclaration vertices_format = 3; // bitset
+	required bytes vertices_data = 4; // 4-byte aligned, except doubles which are 8-byte aligned
 
-	repeated Joint joints = 5;
+	required Joint skeleton = 5;
 
 	repeated Triangle triangles = 6;
 }

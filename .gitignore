@@ -1,6 +1,12 @@
 SDL2/
 libboost/
 glm/
+glfw/
+glimg/
+glload/
+glloadgen/
+glmesh/
+glutil/
 assets/
 boost/
 protobuf/

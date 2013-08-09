@@ -4,6 +4,8 @@
 #include <string>
 #include <cerrno>
 
+#include "ResourceManager.h"
+
 static std::string get_file_contents(const char *filename)
 {
   std::ifstream in(filename, std::ios::in | std::ios::binary);

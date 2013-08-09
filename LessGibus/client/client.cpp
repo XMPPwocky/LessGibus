@@ -19,8 +19,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hInstance);
 	UNREFERENCED_PARAMETER(nCmdShow);
 	
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
 	SDL_Init(SDL_INIT_VIDEO); // Init SDL2 (you should check for errors)
 
@@ -29,17 +29,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		"SDL2/OpenGL Demo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_OPENGL
 		);
 
-	// Create an OpenGL context associated with the window.
 	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-	// Now, regular OpenGL functions ...
-	glMatrixMode(GL_PROJECTION|GL_MODELVIEW);
-	glLoadIdentity();
 
-	// ... can be used alongside SDL2.
-	float x = 0.0, y = 30.0;
-
-	// make our world
 	coment::World world;
 
 	ResourceManager resourceManager;
@@ -51,15 +43,12 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	coment::Entity e = world.createEntity();
 	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
 
-	VertexDeclaration foo;
-	foo._components = (VertexDeclaration::POSITION | VertexDeclaration::COLOR1);
-	int bx = foo.size();
-	int cx = foo.offset(VertexDeclaration::COLOR1);
-
 	std::wfstream log;
 	log.open("log.txt");
 	
-
+	ResourceManager	*rsrc = world.getManager<ResourceManager>();
+	std::shared_ptr<std::string> k = (world.getManager<ResourceManager>())->load<std::string>("mesh/trivial.mesh");
+//	std::string f = *k;
 
 	SDL_Event event; 
 	Uint8 done = 0;

@@ -41,7 +41,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../../protobuf/include/;C:/Boost/include/boost-1_54/;../../glm/include/;../../SDL2/include;../coment/include;../core;$(IncludePath)</IncludePath>
+    <IncludePath>../../glutil/include;../../glmesh/include;../../glload/include;../../protobuf/include/;C:/Boost/include/boost-1_54/;../../glm/include/;../../SDL2/include;../coment/include;../core;$(IncludePath)</IncludePath>
+    <LibraryPath>../../glload/lib;../../glmesh/lib;../../protobuf/Debug;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <ReferencePath>$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib</ReferencePath>
+    <ExecutablePath>$(VCInstallDir)bin;$(WindowsSDK_ExecutablePath_x86);$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(MSBuildToolsPath32);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -53,12 +56,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:/Boost/include/boost-1_54/;../../glm/include/;../../SDL2/include;../coment/include;../core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;Coment.lib;SDL2.lib;core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glloadD.lib;glmeshD.lib;libprotobuf.lib;opengl32.lib;glu32.lib;Coment.lib;SDL2.lib;core.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../Debug;C:/boost/lib/;../../SDL2/lib/x86/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -83,8 +87,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LoadedMesh.h" />
     <ClInclude Include="client.h" />
+    <ClInclude Include="load_mesh.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="MeshRenderSystem.h" />
     <ClInclude Include="Resource.h" />
@@ -92,8 +96,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LoadedMesh.cpp" />
     <ClCompile Include="client.cpp" />
+    <ClCompile Include="load_mesh.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="MeshRenderSystem.cpp" />
     <ClCompile Include="stdafx.cpp">

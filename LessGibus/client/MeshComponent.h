@@ -1,9 +1,6 @@
 #pragma once
-#include "LoadedMesh.h"
 
 #include <coment/Component.h>
-#include <glm.hpp>
-#include <gtc/quaternion.hpp>
 #include <vector>
 #include <array>
 #include <tuple>
@@ -12,5 +9,5 @@
 struct MeshComponent :
 	public coment::Component
 {
-	LoadedMesh::ptr mesh;
+	std::shared_ptr<glmesh::Mesh> mesh;
 };

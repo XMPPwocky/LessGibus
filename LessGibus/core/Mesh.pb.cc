@@ -26,9 +26,6 @@ namespace protobuf {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Joint_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Joint_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Triangle_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Triangle_reflection_ = NULL;
@@ -45,24 +42,7 @@ void protobuf_AssignDesc_Mesh_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "Mesh.proto");
   GOOGLE_CHECK(file != NULL);
-  Joint_descriptor_ = file->message_type(0);
-  static const int Joint_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Joint, children_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Joint, jointspace_transform_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Joint, worldspace_to_jointspace_transform_),
-  };
-  Joint_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Joint_descriptor_,
-      Joint::default_instance_,
-      Joint_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Joint, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Joint, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Joint));
-  Triangle_descriptor_ = file->message_type(1);
+  Triangle_descriptor_ = file->message_type(0);
   static const int Triangle_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, vert1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, vert2_),
@@ -79,13 +59,13 @@ void protobuf_AssignDesc_Mesh_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Triangle));
-  Mesh_descriptor_ = file->message_type(2);
+  Mesh_descriptor_ = file->message_type(1);
   static const int Mesh_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, material_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, texture_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, textures_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, vertices_format_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, vertices_data_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, joints_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, skeleton_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, triangles_),
   };
   Mesh_reflection_ =
@@ -112,8 +92,6 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Joint_descriptor_, &Joint::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Triangle_descriptor_, &Triangle::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Mesh_descriptor_, &Mesh::default_instance());
@@ -122,8 +100,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_Mesh_2eproto() {
-  delete Joint::default_instance_;
-  delete Joint_reflection_;
   delete Triangle::default_instance_;
   delete Triangle_reflection_;
   delete Mesh::default_instance_;
@@ -136,23 +112,21 @@ void protobuf_AddDesc_Mesh_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::protobuf::protobuf_AddDesc_VertexDeclaration_2eproto();
+  ::protobuf::protobuf_AddDesc_Skeleton_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\nMesh.proto\022\010protobuf\"|\n\005Joint\022!\n\010child"
-    "ren\030\001 \003(\0132\017.protobuf.Joint\022 \n\024jointspace"
-    "_transform\030\002 \003(\002B\002\020\001\022.\n\"worldspace_to_jo"
-    "intspace_transform\030\003 \003(\002B\002\020\001\"7\n\010Triangle"
-    "\022\r\n\005vert1\030\001 \002(\r\022\r\n\005vert2\030\002 \002(\r\022\r\n\005vert3\030"
-    "\003 \002(\r\"\241\001\n\004Mesh\022\020\n\010material\030\001 \002(\t\022\017\n\007text"
-    "ure\030\002 \003(\t\022\027\n\017vertices_format\030\003 \002(\r\022\025\n\rve"
-    "rtices_data\030\004 \002(\014\022\037\n\006joints\030\005 \003(\0132\017.prot"
-    "obuf.Joint\022%\n\ttriangles\030\006 \003(\0132\022.protobuf"
-    ".Triangle", 369);
+    "\n\nMesh.proto\022\010protobuf\032\027VertexDeclaratio"
+    "n.proto\032\016Skeleton.proto\"7\n\010Triangle\022\r\n\005v"
+    "ert1\030\001 \002(\r\022\r\n\005vert2\030\002 \002(\r\022\r\n\005vert3\030\003 \002(\r"
+    "\"\301\001\n\004Mesh\022\020\n\010material\030\001 \002(\t\022\020\n\010textures\030"
+    "\002 \003(\t\0224\n\017vertices_format\030\003 \002(\0132\033.protobu"
+    "f.VertexDeclaration\022\025\n\rvertices_data\030\004 \002"
+    "(\014\022!\n\010skeleton\030\005 \002(\0132\017.protobuf.Joint\022%\n"
+    "\ttriangles\030\006 \003(\0132\022.protobuf.Triangle", 316);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Mesh.proto", &protobuf_RegisterTypes);
-  Joint::default_instance_ = new Joint();
   Triangle::default_instance_ = new Triangle();
   Mesh::default_instance_ = new Mesh();
-  Joint::default_instance_->InitAsDefaultInstance();
   Triangle::default_instance_->InitAsDefaultInstance();
   Mesh::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Mesh_2eproto);
@@ -164,335 +138,6 @@ struct StaticDescriptorInitializer_Mesh_2eproto {
     protobuf_AddDesc_Mesh_2eproto();
   }
 } static_descriptor_initializer_Mesh_2eproto_;
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Joint::kChildrenFieldNumber;
-const int Joint::kJointspaceTransformFieldNumber;
-const int Joint::kWorldspaceToJointspaceTransformFieldNumber;
-#endif  // !_MSC_VER
-
-Joint::Joint()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Joint::InitAsDefaultInstance() {
-}
-
-Joint::Joint(const Joint& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Joint::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Joint::~Joint() {
-  SharedDtor();
-}
-
-void Joint::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Joint::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Joint::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Joint_descriptor_;
-}
-
-const Joint& Joint::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_Mesh_2eproto();
-  return *default_instance_;
-}
-
-Joint* Joint::default_instance_ = NULL;
-
-Joint* Joint::New() const {
-  return new Joint;
-}
-
-void Joint::Clear() {
-  children_.Clear();
-  jointspace_transform_.Clear();
-  worldspace_to_jointspace_transform_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Joint::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .protobuf.Joint children = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_children:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_children()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(10)) goto parse_children;
-        if (input->ExpectTag(18)) goto parse_jointspace_transform;
-        break;
-      }
-
-      // repeated float jointspace_transform = 2 [packed = true];
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_jointspace_transform:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_jointspace_transform())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 18, input, this->mutable_jointspace_transform())));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_worldspace_to_jointspace_transform;
-        break;
-      }
-
-      // repeated float worldspace_to_jointspace_transform = 3 [packed = true];
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_worldspace_to_jointspace_transform:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_worldspace_to_jointspace_transform())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 26, input, this->mutable_worldspace_to_jointspace_transform())));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Joint::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .protobuf.Joint children = 1;
-  for (int i = 0; i < this->children_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->children(i), output);
-  }
-
-  // repeated float jointspace_transform = 2 [packed = true];
-  if (this->jointspace_transform_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(2, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(_jointspace_transform_cached_byte_size_);
-  }
-  for (int i = 0; i < this->jointspace_transform_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloatNoTag(
-      this->jointspace_transform(i), output);
-  }
-
-  // repeated float worldspace_to_jointspace_transform = 3 [packed = true];
-  if (this->worldspace_to_jointspace_transform_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(_worldspace_to_jointspace_transform_cached_byte_size_);
-  }
-  for (int i = 0; i < this->worldspace_to_jointspace_transform_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloatNoTag(
-      this->worldspace_to_jointspace_transform(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Joint::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // repeated .protobuf.Joint children = 1;
-  for (int i = 0; i < this->children_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->children(i), target);
-  }
-
-  // repeated float jointspace_transform = 2 [packed = true];
-  if (this->jointspace_transform_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      2,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-      _jointspace_transform_cached_byte_size_, target);
-  }
-  for (int i = 0; i < this->jointspace_transform_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->jointspace_transform(i), target);
-  }
-
-  // repeated float worldspace_to_jointspace_transform = 3 [packed = true];
-  if (this->worldspace_to_jointspace_transform_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      3,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-      _worldspace_to_jointspace_transform_cached_byte_size_, target);
-  }
-  for (int i = 0; i < this->worldspace_to_jointspace_transform_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->worldspace_to_jointspace_transform(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Joint::ByteSize() const {
-  int total_size = 0;
-
-  // repeated .protobuf.Joint children = 1;
-  total_size += 1 * this->children_size();
-  for (int i = 0; i < this->children_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->children(i));
-  }
-
-  // repeated float jointspace_transform = 2 [packed = true];
-  {
-    int data_size = 0;
-    data_size = 4 * this->jointspace_transform_size();
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
-    }
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _jointspace_transform_cached_byte_size_ = data_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  // repeated float worldspace_to_jointspace_transform = 3 [packed = true];
-  {
-    int data_size = 0;
-    data_size = 4 * this->worldspace_to_jointspace_transform_size();
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
-    }
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _worldspace_to_jointspace_transform_cached_byte_size_ = data_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Joint::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Joint* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Joint*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Joint::MergeFrom(const Joint& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  children_.MergeFrom(from.children_);
-  jointspace_transform_.MergeFrom(from.jointspace_transform_);
-  worldspace_to_jointspace_transform_.MergeFrom(from.worldspace_to_jointspace_transform_);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Joint::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Joint::CopyFrom(const Joint& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Joint::IsInitialized() const {
-
-  return true;
-}
-
-void Joint::Swap(Joint* other) {
-  if (other != this) {
-    children_.Swap(&other->children_);
-    jointspace_transform_.Swap(&other->jointspace_transform_);
-    worldspace_to_jointspace_transform_.Swap(&other->worldspace_to_jointspace_transform_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Joint::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Joint_descriptor_;
-  metadata.reflection = Joint_reflection_;
-  return metadata;
-}
-
 
 // ===================================================================
 
@@ -787,10 +432,10 @@ void Triangle::Swap(Triangle* other) {
 
 #ifndef _MSC_VER
 const int Mesh::kMaterialFieldNumber;
-const int Mesh::kTextureFieldNumber;
+const int Mesh::kTexturesFieldNumber;
 const int Mesh::kVerticesFormatFieldNumber;
 const int Mesh::kVerticesDataFieldNumber;
-const int Mesh::kJointsFieldNumber;
+const int Mesh::kSkeletonFieldNumber;
 const int Mesh::kTrianglesFieldNumber;
 #endif  // !_MSC_VER
 
@@ -800,6 +445,8 @@ Mesh::Mesh()
 }
 
 void Mesh::InitAsDefaultInstance() {
+  vertices_format_ = const_cast< ::protobuf::VertexDeclaration*>(&::protobuf::VertexDeclaration::default_instance());
+  skeleton_ = const_cast< ::protobuf::Joint*>(&::protobuf::Joint::default_instance());
 }
 
 Mesh::Mesh(const Mesh& from)
@@ -811,8 +458,9 @@ Mesh::Mesh(const Mesh& from)
 void Mesh::SharedCtor() {
   _cached_size_ = 0;
   material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  vertices_format_ = 0u;
+  vertices_format_ = NULL;
   vertices_data_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  skeleton_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -828,6 +476,8 @@ void Mesh::SharedDtor() {
     delete vertices_data_;
   }
   if (this != default_instance_) {
+    delete vertices_format_;
+    delete skeleton_;
   }
 }
 
@@ -859,15 +509,19 @@ void Mesh::Clear() {
         material_->clear();
       }
     }
-    vertices_format_ = 0u;
+    if (has_vertices_format()) {
+      if (vertices_format_ != NULL) vertices_format_->::protobuf::VertexDeclaration::Clear();
+    }
     if (has_vertices_data()) {
       if (vertices_data_ != &::google::protobuf::internal::kEmptyString) {
         vertices_data_->clear();
       }
     }
+    if (has_skeleton()) {
+      if (skeleton_ != NULL) skeleton_->::protobuf::Joint::Clear();
+    }
   }
-  texture_.Clear();
-  joints_.Clear();
+  textures_.Clear();
   triangles_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -891,38 +545,36 @@ bool Mesh::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_texture;
+        if (input->ExpectTag(18)) goto parse_textures;
         break;
       }
 
-      // repeated string texture = 2;
+      // repeated string textures = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_texture:
+         parse_textures:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_texture()));
+                input, this->add_textures()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->texture(this->texture_size() - 1).data(),
-            this->texture(this->texture_size() - 1).length(),
+            this->textures(this->textures_size() - 1).data(),
+            this->textures(this->textures_size() - 1).length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_texture;
-        if (input->ExpectTag(24)) goto parse_vertices_format;
+        if (input->ExpectTag(18)) goto parse_textures;
+        if (input->ExpectTag(26)) goto parse_vertices_format;
         break;
       }
 
-      // required uint32 vertices_format = 3;
+      // required .protobuf.VertexDeclaration vertices_format = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_vertices_format:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &vertices_format_)));
-          set_has_vertices_format();
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_vertices_format()));
         } else {
           goto handle_uninterpreted;
         }
@@ -940,21 +592,20 @@ bool Mesh::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_joints;
+        if (input->ExpectTag(42)) goto parse_skeleton;
         break;
       }
 
-      // repeated .protobuf.Joint joints = 5;
+      // required .protobuf.Joint skeleton = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_joints:
+         parse_skeleton:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_joints()));
+               input, mutable_skeleton()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_joints;
         if (input->ExpectTag(50)) goto parse_triangles;
         break;
       }
@@ -1001,18 +652,19 @@ void Mesh::SerializeWithCachedSizes(
       1, this->material(), output);
   }
 
-  // repeated string texture = 2;
-  for (int i = 0; i < this->texture_size(); i++) {
+  // repeated string textures = 2;
+  for (int i = 0; i < this->textures_size(); i++) {
   ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->texture(i).data(), this->texture(i).length(),
+    this->textures(i).data(), this->textures(i).length(),
     ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->texture(i), output);
+      2, this->textures(i), output);
   }
 
-  // required uint32 vertices_format = 3;
+  // required .protobuf.VertexDeclaration vertices_format = 3;
   if (has_vertices_format()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->vertices_format(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->vertices_format(), output);
   }
 
   // required bytes vertices_data = 4;
@@ -1021,10 +673,10 @@ void Mesh::SerializeWithCachedSizes(
       4, this->vertices_data(), output);
   }
 
-  // repeated .protobuf.Joint joints = 5;
-  for (int i = 0; i < this->joints_size(); i++) {
+  // required .protobuf.Joint skeleton = 5;
+  if (has_skeleton()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->joints(i), output);
+      5, this->skeleton(), output);
   }
 
   // repeated .protobuf.Triangle triangles = 6;
@@ -1051,18 +703,20 @@ void Mesh::SerializeWithCachedSizes(
         1, this->material(), target);
   }
 
-  // repeated string texture = 2;
-  for (int i = 0; i < this->texture_size(); i++) {
+  // repeated string textures = 2;
+  for (int i = 0; i < this->textures_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->texture(i).data(), this->texture(i).length(),
+      this->textures(i).data(), this->textures(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(2, this->texture(i), target);
+      WriteStringToArray(2, this->textures(i), target);
   }
 
-  // required uint32 vertices_format = 3;
+  // required .protobuf.VertexDeclaration vertices_format = 3;
   if (has_vertices_format()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->vertices_format(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->vertices_format(), target);
   }
 
   // required bytes vertices_data = 4;
@@ -1072,11 +726,11 @@ void Mesh::SerializeWithCachedSizes(
         4, this->vertices_data(), target);
   }
 
-  // repeated .protobuf.Joint joints = 5;
-  for (int i = 0; i < this->joints_size(); i++) {
+  // required .protobuf.Joint skeleton = 5;
+  if (has_skeleton()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->joints(i), target);
+        5, this->skeleton(), target);
   }
 
   // repeated .protobuf.Triangle triangles = 6;
@@ -1104,10 +758,10 @@ int Mesh::ByteSize() const {
           this->material());
     }
 
-    // required uint32 vertices_format = 3;
+    // required .protobuf.VertexDeclaration vertices_format = 3;
     if (has_vertices_format()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->vertices_format());
     }
 
@@ -1118,20 +772,19 @@ int Mesh::ByteSize() const {
           this->vertices_data());
     }
 
-  }
-  // repeated string texture = 2;
-  total_size += 1 * this->texture_size();
-  for (int i = 0; i < this->texture_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->texture(i));
-  }
+    // required .protobuf.Joint skeleton = 5;
+    if (has_skeleton()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->skeleton());
+    }
 
-  // repeated .protobuf.Joint joints = 5;
-  total_size += 1 * this->joints_size();
-  for (int i = 0; i < this->joints_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->joints(i));
+  }
+  // repeated string textures = 2;
+  total_size += 1 * this->textures_size();
+  for (int i = 0; i < this->textures_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->textures(i));
   }
 
   // repeated .protobuf.Triangle triangles = 6;
@@ -1167,18 +820,20 @@ void Mesh::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Mesh::MergeFrom(const Mesh& from) {
   GOOGLE_CHECK_NE(&from, this);
-  texture_.MergeFrom(from.texture_);
-  joints_.MergeFrom(from.joints_);
+  textures_.MergeFrom(from.textures_);
   triangles_.MergeFrom(from.triangles_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_material()) {
       set_material(from.material());
     }
     if (from.has_vertices_format()) {
-      set_vertices_format(from.vertices_format());
+      mutable_vertices_format()->::protobuf::VertexDeclaration::MergeFrom(from.vertices_format());
     }
     if (from.has_vertices_data()) {
       set_vertices_data(from.vertices_data());
+    }
+    if (from.has_skeleton()) {
+      mutable_skeleton()->::protobuf::Joint::MergeFrom(from.skeleton());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1197,8 +852,11 @@ void Mesh::CopyFrom(const Mesh& from) {
 }
 
 bool Mesh::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000d) != 0x0000000d) return false;
+  if ((_has_bits_[0] & 0x0000001d) != 0x0000001d) return false;
 
+  if (has_vertices_format()) {
+    if (!this->vertices_format().IsInitialized()) return false;
+  }
   for (int i = 0; i < triangles_size(); i++) {
     if (!this->triangles(i).IsInitialized()) return false;
   }
@@ -1208,10 +866,10 @@ bool Mesh::IsInitialized() const {
 void Mesh::Swap(Mesh* other) {
   if (other != this) {
     std::swap(material_, other->material_);
-    texture_.Swap(&other->texture_);
+    textures_.Swap(&other->textures_);
     std::swap(vertices_format_, other->vertices_format_);
     std::swap(vertices_data_, other->vertices_data_);
-    joints_.Swap(&other->joints_);
+    std::swap(skeleton_, other->skeleton_);
     triangles_.Swap(&other->triangles_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

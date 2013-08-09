@@ -24,6 +24,8 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "VertexDeclaration.pb.h"
+#include "Skeleton.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace protobuf {
@@ -33,124 +35,10 @@ void  protobuf_AddDesc_Mesh_2eproto();
 void protobuf_AssignDesc_Mesh_2eproto();
 void protobuf_ShutdownFile_Mesh_2eproto();
 
-class Joint;
 class Triangle;
 class Mesh;
 
 // ===================================================================
-
-class Joint : public ::google::protobuf::Message {
- public:
-  Joint();
-  virtual ~Joint();
-
-  Joint(const Joint& from);
-
-  inline Joint& operator=(const Joint& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Joint& default_instance();
-
-  void Swap(Joint* other);
-
-  // implements Message ----------------------------------------------
-
-  Joint* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Joint& from);
-  void MergeFrom(const Joint& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .protobuf.Joint children = 1;
-  inline int children_size() const;
-  inline void clear_children();
-  static const int kChildrenFieldNumber = 1;
-  inline const ::protobuf::Joint& children(int index) const;
-  inline ::protobuf::Joint* mutable_children(int index);
-  inline ::protobuf::Joint* add_children();
-  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >&
-      children() const;
-  inline ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >*
-      mutable_children();
-
-  // repeated float jointspace_transform = 2 [packed = true];
-  inline int jointspace_transform_size() const;
-  inline void clear_jointspace_transform();
-  static const int kJointspaceTransformFieldNumber = 2;
-  inline float jointspace_transform(int index) const;
-  inline void set_jointspace_transform(int index, float value);
-  inline void add_jointspace_transform(float value);
-  inline const ::google::protobuf::RepeatedField< float >&
-      jointspace_transform() const;
-  inline ::google::protobuf::RepeatedField< float >*
-      mutable_jointspace_transform();
-
-  // repeated float worldspace_to_jointspace_transform = 3 [packed = true];
-  inline int worldspace_to_jointspace_transform_size() const;
-  inline void clear_worldspace_to_jointspace_transform();
-  static const int kWorldspaceToJointspaceTransformFieldNumber = 3;
-  inline float worldspace_to_jointspace_transform(int index) const;
-  inline void set_worldspace_to_jointspace_transform(int index, float value);
-  inline void add_worldspace_to_jointspace_transform(float value);
-  inline const ::google::protobuf::RepeatedField< float >&
-      worldspace_to_jointspace_transform() const;
-  inline ::google::protobuf::RepeatedField< float >*
-      mutable_worldspace_to_jointspace_transform();
-
-  // @@protoc_insertion_point(class_scope:protobuf.Joint)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::RepeatedPtrField< ::protobuf::Joint > children_;
-  ::google::protobuf::RepeatedField< float > jointspace_transform_;
-  mutable int _jointspace_transform_cached_byte_size_;
-  ::google::protobuf::RepeatedField< float > worldspace_to_jointspace_transform_;
-  mutable int _worldspace_to_jointspace_transform_cached_byte_size_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
-  friend void  protobuf_AddDesc_Mesh_2eproto();
-  friend void protobuf_AssignDesc_Mesh_2eproto();
-  friend void protobuf_ShutdownFile_Mesh_2eproto();
-
-  void InitAsDefaultInstance();
-  static Joint* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class Triangle : public ::google::protobuf::Message {
  public:
@@ -320,28 +208,30 @@ class Mesh : public ::google::protobuf::Message {
   inline ::std::string* release_material();
   inline void set_allocated_material(::std::string* material);
 
-  // repeated string texture = 2;
-  inline int texture_size() const;
-  inline void clear_texture();
-  static const int kTextureFieldNumber = 2;
-  inline const ::std::string& texture(int index) const;
-  inline ::std::string* mutable_texture(int index);
-  inline void set_texture(int index, const ::std::string& value);
-  inline void set_texture(int index, const char* value);
-  inline void set_texture(int index, const char* value, size_t size);
-  inline ::std::string* add_texture();
-  inline void add_texture(const ::std::string& value);
-  inline void add_texture(const char* value);
-  inline void add_texture(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& texture() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_texture();
+  // repeated string textures = 2;
+  inline int textures_size() const;
+  inline void clear_textures();
+  static const int kTexturesFieldNumber = 2;
+  inline const ::std::string& textures(int index) const;
+  inline ::std::string* mutable_textures(int index);
+  inline void set_textures(int index, const ::std::string& value);
+  inline void set_textures(int index, const char* value);
+  inline void set_textures(int index, const char* value, size_t size);
+  inline ::std::string* add_textures();
+  inline void add_textures(const ::std::string& value);
+  inline void add_textures(const char* value);
+  inline void add_textures(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& textures() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_textures();
 
-  // required uint32 vertices_format = 3;
+  // required .protobuf.VertexDeclaration vertices_format = 3;
   inline bool has_vertices_format() const;
   inline void clear_vertices_format();
   static const int kVerticesFormatFieldNumber = 3;
-  inline ::google::protobuf::uint32 vertices_format() const;
-  inline void set_vertices_format(::google::protobuf::uint32 value);
+  inline const ::protobuf::VertexDeclaration& vertices_format() const;
+  inline ::protobuf::VertexDeclaration* mutable_vertices_format();
+  inline ::protobuf::VertexDeclaration* release_vertices_format();
+  inline void set_allocated_vertices_format(::protobuf::VertexDeclaration* vertices_format);
 
   // required bytes vertices_data = 4;
   inline bool has_vertices_data() const;
@@ -355,17 +245,14 @@ class Mesh : public ::google::protobuf::Message {
   inline ::std::string* release_vertices_data();
   inline void set_allocated_vertices_data(::std::string* vertices_data);
 
-  // repeated .protobuf.Joint joints = 5;
-  inline int joints_size() const;
-  inline void clear_joints();
-  static const int kJointsFieldNumber = 5;
-  inline const ::protobuf::Joint& joints(int index) const;
-  inline ::protobuf::Joint* mutable_joints(int index);
-  inline ::protobuf::Joint* add_joints();
-  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >&
-      joints() const;
-  inline ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >*
-      mutable_joints();
+  // required .protobuf.Joint skeleton = 5;
+  inline bool has_skeleton() const;
+  inline void clear_skeleton();
+  static const int kSkeletonFieldNumber = 5;
+  inline const ::protobuf::Joint& skeleton() const;
+  inline ::protobuf::Joint* mutable_skeleton();
+  inline ::protobuf::Joint* release_skeleton();
+  inline void set_allocated_skeleton(::protobuf::Joint* skeleton);
 
   // repeated .protobuf.Triangle triangles = 6;
   inline int triangles_size() const;
@@ -387,15 +274,17 @@ class Mesh : public ::google::protobuf::Message {
   inline void clear_has_vertices_format();
   inline void set_has_vertices_data();
   inline void clear_has_vertices_data();
+  inline void set_has_skeleton();
+  inline void clear_has_skeleton();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* material_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> texture_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> textures_;
+  ::protobuf::VertexDeclaration* vertices_format_;
   ::std::string* vertices_data_;
-  ::google::protobuf::RepeatedPtrField< ::protobuf::Joint > joints_;
+  ::protobuf::Joint* skeleton_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle > triangles_;
-  ::google::protobuf::uint32 vertices_format_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
@@ -411,85 +300,6 @@ class Mesh : public ::google::protobuf::Message {
 
 
 // ===================================================================
-
-// Joint
-
-// repeated .protobuf.Joint children = 1;
-inline int Joint::children_size() const {
-  return children_.size();
-}
-inline void Joint::clear_children() {
-  children_.Clear();
-}
-inline const ::protobuf::Joint& Joint::children(int index) const {
-  return children_.Get(index);
-}
-inline ::protobuf::Joint* Joint::mutable_children(int index) {
-  return children_.Mutable(index);
-}
-inline ::protobuf::Joint* Joint::add_children() {
-  return children_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >&
-Joint::children() const {
-  return children_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >*
-Joint::mutable_children() {
-  return &children_;
-}
-
-// repeated float jointspace_transform = 2 [packed = true];
-inline int Joint::jointspace_transform_size() const {
-  return jointspace_transform_.size();
-}
-inline void Joint::clear_jointspace_transform() {
-  jointspace_transform_.Clear();
-}
-inline float Joint::jointspace_transform(int index) const {
-  return jointspace_transform_.Get(index);
-}
-inline void Joint::set_jointspace_transform(int index, float value) {
-  jointspace_transform_.Set(index, value);
-}
-inline void Joint::add_jointspace_transform(float value) {
-  jointspace_transform_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< float >&
-Joint::jointspace_transform() const {
-  return jointspace_transform_;
-}
-inline ::google::protobuf::RepeatedField< float >*
-Joint::mutable_jointspace_transform() {
-  return &jointspace_transform_;
-}
-
-// repeated float worldspace_to_jointspace_transform = 3 [packed = true];
-inline int Joint::worldspace_to_jointspace_transform_size() const {
-  return worldspace_to_jointspace_transform_.size();
-}
-inline void Joint::clear_worldspace_to_jointspace_transform() {
-  worldspace_to_jointspace_transform_.Clear();
-}
-inline float Joint::worldspace_to_jointspace_transform(int index) const {
-  return worldspace_to_jointspace_transform_.Get(index);
-}
-inline void Joint::set_worldspace_to_jointspace_transform(int index, float value) {
-  worldspace_to_jointspace_transform_.Set(index, value);
-}
-inline void Joint::add_worldspace_to_jointspace_transform(float value) {
-  worldspace_to_jointspace_transform_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< float >&
-Joint::worldspace_to_jointspace_transform() const {
-  return worldspace_to_jointspace_transform_;
-}
-inline ::google::protobuf::RepeatedField< float >*
-Joint::mutable_worldspace_to_jointspace_transform() {
-  return &worldspace_to_jointspace_transform_;
-}
-
-// -------------------------------------------------------------------
 
 // Triangle
 
@@ -633,51 +443,51 @@ inline void Mesh::set_allocated_material(::std::string* material) {
   }
 }
 
-// repeated string texture = 2;
-inline int Mesh::texture_size() const {
-  return texture_.size();
+// repeated string textures = 2;
+inline int Mesh::textures_size() const {
+  return textures_.size();
 }
-inline void Mesh::clear_texture() {
-  texture_.Clear();
+inline void Mesh::clear_textures() {
+  textures_.Clear();
 }
-inline const ::std::string& Mesh::texture(int index) const {
-  return texture_.Get(index);
+inline const ::std::string& Mesh::textures(int index) const {
+  return textures_.Get(index);
 }
-inline ::std::string* Mesh::mutable_texture(int index) {
-  return texture_.Mutable(index);
+inline ::std::string* Mesh::mutable_textures(int index) {
+  return textures_.Mutable(index);
 }
-inline void Mesh::set_texture(int index, const ::std::string& value) {
-  texture_.Mutable(index)->assign(value);
+inline void Mesh::set_textures(int index, const ::std::string& value) {
+  textures_.Mutable(index)->assign(value);
 }
-inline void Mesh::set_texture(int index, const char* value) {
-  texture_.Mutable(index)->assign(value);
+inline void Mesh::set_textures(int index, const char* value) {
+  textures_.Mutable(index)->assign(value);
 }
-inline void Mesh::set_texture(int index, const char* value, size_t size) {
-  texture_.Mutable(index)->assign(
+inline void Mesh::set_textures(int index, const char* value, size_t size) {
+  textures_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Mesh::add_texture() {
-  return texture_.Add();
+inline ::std::string* Mesh::add_textures() {
+  return textures_.Add();
 }
-inline void Mesh::add_texture(const ::std::string& value) {
-  texture_.Add()->assign(value);
+inline void Mesh::add_textures(const ::std::string& value) {
+  textures_.Add()->assign(value);
 }
-inline void Mesh::add_texture(const char* value) {
-  texture_.Add()->assign(value);
+inline void Mesh::add_textures(const char* value) {
+  textures_.Add()->assign(value);
 }
-inline void Mesh::add_texture(const char* value, size_t size) {
-  texture_.Add()->assign(reinterpret_cast<const char*>(value), size);
+inline void Mesh::add_textures(const char* value, size_t size) {
+  textures_.Add()->assign(reinterpret_cast<const char*>(value), size);
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Mesh::texture() const {
-  return texture_;
+Mesh::textures() const {
+  return textures_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Mesh::mutable_texture() {
-  return &texture_;
+Mesh::mutable_textures() {
+  return &textures_;
 }
 
-// required uint32 vertices_format = 3;
+// required .protobuf.VertexDeclaration vertices_format = 3;
 inline bool Mesh::has_vertices_format() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -688,15 +498,31 @@ inline void Mesh::clear_has_vertices_format() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Mesh::clear_vertices_format() {
-  vertices_format_ = 0u;
+  if (vertices_format_ != NULL) vertices_format_->::protobuf::VertexDeclaration::Clear();
   clear_has_vertices_format();
 }
-inline ::google::protobuf::uint32 Mesh::vertices_format() const {
+inline const ::protobuf::VertexDeclaration& Mesh::vertices_format() const {
+  return vertices_format_ != NULL ? *vertices_format_ : *default_instance_->vertices_format_;
+}
+inline ::protobuf::VertexDeclaration* Mesh::mutable_vertices_format() {
+  set_has_vertices_format();
+  if (vertices_format_ == NULL) vertices_format_ = new ::protobuf::VertexDeclaration;
   return vertices_format_;
 }
-inline void Mesh::set_vertices_format(::google::protobuf::uint32 value) {
-  set_has_vertices_format();
-  vertices_format_ = value;
+inline ::protobuf::VertexDeclaration* Mesh::release_vertices_format() {
+  clear_has_vertices_format();
+  ::protobuf::VertexDeclaration* temp = vertices_format_;
+  vertices_format_ = NULL;
+  return temp;
+}
+inline void Mesh::set_allocated_vertices_format(::protobuf::VertexDeclaration* vertices_format) {
+  delete vertices_format_;
+  vertices_format_ = vertices_format;
+  if (vertices_format) {
+    set_has_vertices_format();
+  } else {
+    clear_has_vertices_format();
+  }
 }
 
 // required bytes vertices_data = 4;
@@ -769,29 +595,42 @@ inline void Mesh::set_allocated_vertices_data(::std::string* vertices_data) {
   }
 }
 
-// repeated .protobuf.Joint joints = 5;
-inline int Mesh::joints_size() const {
-  return joints_.size();
+// required .protobuf.Joint skeleton = 5;
+inline bool Mesh::has_skeleton() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void Mesh::clear_joints() {
-  joints_.Clear();
+inline void Mesh::set_has_skeleton() {
+  _has_bits_[0] |= 0x00000010u;
 }
-inline const ::protobuf::Joint& Mesh::joints(int index) const {
-  return joints_.Get(index);
+inline void Mesh::clear_has_skeleton() {
+  _has_bits_[0] &= ~0x00000010u;
 }
-inline ::protobuf::Joint* Mesh::mutable_joints(int index) {
-  return joints_.Mutable(index);
+inline void Mesh::clear_skeleton() {
+  if (skeleton_ != NULL) skeleton_->::protobuf::Joint::Clear();
+  clear_has_skeleton();
 }
-inline ::protobuf::Joint* Mesh::add_joints() {
-  return joints_.Add();
+inline const ::protobuf::Joint& Mesh::skeleton() const {
+  return skeleton_ != NULL ? *skeleton_ : *default_instance_->skeleton_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >&
-Mesh::joints() const {
-  return joints_;
+inline ::protobuf::Joint* Mesh::mutable_skeleton() {
+  set_has_skeleton();
+  if (skeleton_ == NULL) skeleton_ = new ::protobuf::Joint;
+  return skeleton_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::protobuf::Joint >*
-Mesh::mutable_joints() {
-  return &joints_;
+inline ::protobuf::Joint* Mesh::release_skeleton() {
+  clear_has_skeleton();
+  ::protobuf::Joint* temp = skeleton_;
+  skeleton_ = NULL;
+  return temp;
+}
+inline void Mesh::set_allocated_skeleton(::protobuf::Joint* skeleton) {
+  delete skeleton_;
+  skeleton_ = skeleton;
+  if (skeleton) {
+    set_has_skeleton();
+  } else {
+    clear_has_skeleton();
+  }
 }
 
 // repeated .protobuf.Triangle triangles = 6;

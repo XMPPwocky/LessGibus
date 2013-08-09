@@ -19,7 +19,13 @@
 
 
 // TODO: reference additional headers your program requires here
+#pragma warning(push)
 
-#include <gl/GL.h>
-#include <gl/GLU.h>
-#include <glm.hpp>
+#include <glload/gl_3_3.hpp>
+#include <glload/gl_load.hpp>
+#include <glmesh/glmesh.h>
+
+#pragma warning(pop)
+
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
