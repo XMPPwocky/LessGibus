@@ -8,21 +8,20 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <coment/Entity.h>
+#include <coment/World.h>
 #include <coment/systems/EntityProcessingSystem.h>
-
+#include "MeshComponent.h"
+#include "Mesh.h"
 class MeshRenderSystem :
 	public coment::EntityProcessingSystem
 {
-	SDL_Window *m_window;
-	SDL_GLContext *m_glctx;
 	glm::mat4 m_projection;
 protected:
 
 	void begin();
 	void end();
 public:
-	MeshRenderSystem(SDL_Window* displayWindow,
-		SDL_GLContext* ctx);
+	MeshRenderSystem();
 	void registered();
 	void process(const coment::Entity& entity);
 };

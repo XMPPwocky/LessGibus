@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "load_mesh.h"
 #include "Mesh.pb.h"
+#include "Mesh.h"
 #include "VertexDeclaration.pb.h"
 #include "BadDataException.h"
 #include "Exception.h"
@@ -8,13 +9,12 @@
 #include <boost/foreach.hpp>
 #include <boost/exception/exception.hpp>
 
-using namespace protobuf;
+using protobuf::VertexDeclaration_Component;
 
-glmesh::Mesh *load_mesh(const protobuf::Mesh &data)
+Mesh *load_mesh(const protobuf::Mesh &data)
 {
 	glmesh::AttributeList attribs;
 	const auto cats = data.vertices_format().components();
-
 	google::protobuf::RepeatedPtrField<VertexDeclaration_Component>::const_iterator i;
 
 	int num = 0;
@@ -27,7 +27,7 @@ glmesh::Mesh *load_mesh(const protobuf::Mesh &data)
 
 		glmesh::VertexDataType vdt;
 		glmesh::AttribDataType adt;
-		switch( (*i).format() )
+		switch( (*i).interpretation() )
 		{
 		case VertexDeclaration_Component::INTERPRET_FLOAT:
 			adt = glmesh::ADT_FLOAT;
@@ -49,7 +49,7 @@ glmesh::Mesh *load_mesh(const protobuf::Mesh &data)
 
 		}
 
-		switch( (*i).interpretation() )
+		switch( (*i).format() )
 		{
 		case VertexDeclaration_Component::FORMAT_HALF_PRECISION_FLOAT:
 			vdt = glmesh::VDT_HALF_FLOAT;
@@ -90,5 +90,52 @@ glmesh::Mesh *load_mesh(const protobuf::Mesh &data)
 
 	}
 
-	return nullptr; //new glmesh::Mesh();
+	glmesh::VertexFormat vfmt(attribs);
+	
+	//// put mesh data in a VBO
+	std::string mesh_vertex_data = data.vertices_data();
+
+	GLuint VBO;
+	gl::GenBuffers(1, &VBO);
+	gl::BindBuffer(gl::ARRAY_BUFFER, VBO);
+	gl::BufferData(gl::ARRAY_BUFFER,
+		mesh_vertex_data.size(),
+		mesh_vertex_data.data(),
+		gl::STATIC_DRAW);
+    
+	// and triangles in an element buffer
+	std::vector<UINT32> triangles_data;
+	triangles_data.reserve(data.triangles_size()*3);
+	const auto tris = data.triangles();
+	for (google::protobuf::RepeatedPtrField<protobuf::Triangle>::const_iterator i = tris.begin(); i != tris.end(); i++)
+	{
+		triangles_data.push_back((*i).vert1());
+		triangles_data.push_back((*i).vert2());
+		triangles_data.push_back((*i).vert3());
+	}
+	GLuint elembuffer;
+	gl::GenBuffers(1, &elembuffer);
+	gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, elembuffer);
+	gl::BufferData(gl::ELEMENT_ARRAY_BUFFER,
+		triangles_data.size() * sizeof(UINT32),
+		triangles_data.data(),
+		gl::STATIC_DRAW);
+
+
+	// and the format in a VAO
+	GLuint VAO;
+	gl::GenVertexArrays(1, &VAO);
+	// gl::BindBuffer(gl::ARRAY_BUFFER, VBO); // already done
+	gl::BindVertexArray(VAO);
+	gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, elembuffer); // make sure the element buffer is used
+	vfmt.BindAttributes(0);
+
+	// unbind buffer
+	gl::BindBuffer(gl::ARRAY_BUFFER, 0);
+	
+	std::vector<GLuint> buffers;
+	buffers.push_back(VBO);
+	buffers.push_back(elembuffer);
+
+	return new Mesh(VAO, triangles_data.size(), 0, buffers, true);
 }

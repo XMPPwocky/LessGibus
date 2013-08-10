@@ -3,11 +3,14 @@
 
 #include "stdafx.h"
 #include "client.h"
+#include "Mesh.pb.h"
+#include "load_mesh.h"
 
 #include <iostream>
 #include <fstream>
 
 #define MAX_LOADSTRING 100
+
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -18,7 +21,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
 	UNREFERENCED_PARAMETER(hInstance);
 	UNREFERENCED_PARAMETER(nCmdShow);
+
 	
+
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
@@ -32,13 +37,15 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
+	glload::LoadFunctions();
+
 	coment::World world;
 
 	ResourceManager resourceManager;
-	world.registerManager(resourceManager);
+	world.registerManager<ResourceManager>(resourceManager);
 	
-	MeshRenderSystem mesh_render_system(window, &glcontext);
-	world.registerSystem(mesh_render_system);
+	MeshRenderSystem mesh_render_system;
+	world.registerSystem<MeshRenderSystem>(mesh_render_system);
 
 	coment::Entity e = world.createEntity();
 	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
@@ -47,14 +54,49 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	log.open("log.txt");
 	
 	ResourceManager	*rsrc = world.getManager<ResourceManager>();
-	std::shared_ptr<std::string> k = (world.getManager<ResourceManager>())->load<std::string>("mesh/trivial.mesh");
-//	std::string f = *k;
+	std::string *mdata = (rsrc)->load<std::string>("../../assets/mesh/square.mesh");
+
+	protobuf::Mesh m;
+	m.ParseFromString(*mdata);
+	mesh->mesh = std::shared_ptr<Mesh>(load_mesh(m));
+
+	std::string *vertshader_str = rsrc->load<std::string>("../../assets/shader/Vertex_trivial.glsl");
+	std::string *fragshader_str = rsrc->load<std::string>("../../assets/shader/Fragment_trivial.glsl");
+	const char *vertshader_data = vertshader_str->c_str();
+	const char *fragshader_data = fragshader_str->c_str();
+	GLuint vertshader = gl::CreateShader(gl::VERTEX_SHADER);
+	GLuint fragshader = gl::CreateShader(gl::FRAGMENT_SHADER);
+	
+	gl::ShaderSource(vertshader,1,&(vertshader_data),NULL);
+	gl::ShaderSource(fragshader,1,&(fragshader_data),NULL);
+	
+	GLint butt = gl::FALSE_;
+	GLint status;
+	gl::CompileShader(vertshader);
+	gl::GetShaderiv(vertshader, gl::COMPILE_STATUS, &status);
+
+	gl::CompileShader(fragshader);
+	gl::GetShaderiv(fragshader, gl::COMPILE_STATUS, &status);
+
+	GLuint program = gl::CreateProgram();
+	gl::AttachShader(program, vertshader);
+	gl::AttachShader(program, fragshader);
+	gl::LinkProgram(program);
+	gl::GetProgramiv(program, gl::LINK_STATUS, &status);
 
 	SDL_Event event; 
 	Uint8 done = 0;
 	Uint32 last_tick = SDL_GetTicks();
+	int win_width, win_height;
+	SDL_GetWindowSize(window, &win_width, &win_height);
+	//gl::Viewport(0,0,win_height,win_width);
+	gl::ClearColor(1.0f, 0.431f, 0.78f, 1.0f); // fugly neon pink
 	while(!done)  // Enter main loop.
 	{
+		gl::Clear(gl::COLOR_BUFFER_BIT);
+		gl::UseProgram(program);
+		
+	
 
 		Uint32 curr_tick = SDL_GetTicks();
 		Uint32 delta = (curr_tick - last_tick);
@@ -69,9 +111,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		world.loopStart();
 		world.setDelta(delta/(1000.0f));
 		world.update();
+		SDL_GL_SwapWindow(window);
 
-
-				
 		//SDL_Delay(std::max((Sint32)(1 - delta), 0));              // Pause briefly before moving on to the next cycle.
 	} 
 

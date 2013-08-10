@@ -1,6 +1,5 @@
-#include "glmesh/glmesh.h"
 #include "Mesh.pb.h"
+#include "Mesh.h"
 
 
-
-glmesh::Mesh *load_mesh(const protobuf::Mesh &data);
+Mesh *load_mesh(const protobuf::Mesh &data);
