@@ -25,7 +25,6 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "Declarations.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace protobuf {
@@ -35,6 +34,8 @@ void  protobuf_AddDesc_ShaderProgram_2eproto();
 void protobuf_AssignDesc_ShaderProgram_2eproto();
 void protobuf_ShutdownFile_ShaderProgram_2eproto();
 
+class ShaderParam;
+class ShaderParamBlock;
 class ShaderProgram;
 class ShaderProgram_Shader;
 
@@ -62,6 +63,208 @@ inline bool ShaderProgram_ShaderType_Parse(
     ShaderProgram_ShaderType_descriptor(), name, value);
 }
 // ===================================================================
+
+class ShaderParam : public ::google::protobuf::Message {
+ public:
+  ShaderParam();
+  virtual ~ShaderParam();
+
+  ShaderParam(const ShaderParam& from);
+
+  inline ShaderParam& operator=(const ShaderParam& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ShaderParam& default_instance();
+
+  void Swap(ShaderParam* other);
+
+  // implements Message ----------------------------------------------
+
+  ShaderParam* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ShaderParam& from);
+  void MergeFrom(const ShaderParam& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string uniform_name = 1;
+  inline bool has_uniform_name() const;
+  inline void clear_uniform_name();
+  static const int kUniformNameFieldNumber = 1;
+  inline const ::std::string& uniform_name() const;
+  inline void set_uniform_name(const ::std::string& value);
+  inline void set_uniform_name(const char* value);
+  inline void set_uniform_name(const char* value, size_t size);
+  inline ::std::string* mutable_uniform_name();
+  inline ::std::string* release_uniform_name();
+  inline void set_allocated_uniform_name(::std::string* uniform_name);
+
+  // required string value = 2;
+  inline bool has_value() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 2;
+  inline const ::std::string& value() const;
+  inline void set_value(const ::std::string& value);
+  inline void set_value(const char* value);
+  inline void set_value(const char* value, size_t size);
+  inline ::std::string* mutable_value();
+  inline ::std::string* release_value();
+  inline void set_allocated_value(::std::string* value);
+
+  // @@protoc_insertion_point(class_scope:protobuf.ShaderParam)
+ private:
+  inline void set_has_uniform_name();
+  inline void clear_has_uniform_name();
+  inline void set_has_value();
+  inline void clear_has_value();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* uniform_name_;
+  ::std::string* value_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_ShaderProgram_2eproto();
+  friend void protobuf_AssignDesc_ShaderProgram_2eproto();
+  friend void protobuf_ShutdownFile_ShaderProgram_2eproto();
+
+  void InitAsDefaultInstance();
+  static ShaderParam* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ShaderParamBlock : public ::google::protobuf::Message {
+ public:
+  ShaderParamBlock();
+  virtual ~ShaderParamBlock();
+
+  ShaderParamBlock(const ShaderParamBlock& from);
+
+  inline ShaderParamBlock& operator=(const ShaderParamBlock& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ShaderParamBlock& default_instance();
+
+  void Swap(ShaderParamBlock* other);
+
+  // implements Message ----------------------------------------------
+
+  ShaderParamBlock* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ShaderParamBlock& from);
+  void MergeFrom(const ShaderParamBlock& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .protobuf.ShaderParam params = 1;
+  inline int params_size() const;
+  inline void clear_params();
+  static const int kParamsFieldNumber = 1;
+  inline const ::protobuf::ShaderParam& params(int index) const;
+  inline ::protobuf::ShaderParam* mutable_params(int index);
+  inline ::protobuf::ShaderParam* add_params();
+  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >&
+      params() const;
+  inline ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >*
+      mutable_params();
+
+  // optional string name = 2;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 2;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:protobuf.ShaderParamBlock)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam > params_;
+  ::std::string* name_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_ShaderProgram_2eproto();
+  friend void protobuf_AssignDesc_ShaderProgram_2eproto();
+  friend void protobuf_ShutdownFile_ShaderProgram_2eproto();
+
+  void InitAsDefaultInstance();
+  static ShaderParamBlock* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class ShaderProgram_Shader : public ::google::protobuf::Message {
  public:
@@ -256,27 +459,15 @@ class ShaderProgram : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderProgram_Shader >*
       mutable_shaders();
 
-  // required .protobuf.VertexDeclaration vertex_format = 2;
-  inline bool has_vertex_format() const;
-  inline void clear_vertex_format();
-  static const int kVertexFormatFieldNumber = 2;
-  inline const ::protobuf::VertexDeclaration& vertex_format() const;
-  inline ::protobuf::VertexDeclaration* mutable_vertex_format();
-  inline ::protobuf::VertexDeclaration* release_vertex_format();
-  inline void set_allocated_vertex_format(::protobuf::VertexDeclaration* vertex_format);
-
   // @@protoc_insertion_point(class_scope:protobuf.ShaderProgram)
  private:
-  inline void set_has_vertex_format();
-  inline void clear_has_vertex_format();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderProgram_Shader > shaders_;
-  ::protobuf::VertexDeclaration* vertex_format_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_ShaderProgram_2eproto();
   friend void protobuf_AssignDesc_ShaderProgram_2eproto();
@@ -289,6 +480,249 @@ class ShaderProgram : public ::google::protobuf::Message {
 
 
 // ===================================================================
+
+// ShaderParam
+
+// required string uniform_name = 1;
+inline bool ShaderParam::has_uniform_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ShaderParam::set_has_uniform_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ShaderParam::clear_has_uniform_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ShaderParam::clear_uniform_name() {
+  if (uniform_name_ != &::google::protobuf::internal::kEmptyString) {
+    uniform_name_->clear();
+  }
+  clear_has_uniform_name();
+}
+inline const ::std::string& ShaderParam::uniform_name() const {
+  return *uniform_name_;
+}
+inline void ShaderParam::set_uniform_name(const ::std::string& value) {
+  set_has_uniform_name();
+  if (uniform_name_ == &::google::protobuf::internal::kEmptyString) {
+    uniform_name_ = new ::std::string;
+  }
+  uniform_name_->assign(value);
+}
+inline void ShaderParam::set_uniform_name(const char* value) {
+  set_has_uniform_name();
+  if (uniform_name_ == &::google::protobuf::internal::kEmptyString) {
+    uniform_name_ = new ::std::string;
+  }
+  uniform_name_->assign(value);
+}
+inline void ShaderParam::set_uniform_name(const char* value, size_t size) {
+  set_has_uniform_name();
+  if (uniform_name_ == &::google::protobuf::internal::kEmptyString) {
+    uniform_name_ = new ::std::string;
+  }
+  uniform_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ShaderParam::mutable_uniform_name() {
+  set_has_uniform_name();
+  if (uniform_name_ == &::google::protobuf::internal::kEmptyString) {
+    uniform_name_ = new ::std::string;
+  }
+  return uniform_name_;
+}
+inline ::std::string* ShaderParam::release_uniform_name() {
+  clear_has_uniform_name();
+  if (uniform_name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = uniform_name_;
+    uniform_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ShaderParam::set_allocated_uniform_name(::std::string* uniform_name) {
+  if (uniform_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete uniform_name_;
+  }
+  if (uniform_name) {
+    set_has_uniform_name();
+    uniform_name_ = uniform_name;
+  } else {
+    clear_has_uniform_name();
+    uniform_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required string value = 2;
+inline bool ShaderParam::has_value() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ShaderParam::set_has_value() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ShaderParam::clear_has_value() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ShaderParam::clear_value() {
+  if (value_ != &::google::protobuf::internal::kEmptyString) {
+    value_->clear();
+  }
+  clear_has_value();
+}
+inline const ::std::string& ShaderParam::value() const {
+  return *value_;
+}
+inline void ShaderParam::set_value(const ::std::string& value) {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::kEmptyString) {
+    value_ = new ::std::string;
+  }
+  value_->assign(value);
+}
+inline void ShaderParam::set_value(const char* value) {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::kEmptyString) {
+    value_ = new ::std::string;
+  }
+  value_->assign(value);
+}
+inline void ShaderParam::set_value(const char* value, size_t size) {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::kEmptyString) {
+    value_ = new ::std::string;
+  }
+  value_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ShaderParam::mutable_value() {
+  set_has_value();
+  if (value_ == &::google::protobuf::internal::kEmptyString) {
+    value_ = new ::std::string;
+  }
+  return value_;
+}
+inline ::std::string* ShaderParam::release_value() {
+  clear_has_value();
+  if (value_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = value_;
+    value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ShaderParam::set_allocated_value(::std::string* value) {
+  if (value_ != &::google::protobuf::internal::kEmptyString) {
+    delete value_;
+  }
+  if (value) {
+    set_has_value();
+    value_ = value;
+  } else {
+    clear_has_value();
+    value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// ShaderParamBlock
+
+// repeated .protobuf.ShaderParam params = 1;
+inline int ShaderParamBlock::params_size() const {
+  return params_.size();
+}
+inline void ShaderParamBlock::clear_params() {
+  params_.Clear();
+}
+inline const ::protobuf::ShaderParam& ShaderParamBlock::params(int index) const {
+  return params_.Get(index);
+}
+inline ::protobuf::ShaderParam* ShaderParamBlock::mutable_params(int index) {
+  return params_.Mutable(index);
+}
+inline ::protobuf::ShaderParam* ShaderParamBlock::add_params() {
+  return params_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >&
+ShaderParamBlock::params() const {
+  return params_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >*
+ShaderParamBlock::mutable_params() {
+  return &params_;
+}
+
+// optional string name = 2;
+inline bool ShaderParamBlock::has_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ShaderParamBlock::set_has_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ShaderParamBlock::clear_has_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ShaderParamBlock::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& ShaderParamBlock::name() const {
+  return *name_;
+}
+inline void ShaderParamBlock::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void ShaderParamBlock::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void ShaderParamBlock::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ShaderParamBlock::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* ShaderParamBlock::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ShaderParamBlock::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
 
 // ShaderProgram_Shader
 
@@ -412,44 +846,6 @@ ShaderProgram::shaders() const {
 inline ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderProgram_Shader >*
 ShaderProgram::mutable_shaders() {
   return &shaders_;
-}
-
-// required .protobuf.VertexDeclaration vertex_format = 2;
-inline bool ShaderProgram::has_vertex_format() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void ShaderProgram::set_has_vertex_format() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void ShaderProgram::clear_has_vertex_format() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void ShaderProgram::clear_vertex_format() {
-  if (vertex_format_ != NULL) vertex_format_->::protobuf::VertexDeclaration::Clear();
-  clear_has_vertex_format();
-}
-inline const ::protobuf::VertexDeclaration& ShaderProgram::vertex_format() const {
-  return vertex_format_ != NULL ? *vertex_format_ : *default_instance_->vertex_format_;
-}
-inline ::protobuf::VertexDeclaration* ShaderProgram::mutable_vertex_format() {
-  set_has_vertex_format();
-  if (vertex_format_ == NULL) vertex_format_ = new ::protobuf::VertexDeclaration;
-  return vertex_format_;
-}
-inline ::protobuf::VertexDeclaration* ShaderProgram::release_vertex_format() {
-  clear_has_vertex_format();
-  ::protobuf::VertexDeclaration* temp = vertex_format_;
-  vertex_format_ = NULL;
-  return temp;
-}
-inline void ShaderProgram::set_allocated_vertex_format(::protobuf::VertexDeclaration* vertex_format) {
-  delete vertex_format_;
-  vertex_format_ = vertex_format;
-  if (vertex_format) {
-    set_has_vertex_format();
-  } else {
-    clear_has_vertex_format();
-  }
 }
 
 

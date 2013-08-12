@@ -27,10 +27,7 @@
     <ClCompile Include="Skeleton.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DataType.pb.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Declarations.pb.cc">
+    <ClCompile Include="Types.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,19 +56,15 @@
     <ClInclude Include="Skeleton.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataType.pb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Declarations.pb.h">
+    <ClInclude Include="Types.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Mesh.proto" />
     <CustomBuild Include="Skeleton.proto" />
-    <CustomBuild Include="DataType.proto" />
     <CustomBuild Include="Material.proto" />
-    <CustomBuild Include="Declarations.proto" />
     <CustomBuild Include="ShaderProgram.proto" />
+    <CustomBuild Include="Types.proto" />
   </ItemGroup>
 </Project>

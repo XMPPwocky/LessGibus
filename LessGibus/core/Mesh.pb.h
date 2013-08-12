@@ -24,8 +24,8 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "Declarations.pb.h"
 #include "Skeleton.pb.h"
+#include "Types.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace protobuf {
@@ -37,6 +37,7 @@ void protobuf_ShutdownFile_Mesh_2eproto();
 
 class Triangle;
 class Mesh;
+class Mesh_Vertex;
 
 // ===================================================================
 
@@ -142,6 +143,114 @@ class Triangle : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Mesh_Vertex : public ::google::protobuf::Message {
+ public:
+  Mesh_Vertex();
+  virtual ~Mesh_Vertex();
+
+  Mesh_Vertex(const Mesh_Vertex& from);
+
+  inline Mesh_Vertex& operator=(const Mesh_Vertex& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Mesh_Vertex& default_instance();
+
+  void Swap(Mesh_Vertex* other);
+
+  // implements Message ----------------------------------------------
+
+  Mesh_Vertex* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Mesh_Vertex& from);
+  void MergeFrom(const Mesh_Vertex& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .protobuf.vec3 position = 1;
+  inline bool has_position() const;
+  inline void clear_position();
+  static const int kPositionFieldNumber = 1;
+  inline const ::protobuf::vec3& position() const;
+  inline ::protobuf::vec3* mutable_position();
+  inline ::protobuf::vec3* release_position();
+  inline void set_allocated_position(::protobuf::vec3* position);
+
+  // optional .protobuf.vec3 normal = 2;
+  inline bool has_normal() const;
+  inline void clear_normal();
+  static const int kNormalFieldNumber = 2;
+  inline const ::protobuf::vec3& normal() const;
+  inline ::protobuf::vec3* mutable_normal();
+  inline ::protobuf::vec3* release_normal();
+  inline void set_allocated_normal(::protobuf::vec3* normal);
+
+  // optional .protobuf.vec3 texcoord = 3;
+  inline bool has_texcoord() const;
+  inline void clear_texcoord();
+  static const int kTexcoordFieldNumber = 3;
+  inline const ::protobuf::vec3& texcoord() const;
+  inline ::protobuf::vec3* mutable_texcoord();
+  inline ::protobuf::vec3* release_texcoord();
+  inline void set_allocated_texcoord(::protobuf::vec3* texcoord);
+
+  // @@protoc_insertion_point(class_scope:protobuf.Mesh.Vertex)
+ private:
+  inline void set_has_position();
+  inline void clear_has_position();
+  inline void set_has_normal();
+  inline void clear_has_normal();
+  inline void set_has_texcoord();
+  inline void clear_has_texcoord();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::protobuf::vec3* position_;
+  ::protobuf::vec3* normal_;
+  ::protobuf::vec3* texcoord_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Mesh_2eproto();
+  friend void protobuf_AssignDesc_Mesh_2eproto();
+  friend void protobuf_ShutdownFile_Mesh_2eproto();
+
+  void InitAsDefaultInstance();
+  static Mesh_Vertex* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Mesh : public ::google::protobuf::Message {
  public:
   Mesh();
@@ -194,6 +303,8 @@ class Mesh : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef Mesh_Vertex Vertex;
+
   // accessors -------------------------------------------------------
 
   // required string material_path = 1;
@@ -208,40 +319,31 @@ class Mesh : public ::google::protobuf::Message {
   inline ::std::string* release_material_path();
   inline void set_allocated_material_path(::std::string* material_path);
 
-  // required .protobuf.VertexDeclaration vertices_format = 3;
-  inline bool has_vertices_format() const;
-  inline void clear_vertices_format();
-  static const int kVerticesFormatFieldNumber = 3;
-  inline const ::protobuf::VertexDeclaration& vertices_format() const;
-  inline ::protobuf::VertexDeclaration* mutable_vertices_format();
-  inline ::protobuf::VertexDeclaration* release_vertices_format();
-  inline void set_allocated_vertices_format(::protobuf::VertexDeclaration* vertices_format);
+  // repeated .protobuf.Mesh.Vertex vertices = 2;
+  inline int vertices_size() const;
+  inline void clear_vertices();
+  static const int kVerticesFieldNumber = 2;
+  inline const ::protobuf::Mesh_Vertex& vertices(int index) const;
+  inline ::protobuf::Mesh_Vertex* mutable_vertices(int index);
+  inline ::protobuf::Mesh_Vertex* add_vertices();
+  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex >&
+      vertices() const;
+  inline ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex >*
+      mutable_vertices();
 
-  // required bytes vertices_data = 4;
-  inline bool has_vertices_data() const;
-  inline void clear_vertices_data();
-  static const int kVerticesDataFieldNumber = 4;
-  inline const ::std::string& vertices_data() const;
-  inline void set_vertices_data(const ::std::string& value);
-  inline void set_vertices_data(const char* value);
-  inline void set_vertices_data(const void* value, size_t size);
-  inline ::std::string* mutable_vertices_data();
-  inline ::std::string* release_vertices_data();
-  inline void set_allocated_vertices_data(::std::string* vertices_data);
-
-  // required .protobuf.Joint skeleton = 5;
+  // required .protobuf.Joint skeleton = 3;
   inline bool has_skeleton() const;
   inline void clear_skeleton();
-  static const int kSkeletonFieldNumber = 5;
+  static const int kSkeletonFieldNumber = 3;
   inline const ::protobuf::Joint& skeleton() const;
   inline ::protobuf::Joint* mutable_skeleton();
   inline ::protobuf::Joint* release_skeleton();
   inline void set_allocated_skeleton(::protobuf::Joint* skeleton);
 
-  // repeated .protobuf.Triangle triangles = 6;
+  // repeated .protobuf.Triangle triangles = 4;
   inline int triangles_size() const;
   inline void clear_triangles();
-  static const int kTrianglesFieldNumber = 6;
+  static const int kTrianglesFieldNumber = 4;
   inline const ::protobuf::Triangle& triangles(int index) const;
   inline ::protobuf::Triangle* mutable_triangles(int index);
   inline ::protobuf::Triangle* add_triangles();
@@ -254,23 +356,18 @@ class Mesh : public ::google::protobuf::Message {
  private:
   inline void set_has_material_path();
   inline void clear_has_material_path();
-  inline void set_has_vertices_format();
-  inline void clear_has_vertices_format();
-  inline void set_has_vertices_data();
-  inline void clear_has_vertices_data();
   inline void set_has_skeleton();
   inline void clear_has_skeleton();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* material_path_;
-  ::protobuf::VertexDeclaration* vertices_format_;
-  ::std::string* vertices_data_;
+  ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex > vertices_;
   ::protobuf::Joint* skeleton_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle > triangles_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_Mesh_2eproto();
   friend void protobuf_AssignDesc_Mesh_2eproto();
@@ -354,6 +451,124 @@ inline void Triangle::set_vert3(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// Mesh_Vertex
+
+// optional .protobuf.vec3 position = 1;
+inline bool Mesh_Vertex::has_position() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Mesh_Vertex::set_has_position() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Mesh_Vertex::clear_has_position() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Mesh_Vertex::clear_position() {
+  if (position_ != NULL) position_->::protobuf::vec3::Clear();
+  clear_has_position();
+}
+inline const ::protobuf::vec3& Mesh_Vertex::position() const {
+  return position_ != NULL ? *position_ : *default_instance_->position_;
+}
+inline ::protobuf::vec3* Mesh_Vertex::mutable_position() {
+  set_has_position();
+  if (position_ == NULL) position_ = new ::protobuf::vec3;
+  return position_;
+}
+inline ::protobuf::vec3* Mesh_Vertex::release_position() {
+  clear_has_position();
+  ::protobuf::vec3* temp = position_;
+  position_ = NULL;
+  return temp;
+}
+inline void Mesh_Vertex::set_allocated_position(::protobuf::vec3* position) {
+  delete position_;
+  position_ = position;
+  if (position) {
+    set_has_position();
+  } else {
+    clear_has_position();
+  }
+}
+
+// optional .protobuf.vec3 normal = 2;
+inline bool Mesh_Vertex::has_normal() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Mesh_Vertex::set_has_normal() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Mesh_Vertex::clear_has_normal() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Mesh_Vertex::clear_normal() {
+  if (normal_ != NULL) normal_->::protobuf::vec3::Clear();
+  clear_has_normal();
+}
+inline const ::protobuf::vec3& Mesh_Vertex::normal() const {
+  return normal_ != NULL ? *normal_ : *default_instance_->normal_;
+}
+inline ::protobuf::vec3* Mesh_Vertex::mutable_normal() {
+  set_has_normal();
+  if (normal_ == NULL) normal_ = new ::protobuf::vec3;
+  return normal_;
+}
+inline ::protobuf::vec3* Mesh_Vertex::release_normal() {
+  clear_has_normal();
+  ::protobuf::vec3* temp = normal_;
+  normal_ = NULL;
+  return temp;
+}
+inline void Mesh_Vertex::set_allocated_normal(::protobuf::vec3* normal) {
+  delete normal_;
+  normal_ = normal;
+  if (normal) {
+    set_has_normal();
+  } else {
+    clear_has_normal();
+  }
+}
+
+// optional .protobuf.vec3 texcoord = 3;
+inline bool Mesh_Vertex::has_texcoord() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Mesh_Vertex::set_has_texcoord() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Mesh_Vertex::clear_has_texcoord() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Mesh_Vertex::clear_texcoord() {
+  if (texcoord_ != NULL) texcoord_->::protobuf::vec3::Clear();
+  clear_has_texcoord();
+}
+inline const ::protobuf::vec3& Mesh_Vertex::texcoord() const {
+  return texcoord_ != NULL ? *texcoord_ : *default_instance_->texcoord_;
+}
+inline ::protobuf::vec3* Mesh_Vertex::mutable_texcoord() {
+  set_has_texcoord();
+  if (texcoord_ == NULL) texcoord_ = new ::protobuf::vec3;
+  return texcoord_;
+}
+inline ::protobuf::vec3* Mesh_Vertex::release_texcoord() {
+  clear_has_texcoord();
+  ::protobuf::vec3* temp = texcoord_;
+  texcoord_ = NULL;
+  return temp;
+}
+inline void Mesh_Vertex::set_allocated_texcoord(::protobuf::vec3* texcoord) {
+  delete texcoord_;
+  texcoord_ = texcoord;
+  if (texcoord) {
+    set_has_texcoord();
+  } else {
+    clear_has_texcoord();
+  }
+}
+
+// -------------------------------------------------------------------
+
 // Mesh
 
 // required string material_path = 1;
@@ -426,123 +641,40 @@ inline void Mesh::set_allocated_material_path(::std::string* material_path) {
   }
 }
 
-// required .protobuf.VertexDeclaration vertices_format = 3;
-inline bool Mesh::has_vertices_format() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+// repeated .protobuf.Mesh.Vertex vertices = 2;
+inline int Mesh::vertices_size() const {
+  return vertices_.size();
 }
-inline void Mesh::set_has_vertices_format() {
-  _has_bits_[0] |= 0x00000002u;
+inline void Mesh::clear_vertices() {
+  vertices_.Clear();
 }
-inline void Mesh::clear_has_vertices_format() {
-  _has_bits_[0] &= ~0x00000002u;
+inline const ::protobuf::Mesh_Vertex& Mesh::vertices(int index) const {
+  return vertices_.Get(index);
 }
-inline void Mesh::clear_vertices_format() {
-  if (vertices_format_ != NULL) vertices_format_->::protobuf::VertexDeclaration::Clear();
-  clear_has_vertices_format();
+inline ::protobuf::Mesh_Vertex* Mesh::mutable_vertices(int index) {
+  return vertices_.Mutable(index);
 }
-inline const ::protobuf::VertexDeclaration& Mesh::vertices_format() const {
-  return vertices_format_ != NULL ? *vertices_format_ : *default_instance_->vertices_format_;
+inline ::protobuf::Mesh_Vertex* Mesh::add_vertices() {
+  return vertices_.Add();
 }
-inline ::protobuf::VertexDeclaration* Mesh::mutable_vertices_format() {
-  set_has_vertices_format();
-  if (vertices_format_ == NULL) vertices_format_ = new ::protobuf::VertexDeclaration;
-  return vertices_format_;
+inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex >&
+Mesh::vertices() const {
+  return vertices_;
 }
-inline ::protobuf::VertexDeclaration* Mesh::release_vertices_format() {
-  clear_has_vertices_format();
-  ::protobuf::VertexDeclaration* temp = vertices_format_;
-  vertices_format_ = NULL;
-  return temp;
-}
-inline void Mesh::set_allocated_vertices_format(::protobuf::VertexDeclaration* vertices_format) {
-  delete vertices_format_;
-  vertices_format_ = vertices_format;
-  if (vertices_format) {
-    set_has_vertices_format();
-  } else {
-    clear_has_vertices_format();
-  }
+inline ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex >*
+Mesh::mutable_vertices() {
+  return &vertices_;
 }
 
-// required bytes vertices_data = 4;
-inline bool Mesh::has_vertices_data() const {
+// required .protobuf.Joint skeleton = 3;
+inline bool Mesh::has_skeleton() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void Mesh::set_has_vertices_data() {
+inline void Mesh::set_has_skeleton() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void Mesh::clear_has_vertices_data() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Mesh::clear_vertices_data() {
-  if (vertices_data_ != &::google::protobuf::internal::kEmptyString) {
-    vertices_data_->clear();
-  }
-  clear_has_vertices_data();
-}
-inline const ::std::string& Mesh::vertices_data() const {
-  return *vertices_data_;
-}
-inline void Mesh::set_vertices_data(const ::std::string& value) {
-  set_has_vertices_data();
-  if (vertices_data_ == &::google::protobuf::internal::kEmptyString) {
-    vertices_data_ = new ::std::string;
-  }
-  vertices_data_->assign(value);
-}
-inline void Mesh::set_vertices_data(const char* value) {
-  set_has_vertices_data();
-  if (vertices_data_ == &::google::protobuf::internal::kEmptyString) {
-    vertices_data_ = new ::std::string;
-  }
-  vertices_data_->assign(value);
-}
-inline void Mesh::set_vertices_data(const void* value, size_t size) {
-  set_has_vertices_data();
-  if (vertices_data_ == &::google::protobuf::internal::kEmptyString) {
-    vertices_data_ = new ::std::string;
-  }
-  vertices_data_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Mesh::mutable_vertices_data() {
-  set_has_vertices_data();
-  if (vertices_data_ == &::google::protobuf::internal::kEmptyString) {
-    vertices_data_ = new ::std::string;
-  }
-  return vertices_data_;
-}
-inline ::std::string* Mesh::release_vertices_data() {
-  clear_has_vertices_data();
-  if (vertices_data_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = vertices_data_;
-    vertices_data_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void Mesh::set_allocated_vertices_data(::std::string* vertices_data) {
-  if (vertices_data_ != &::google::protobuf::internal::kEmptyString) {
-    delete vertices_data_;
-  }
-  if (vertices_data) {
-    set_has_vertices_data();
-    vertices_data_ = vertices_data;
-  } else {
-    clear_has_vertices_data();
-    vertices_data_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// required .protobuf.Joint skeleton = 5;
-inline bool Mesh::has_skeleton() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void Mesh::set_has_skeleton() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void Mesh::clear_has_skeleton() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Mesh::clear_skeleton() {
   if (skeleton_ != NULL) skeleton_->::protobuf::Joint::Clear();
@@ -572,7 +704,7 @@ inline void Mesh::set_allocated_skeleton(::protobuf::Joint* skeleton) {
   }
 }
 
-// repeated .protobuf.Triangle triangles = 6;
+// repeated .protobuf.Triangle triangles = 4;
 inline int Mesh::triangles_size() const {
   return triangles_.size();
 }

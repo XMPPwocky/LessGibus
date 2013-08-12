@@ -24,8 +24,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "Declarations.pb.h"
-#include "DataType.pb.h"
+#include "ShaderProgram.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace protobuf {
@@ -210,16 +209,16 @@ class Material : public ::google::protobuf::Message {
   inline ::std::string* release_shaderprog_path();
   inline void set_allocated_shaderprog_path(::std::string* shaderprog_path);
 
-  // repeated .protobuf.DataType shader_params = 2;
+  // repeated .protobuf.ShaderParam shader_params = 2;
   inline int shader_params_size() const;
   inline void clear_shader_params();
   static const int kShaderParamsFieldNumber = 2;
-  inline const ::protobuf::DataType& shader_params(int index) const;
-  inline ::protobuf::DataType* mutable_shader_params(int index);
-  inline ::protobuf::DataType* add_shader_params();
-  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::DataType >&
+  inline const ::protobuf::ShaderParam& shader_params(int index) const;
+  inline ::protobuf::ShaderParam* mutable_shader_params(int index);
+  inline ::protobuf::ShaderParam* add_shader_params();
+  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >&
       shader_params() const;
-  inline ::google::protobuf::RepeatedPtrField< ::protobuf::DataType >*
+  inline ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >*
       mutable_shader_params();
 
   // repeated .protobuf.Material.Texture textures = 3;
@@ -242,7 +241,7 @@ class Material : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* shaderprog_path_;
-  ::google::protobuf::RepeatedPtrField< ::protobuf::DataType > shader_params_;
+  ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam > shader_params_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Material_Texture > textures_;
 
   mutable int _cached_size_;
@@ -476,27 +475,27 @@ inline void Material::set_allocated_shaderprog_path(::std::string* shaderprog_pa
   }
 }
 
-// repeated .protobuf.DataType shader_params = 2;
+// repeated .protobuf.ShaderParam shader_params = 2;
 inline int Material::shader_params_size() const {
   return shader_params_.size();
 }
 inline void Material::clear_shader_params() {
   shader_params_.Clear();
 }
-inline const ::protobuf::DataType& Material::shader_params(int index) const {
+inline const ::protobuf::ShaderParam& Material::shader_params(int index) const {
   return shader_params_.Get(index);
 }
-inline ::protobuf::DataType* Material::mutable_shader_params(int index) {
+inline ::protobuf::ShaderParam* Material::mutable_shader_params(int index) {
   return shader_params_.Mutable(index);
 }
-inline ::protobuf::DataType* Material::add_shader_params() {
+inline ::protobuf::ShaderParam* Material::add_shader_params() {
   return shader_params_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::protobuf::DataType >&
+inline const ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >&
 Material::shader_params() const {
   return shader_params_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::protobuf::DataType >*
+inline ::google::protobuf::RepeatedPtrField< ::protobuf::ShaderParam >*
 Material::mutable_shader_params() {
   return &shader_params_;
 }

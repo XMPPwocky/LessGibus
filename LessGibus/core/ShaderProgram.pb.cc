@@ -26,6 +26,12 @@ namespace protobuf {
 
 namespace {
 
+const ::google::protobuf::Descriptor* ShaderParam_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ShaderParam_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ShaderParamBlock_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ShaderParamBlock_reflection_ = NULL;
 const ::google::protobuf::Descriptor* ShaderProgram_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ShaderProgram_reflection_ = NULL;
@@ -43,10 +49,41 @@ void protobuf_AssignDesc_ShaderProgram_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "ShaderProgram.proto");
   GOOGLE_CHECK(file != NULL);
-  ShaderProgram_descriptor_ = file->message_type(0);
-  static const int ShaderProgram_offsets_[2] = {
+  ShaderParam_descriptor_ = file->message_type(0);
+  static const int ShaderParam_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParam, uniform_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParam, value_),
+  };
+  ShaderParam_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ShaderParam_descriptor_,
+      ShaderParam::default_instance_,
+      ShaderParam_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParam, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParam, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ShaderParam));
+  ShaderParamBlock_descriptor_ = file->message_type(1);
+  static const int ShaderParamBlock_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParamBlock, params_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParamBlock, name_),
+  };
+  ShaderParamBlock_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ShaderParamBlock_descriptor_,
+      ShaderParamBlock::default_instance_,
+      ShaderParamBlock_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParamBlock, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderParamBlock, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ShaderParamBlock));
+  ShaderProgram_descriptor_ = file->message_type(2);
+  static const int ShaderProgram_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderProgram, shaders_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderProgram, vertex_format_),
   };
   ShaderProgram_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -89,6 +126,10 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ShaderParam_descriptor_, &ShaderParam::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ShaderParamBlock_descriptor_, &ShaderParamBlock::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ShaderProgram_descriptor_, &ShaderProgram::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     ShaderProgram_Shader_descriptor_, &ShaderProgram_Shader::default_instance());
@@ -97,6 +138,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_ShaderProgram_2eproto() {
+  delete ShaderParam::default_instance_;
+  delete ShaderParam_reflection_;
+  delete ShaderParamBlock::default_instance_;
+  delete ShaderParamBlock_reflection_;
   delete ShaderProgram::default_instance_;
   delete ShaderProgram_reflection_;
   delete ShaderProgram_Shader::default_instance_;
@@ -109,22 +154,27 @@ void protobuf_AddDesc_ShaderProgram_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::protobuf::protobuf_AddDesc_Declarations_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023ShaderProgram.proto\022\010protobuf\032\022Declara"
-    "tions.proto\"\323\002\n\rShaderProgram\022/\n\007shaders"
-    "\030\001 \003(\0132\036.protobuf.ShaderProgram.Shader\0222"
-    "\n\rvertex_format\030\002 \002(\0132\033.protobuf.VertexD"
-    "eclaration\032H\n\006Shader\0220\n\004type\030\001 \002(\0162\".pro"
-    "tobuf.ShaderProgram.ShaderType\022\014\n\004path\030\002"
-    " \002(\t\"\222\001\n\nShaderType\022\022\n\016COMPUTE_SHADER\020\001\022"
-    "\021\n\rVERTEX_SHADER\020\002\022\027\n\023TESS_CONTROL_SHADE"
-    "R\020\003\022\032\n\026TESS_EVALUATION_SHADER\020\004\022\023\n\017GEOME"
-    "TRY_SHADER\020\005\022\023\n\017FRAGMENT_SHADER\020\006", 393);
+    "\n\023ShaderProgram.proto\022\010protobuf\"2\n\013Shade"
+    "rParam\022\024\n\014uniform_name\030\001 \002(\t\022\r\n\005value\030\002 "
+    "\002(\t\"G\n\020ShaderParamBlock\022%\n\006params\030\001 \003(\0132"
+    "\025.protobuf.ShaderParam\022\014\n\004name\030\002 \001(\t\"\237\002\n"
+    "\rShaderProgram\022/\n\007shaders\030\001 \003(\0132\036.protob"
+    "uf.ShaderProgram.Shader\032H\n\006Shader\0220\n\004typ"
+    "e\030\001 \002(\0162\".protobuf.ShaderProgram.ShaderT"
+    "ype\022\014\n\004path\030\002 \002(\t\"\222\001\n\nShaderType\022\022\n\016COMP"
+    "UTE_SHADER\020\001\022\021\n\rVERTEX_SHADER\020\002\022\027\n\023TESS_"
+    "CONTROL_SHADER\020\003\022\032\n\026TESS_EVALUATION_SHAD"
+    "ER\020\004\022\023\n\017GEOMETRY_SHADER\020\005\022\023\n\017FRAGMENT_SH"
+    "ADER\020\006", 446);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ShaderProgram.proto", &protobuf_RegisterTypes);
+  ShaderParam::default_instance_ = new ShaderParam();
+  ShaderParamBlock::default_instance_ = new ShaderParamBlock();
   ShaderProgram::default_instance_ = new ShaderProgram();
   ShaderProgram_Shader::default_instance_ = new ShaderProgram_Shader();
+  ShaderParam::default_instance_->InitAsDefaultInstance();
+  ShaderParamBlock::default_instance_->InitAsDefaultInstance();
   ShaderProgram::default_instance_->InitAsDefaultInstance();
   ShaderProgram_Shader::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ShaderProgram_2eproto);
@@ -136,6 +186,558 @@ struct StaticDescriptorInitializer_ShaderProgram_2eproto {
     protobuf_AddDesc_ShaderProgram_2eproto();
   }
 } static_descriptor_initializer_ShaderProgram_2eproto_;
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ShaderParam::kUniformNameFieldNumber;
+const int ShaderParam::kValueFieldNumber;
+#endif  // !_MSC_VER
+
+ShaderParam::ShaderParam()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void ShaderParam::InitAsDefaultInstance() {
+}
+
+ShaderParam::ShaderParam(const ShaderParam& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void ShaderParam::SharedCtor() {
+  _cached_size_ = 0;
+  uniform_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  value_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ShaderParam::~ShaderParam() {
+  SharedDtor();
+}
+
+void ShaderParam::SharedDtor() {
+  if (uniform_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete uniform_name_;
+  }
+  if (value_ != &::google::protobuf::internal::kEmptyString) {
+    delete value_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void ShaderParam::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ShaderParam::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ShaderParam_descriptor_;
+}
+
+const ShaderParam& ShaderParam::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_ShaderProgram_2eproto();
+  return *default_instance_;
+}
+
+ShaderParam* ShaderParam::default_instance_ = NULL;
+
+ShaderParam* ShaderParam::New() const {
+  return new ShaderParam;
+}
+
+void ShaderParam::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_uniform_name()) {
+      if (uniform_name_ != &::google::protobuf::internal::kEmptyString) {
+        uniform_name_->clear();
+      }
+    }
+    if (has_value()) {
+      if (value_ != &::google::protobuf::internal::kEmptyString) {
+        value_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ShaderParam::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required string uniform_name = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_uniform_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->uniform_name().data(), this->uniform_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_value;
+        break;
+      }
+
+      // required string value = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_value:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_value()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->value().data(), this->value().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void ShaderParam::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required string uniform_name = 1;
+  if (has_uniform_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->uniform_name().data(), this->uniform_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->uniform_name(), output);
+  }
+
+  // required string value = 2;
+  if (has_value()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->value().data(), this->value().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->value(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* ShaderParam::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required string uniform_name = 1;
+  if (has_uniform_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->uniform_name().data(), this->uniform_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->uniform_name(), target);
+  }
+
+  // required string value = 2;
+  if (has_value()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->value().data(), this->value().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->value(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int ShaderParam::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string uniform_name = 1;
+    if (has_uniform_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->uniform_name());
+    }
+
+    // required string value = 2;
+    if (has_value()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->value());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ShaderParam::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ShaderParam* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ShaderParam*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ShaderParam::MergeFrom(const ShaderParam& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_uniform_name()) {
+      set_uniform_name(from.uniform_name());
+    }
+    if (from.has_value()) {
+      set_value(from.value());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ShaderParam::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ShaderParam::CopyFrom(const ShaderParam& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ShaderParam::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void ShaderParam::Swap(ShaderParam* other) {
+  if (other != this) {
+    std::swap(uniform_name_, other->uniform_name_);
+    std::swap(value_, other->value_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ShaderParam::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ShaderParam_descriptor_;
+  metadata.reflection = ShaderParam_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ShaderParamBlock::kParamsFieldNumber;
+const int ShaderParamBlock::kNameFieldNumber;
+#endif  // !_MSC_VER
+
+ShaderParamBlock::ShaderParamBlock()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void ShaderParamBlock::InitAsDefaultInstance() {
+}
+
+ShaderParamBlock::ShaderParamBlock(const ShaderParamBlock& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void ShaderParamBlock::SharedCtor() {
+  _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ShaderParamBlock::~ShaderParamBlock() {
+  SharedDtor();
+}
+
+void ShaderParamBlock::SharedDtor() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void ShaderParamBlock::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ShaderParamBlock::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ShaderParamBlock_descriptor_;
+}
+
+const ShaderParamBlock& ShaderParamBlock::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_ShaderProgram_2eproto();
+  return *default_instance_;
+}
+
+ShaderParamBlock* ShaderParamBlock::default_instance_ = NULL;
+
+ShaderParamBlock* ShaderParamBlock::New() const {
+  return new ShaderParamBlock;
+}
+
+void ShaderParamBlock::Clear() {
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (has_name()) {
+      if (name_ != &::google::protobuf::internal::kEmptyString) {
+        name_->clear();
+      }
+    }
+  }
+  params_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ShaderParamBlock::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .protobuf.ShaderParam params = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_params:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_params()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(10)) goto parse_params;
+        if (input->ExpectTag(18)) goto parse_name;
+        break;
+      }
+
+      // optional string name = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void ShaderParamBlock::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .protobuf.ShaderParam params = 1;
+  for (int i = 0; i < this->params_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->params(i), output);
+  }
+
+  // optional string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->name(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* ShaderParamBlock::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated .protobuf.ShaderParam params = 1;
+  for (int i = 0; i < this->params_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->params(i), target);
+  }
+
+  // optional string name = 2;
+  if (has_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int ShaderParamBlock::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    // optional string name = 2;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+  }
+  // repeated .protobuf.ShaderParam params = 1;
+  total_size += 1 * this->params_size();
+  for (int i = 0; i < this->params_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->params(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ShaderParamBlock::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ShaderParamBlock* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ShaderParamBlock*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ShaderParamBlock::MergeFrom(const ShaderParamBlock& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  params_.MergeFrom(from.params_);
+  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
+    if (from.has_name()) {
+      set_name(from.name());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ShaderParamBlock::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ShaderParamBlock::CopyFrom(const ShaderParamBlock& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ShaderParamBlock::IsInitialized() const {
+
+  for (int i = 0; i < params_size(); i++) {
+    if (!this->params(i).IsInitialized()) return false;
+  }
+  return true;
+}
+
+void ShaderParamBlock::Swap(ShaderParamBlock* other) {
+  if (other != this) {
+    params_.Swap(&other->params_);
+    std::swap(name_, other->name_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ShaderParamBlock::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ShaderParamBlock_descriptor_;
+  metadata.reflection = ShaderParamBlock_reflection_;
+  return metadata;
+}
+
 
 // ===================================================================
 
@@ -442,7 +1044,6 @@ void ShaderProgram_Shader::Swap(ShaderProgram_Shader* other) {
 
 #ifndef _MSC_VER
 const int ShaderProgram::kShadersFieldNumber;
-const int ShaderProgram::kVertexFormatFieldNumber;
 #endif  // !_MSC_VER
 
 ShaderProgram::ShaderProgram()
@@ -451,7 +1052,6 @@ ShaderProgram::ShaderProgram()
 }
 
 void ShaderProgram::InitAsDefaultInstance() {
-  vertex_format_ = const_cast< ::protobuf::VertexDeclaration*>(&::protobuf::VertexDeclaration::default_instance());
 }
 
 ShaderProgram::ShaderProgram(const ShaderProgram& from)
@@ -462,7 +1062,6 @@ ShaderProgram::ShaderProgram(const ShaderProgram& from)
 
 void ShaderProgram::SharedCtor() {
   _cached_size_ = 0;
-  vertex_format_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -472,7 +1071,6 @@ ShaderProgram::~ShaderProgram() {
 
 void ShaderProgram::SharedDtor() {
   if (this != default_instance_) {
-    delete vertex_format_;
   }
 }
 
@@ -498,11 +1096,6 @@ ShaderProgram* ShaderProgram::New() const {
 }
 
 void ShaderProgram::Clear() {
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (has_vertex_format()) {
-      if (vertex_format_ != NULL) vertex_format_->::protobuf::VertexDeclaration::Clear();
-    }
-  }
   shaders_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -525,20 +1118,6 @@ bool ShaderProgram::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_shaders;
-        if (input->ExpectTag(18)) goto parse_vertex_format;
-        break;
-      }
-
-      // required .protobuf.VertexDeclaration vertex_format = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_vertex_format:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_vertex_format()));
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -567,12 +1146,6 @@ void ShaderProgram::SerializeWithCachedSizes(
       1, this->shaders(i), output);
   }
 
-  // required .protobuf.VertexDeclaration vertex_format = 2;
-  if (has_vertex_format()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->vertex_format(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -588,13 +1161,6 @@ void ShaderProgram::SerializeWithCachedSizes(
         1, this->shaders(i), target);
   }
 
-  // required .protobuf.VertexDeclaration vertex_format = 2;
-  if (has_vertex_format()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->vertex_format(), target);
-  }
-
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -605,15 +1171,6 @@ void ShaderProgram::SerializeWithCachedSizes(
 int ShaderProgram::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // required .protobuf.VertexDeclaration vertex_format = 2;
-    if (has_vertex_format()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->vertex_format());
-    }
-
-  }
   // repeated .protobuf.ShaderProgram.Shader shaders = 1;
   total_size += 1 * this->shaders_size();
   for (int i = 0; i < this->shaders_size(); i++) {
@@ -648,11 +1205,6 @@ void ShaderProgram::MergeFrom(const ::google::protobuf::Message& from) {
 void ShaderProgram::MergeFrom(const ShaderProgram& from) {
   GOOGLE_CHECK_NE(&from, this);
   shaders_.MergeFrom(from.shaders_);
-  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (from.has_vertex_format()) {
-      mutable_vertex_format()->::protobuf::VertexDeclaration::MergeFrom(from.vertex_format());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -669,13 +1221,9 @@ void ShaderProgram::CopyFrom(const ShaderProgram& from) {
 }
 
 bool ShaderProgram::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000002) != 0x00000002) return false;
 
   for (int i = 0; i < shaders_size(); i++) {
     if (!this->shaders(i).IsInitialized()) return false;
-  }
-  if (has_vertex_format()) {
-    if (!this->vertex_format().IsInitialized()) return false;
   }
   return true;
 }
@@ -683,7 +1231,6 @@ bool ShaderProgram::IsInitialized() const {
 void ShaderProgram::Swap(ShaderProgram* other) {
   if (other != this) {
     shaders_.Swap(&other->shaders_);
-    std::swap(vertex_format_, other->vertex_format_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

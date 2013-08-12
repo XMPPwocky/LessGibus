@@ -108,15 +108,14 @@ void protobuf_AddDesc_Material_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::protobuf::protobuf_AddDesc_Declarations_2eproto();
-  ::protobuf::protobuf_AddDesc_DataType_2eproto();
+  ::protobuf::protobuf_AddDesc_ShaderProgram_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016Material.proto\022\010protobuf\032\022Declarations"
-    ".proto\032\016DataType.proto\"\247\001\n\010Material\022\027\n\017s"
-    "haderprog_path\030\001 \001(\t\022)\n\rshader_params\030\002 "
-    "\003(\0132\022.protobuf.DataType\022,\n\010textures\030\003 \003("
-    "\0132\032.protobuf.Material.Texture\032)\n\007Texture"
-    "\022\014\n\004name\030\001 \002(\t\022\020\n\010filepath\030\002 \002(\t", 232);
+    "\n\016Material.proto\022\010protobuf\032\023ShaderProgra"
+    "m.proto\"\252\001\n\010Material\022\027\n\017shaderprog_path\030"
+    "\001 \001(\t\022,\n\rshader_params\030\002 \003(\0132\025.protobuf."
+    "ShaderParam\022,\n\010textures\030\003 \003(\0132\032.protobuf"
+    ".Material.Texture\032)\n\007Texture\022\014\n\004name\030\001 \002"
+    "(\t\022\020\n\010filepath\030\002 \002(\t", 220);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Material.proto", &protobuf_RegisterTypes);
   Material::default_instance_ = new Material();
@@ -513,7 +512,7 @@ bool Material::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .protobuf.DataType shader_params = 2;
+      // repeated .protobuf.ShaderParam shader_params = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -570,7 +569,7 @@ void Material::SerializeWithCachedSizes(
       1, this->shaderprog_path(), output);
   }
 
-  // repeated .protobuf.DataType shader_params = 2;
+  // repeated .protobuf.ShaderParam shader_params = 2;
   for (int i = 0; i < this->shader_params_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->shader_params(i), output);
@@ -600,7 +599,7 @@ void Material::SerializeWithCachedSizes(
         1, this->shaderprog_path(), target);
   }
 
-  // repeated .protobuf.DataType shader_params = 2;
+  // repeated .protobuf.ShaderParam shader_params = 2;
   for (int i = 0; i < this->shader_params_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -633,7 +632,7 @@ int Material::ByteSize() const {
     }
 
   }
-  // repeated .protobuf.DataType shader_params = 2;
+  // repeated .protobuf.ShaderParam shader_params = 2;
   total_size += 1 * this->shader_params_size();
   for (int i = 0; i < this->shader_params_size(); i++) {
     total_size +=

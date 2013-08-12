@@ -1,8 +1,6 @@
 package protobuf;
 
-import "Declarations.proto";
-import "DataType.proto";
-
+import "ShaderProgram.proto";
 message Material
 {
 	message Texture
@@ -12,6 +10,6 @@ message Material
 	}
 
 	optional string shaderprog_path = 1;
-	repeated DataType shader_params = 2;
+	repeated ShaderParam shader_params = 2;
 	repeated Texture textures = 3;
 }
