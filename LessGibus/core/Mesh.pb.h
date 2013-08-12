@@ -24,7 +24,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "VertexDeclaration.pb.h"
+#include "Declarations.pb.h"
 #include "Skeleton.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -196,33 +196,17 @@ class Mesh : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string material = 1;
-  inline bool has_material() const;
-  inline void clear_material();
-  static const int kMaterialFieldNumber = 1;
-  inline const ::std::string& material() const;
-  inline void set_material(const ::std::string& value);
-  inline void set_material(const char* value);
-  inline void set_material(const char* value, size_t size);
-  inline ::std::string* mutable_material();
-  inline ::std::string* release_material();
-  inline void set_allocated_material(::std::string* material);
-
-  // repeated string textures = 2;
-  inline int textures_size() const;
-  inline void clear_textures();
-  static const int kTexturesFieldNumber = 2;
-  inline const ::std::string& textures(int index) const;
-  inline ::std::string* mutable_textures(int index);
-  inline void set_textures(int index, const ::std::string& value);
-  inline void set_textures(int index, const char* value);
-  inline void set_textures(int index, const char* value, size_t size);
-  inline ::std::string* add_textures();
-  inline void add_textures(const ::std::string& value);
-  inline void add_textures(const char* value);
-  inline void add_textures(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& textures() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_textures();
+  // required string material_path = 1;
+  inline bool has_material_path() const;
+  inline void clear_material_path();
+  static const int kMaterialPathFieldNumber = 1;
+  inline const ::std::string& material_path() const;
+  inline void set_material_path(const ::std::string& value);
+  inline void set_material_path(const char* value);
+  inline void set_material_path(const char* value, size_t size);
+  inline ::std::string* mutable_material_path();
+  inline ::std::string* release_material_path();
+  inline void set_allocated_material_path(::std::string* material_path);
 
   // required .protobuf.VertexDeclaration vertices_format = 3;
   inline bool has_vertices_format() const;
@@ -268,8 +252,8 @@ class Mesh : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:protobuf.Mesh)
  private:
-  inline void set_has_material();
-  inline void clear_has_material();
+  inline void set_has_material_path();
+  inline void clear_has_material_path();
   inline void set_has_vertices_format();
   inline void clear_has_vertices_format();
   inline void set_has_vertices_data();
@@ -279,15 +263,14 @@ class Mesh : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* material_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> textures_;
+  ::std::string* material_path_;
   ::protobuf::VertexDeclaration* vertices_format_;
   ::std::string* vertices_data_;
   ::protobuf::Joint* skeleton_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle > triangles_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_Mesh_2eproto();
   friend void protobuf_AssignDesc_Mesh_2eproto();
@@ -373,129 +356,85 @@ inline void Triangle::set_vert3(::google::protobuf::uint32 value) {
 
 // Mesh
 
-// required string material = 1;
-inline bool Mesh::has_material() const {
+// required string material_path = 1;
+inline bool Mesh::has_material_path() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Mesh::set_has_material() {
+inline void Mesh::set_has_material_path() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Mesh::clear_has_material() {
+inline void Mesh::clear_has_material_path() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Mesh::clear_material() {
-  if (material_ != &::google::protobuf::internal::kEmptyString) {
-    material_->clear();
+inline void Mesh::clear_material_path() {
+  if (material_path_ != &::google::protobuf::internal::kEmptyString) {
+    material_path_->clear();
   }
-  clear_has_material();
+  clear_has_material_path();
 }
-inline const ::std::string& Mesh::material() const {
-  return *material_;
+inline const ::std::string& Mesh::material_path() const {
+  return *material_path_;
 }
-inline void Mesh::set_material(const ::std::string& value) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
+inline void Mesh::set_material_path(const ::std::string& value) {
+  set_has_material_path();
+  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
+    material_path_ = new ::std::string;
   }
-  material_->assign(value);
+  material_path_->assign(value);
 }
-inline void Mesh::set_material(const char* value) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
+inline void Mesh::set_material_path(const char* value) {
+  set_has_material_path();
+  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
+    material_path_ = new ::std::string;
   }
-  material_->assign(value);
+  material_path_->assign(value);
 }
-inline void Mesh::set_material(const char* value, size_t size) {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
+inline void Mesh::set_material_path(const char* value, size_t size) {
+  set_has_material_path();
+  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
+    material_path_ = new ::std::string;
   }
-  material_->assign(reinterpret_cast<const char*>(value), size);
+  material_path_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Mesh::mutable_material() {
-  set_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
-    material_ = new ::std::string;
+inline ::std::string* Mesh::mutable_material_path() {
+  set_has_material_path();
+  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
+    material_path_ = new ::std::string;
   }
-  return material_;
+  return material_path_;
 }
-inline ::std::string* Mesh::release_material() {
-  clear_has_material();
-  if (material_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* Mesh::release_material_path() {
+  clear_has_material_path();
+  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = material_;
-    material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = material_path_;
+    material_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void Mesh::set_allocated_material(::std::string* material) {
-  if (material_ != &::google::protobuf::internal::kEmptyString) {
-    delete material_;
+inline void Mesh::set_allocated_material_path(::std::string* material_path) {
+  if (material_path_ != &::google::protobuf::internal::kEmptyString) {
+    delete material_path_;
   }
-  if (material) {
-    set_has_material();
-    material_ = material;
+  if (material_path) {
+    set_has_material_path();
+    material_path_ = material_path;
   } else {
-    clear_has_material();
-    material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_material_path();
+    material_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
-}
-
-// repeated string textures = 2;
-inline int Mesh::textures_size() const {
-  return textures_.size();
-}
-inline void Mesh::clear_textures() {
-  textures_.Clear();
-}
-inline const ::std::string& Mesh::textures(int index) const {
-  return textures_.Get(index);
-}
-inline ::std::string* Mesh::mutable_textures(int index) {
-  return textures_.Mutable(index);
-}
-inline void Mesh::set_textures(int index, const ::std::string& value) {
-  textures_.Mutable(index)->assign(value);
-}
-inline void Mesh::set_textures(int index, const char* value) {
-  textures_.Mutable(index)->assign(value);
-}
-inline void Mesh::set_textures(int index, const char* value, size_t size) {
-  textures_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Mesh::add_textures() {
-  return textures_.Add();
-}
-inline void Mesh::add_textures(const ::std::string& value) {
-  textures_.Add()->assign(value);
-}
-inline void Mesh::add_textures(const char* value) {
-  textures_.Add()->assign(value);
-}
-inline void Mesh::add_textures(const char* value, size_t size) {
-  textures_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Mesh::textures() const {
-  return textures_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Mesh::mutable_textures() {
-  return &textures_;
 }
 
 // required .protobuf.VertexDeclaration vertices_format = 3;
 inline bool Mesh::has_vertices_format() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void Mesh::set_has_vertices_format() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void Mesh::clear_has_vertices_format() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Mesh::clear_vertices_format() {
   if (vertices_format_ != NULL) vertices_format_->::protobuf::VertexDeclaration::Clear();
@@ -527,13 +466,13 @@ inline void Mesh::set_allocated_vertices_format(::protobuf::VertexDeclaration* v
 
 // required bytes vertices_data = 4;
 inline bool Mesh::has_vertices_data() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void Mesh::set_has_vertices_data() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void Mesh::clear_has_vertices_data() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void Mesh::clear_vertices_data() {
   if (vertices_data_ != &::google::protobuf::internal::kEmptyString) {
@@ -597,13 +536,13 @@ inline void Mesh::set_allocated_vertices_data(::std::string* vertices_data) {
 
 // required .protobuf.Joint skeleton = 5;
 inline bool Mesh::has_skeleton() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void Mesh::set_has_skeleton() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void Mesh::clear_has_skeleton() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void Mesh::clear_skeleton() {
   if (skeleton_ != NULL) skeleton_->::protobuf::Joint::Clear();

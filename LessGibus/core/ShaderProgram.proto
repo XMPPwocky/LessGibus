@@ -1,0 +1,27 @@
+package protobuf;
+
+import "Declarations.proto";
+
+message ShaderProgram
+{
+	enum ShaderType
+	{
+		 COMPUTE_SHADER = 1;
+		 VERTEX_SHADER = 2;
+		 TESS_CONTROL_SHADER = 3;
+		 TESS_EVALUATION_SHADER = 4;
+		 GEOMETRY_SHADER = 5;
+		 FRAGMENT_SHADER = 6;
+	}
+
+	message Shader
+	{
+		required ShaderType type = 1;
+		required string path = 2;
+	}
+
+	repeated Shader shaders = 1;
+
+	required VertexDeclaration vertex_format = 2;
+
+}

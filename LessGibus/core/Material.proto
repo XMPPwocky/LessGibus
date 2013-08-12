@@ -1,0 +1,17 @@
+package protobuf;
+
+import "Declarations.proto";
+import "DataType.proto";
+
+message Material
+{
+	message Texture
+	{
+		required string name = 1;
+		required string filepath = 2;
+	}
+
+	optional string shaderprog_path = 1;
+	repeated DataType shader_params = 2;
+	repeated Texture textures = 3;
+}

@@ -1,6 +1,6 @@
 package protobuf;
 
-import "VertexDeclaration.proto";
+import "Declarations.proto";
 import "Skeleton.proto";
 
 message Triangle {
@@ -10,14 +10,13 @@ message Triangle {
 }
 
 message Mesh {
-	required string material = 1;
-	repeated string textures = 2;
+	required string material_path = 1;
 
 	required VertexDeclaration vertices_format = 3;
 
 	 // 4-byte aligned, except doubles which are 8-byte aligned
 	 // each component, though, is packed
-	 // e.g. a vector of 3 bytes will take 4 bytes, not 12
+	 // e.g. a vector of 3 chars will take 4 bytes, not 12
 	required bytes vertices_data = 4;
 
 	required Joint skeleton = 5;

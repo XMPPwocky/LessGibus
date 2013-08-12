@@ -24,10 +24,13 @@
     <ClCompile Include="Mesh.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VertexDeclaration.pb.cc">
+    <ClCompile Include="Skeleton.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Skeleton.pb.cc">
+    <ClCompile Include="DataType.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Declarations.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,19 +53,25 @@
     <ClInclude Include="mesh.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VertexDeclaration.pb.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="BadDataException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Skeleton.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataType.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Declarations.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Mesh.proto" />
-    <CustomBuild Include="VertexDeclaration.proto" />
     <CustomBuild Include="Skeleton.proto" />
+    <CustomBuild Include="DataType.proto" />
+    <CustomBuild Include="Material.proto" />
+    <CustomBuild Include="Declarations.proto" />
+    <CustomBuild Include="ShaderProgram.proto" />
   </ItemGroup>
 </Project>
