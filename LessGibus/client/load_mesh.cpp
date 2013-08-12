@@ -53,26 +53,34 @@ Mesh *load_mesh(const protobuf::Mesh &data)
 
 		if ( has_position )
 		{
-			this_vertex.replace(POSITION_OFFSET, TEXCOORD_OFFSET, (
-				boost::lexical_cast<std::string>( (*i).position().x() ) +
-				boost::lexical_cast<std::string>( (*i).position().y() ) +
-				boost::lexical_cast<std::string>( (*i).position().z() )));
+			float position_data[3];
+			position_data[0] = (*i).position().x();
+			position_data[1] = (*i).position().y();
+			position_data[2] = (*i).position().z();
+
+			char *v = reinterpret_cast<char *>(position_data);
+
+			this_vertex.replace(POSITION_OFFSET, TEXCOORD_OFFSET, reinterpret_cast<char *>(position_data), sizeof(float)*3);
 		}
 
 		if ( has_texcoord )
 		{
-			this_vertex.replace(TEXCOORD_OFFSET, NORMAL_OFFSET, (
-				boost::lexical_cast<std::string>( (*i).position().x() ) +
-				boost::lexical_cast<std::string>( (*i).position().y() ) +
-				boost::lexical_cast<std::string>( (*i).position().z() )));
+			float texcoord_data[(sizeof(float)*3)];
+			texcoord_data[0] = (*i).texcoord().x();
+			texcoord_data[1] = (*i).texcoord().y();
+			texcoord_data[2] = (*i).texcoord().z();
+
+			this_vertex.replace(TEXCOORD_OFFSET, NORMAL_OFFSET, reinterpret_cast<char *>(texcoord_data), sizeof(float)*3);
 		}
 		
 		if ( has_normal )
 		{
-			this_vertex.replace(NORMAL_OFFSET, this_vertex.size(), (
-				boost::lexical_cast<std::string>( (*i).position().x() ) +
-				boost::lexical_cast<std::string>( (*i).position().y() ) +
-				boost::lexical_cast<std::string>( (*i).position().z() )));
+			float normal_data[(sizeof(float)*3)];
+			normal_data[0] = (*i).normal().x();
+			normal_data[1] = (*i).normal().y();
+			normal_data[2] = (*i).normal().z();
+
+			this_vertex.replace(NORMAL_OFFSET, VBO_element_size, reinterpret_cast<char *>(normal_data), sizeof(float)*3);
 		}
 
 
@@ -91,7 +99,7 @@ Mesh *load_mesh(const protobuf::Mesh &data)
 	std::vector<UINT32> triangles_data;
 	triangles_data.reserve(data.triangles_size()*3);
 	const auto tris = data.triangles();
-	for (google::protobuf::RepeatedPtrField<protobuf::Triangle>::const_iterator i = tris.begin(); i != tris.end(); i++)
+	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::Triangle>::const_iterator i = tris.begin(); i != tris.end(); i++)
 	{
 		triangles_data.push_back((*i).vert1());
 		triangles_data.push_back((*i).vert2());

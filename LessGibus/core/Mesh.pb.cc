@@ -26,15 +26,15 @@ namespace protobuf {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Triangle_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Triangle_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Mesh_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Mesh_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Mesh_Vertex_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Mesh_Vertex_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Mesh_Triangle_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Mesh_Triangle_reflection_ = NULL;
 
 }  // namespace
 
@@ -45,24 +45,7 @@ void protobuf_AssignDesc_Mesh_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "Mesh.proto");
   GOOGLE_CHECK(file != NULL);
-  Triangle_descriptor_ = file->message_type(0);
-  static const int Triangle_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, vert1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, vert2_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, vert3_),
-  };
-  Triangle_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Triangle_descriptor_,
-      Triangle::default_instance_,
-      Triangle_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Triangle, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Triangle));
-  Mesh_descriptor_ = file->message_type(1);
+  Mesh_descriptor_ = file->message_type(0);
   static const int Mesh_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, material_path_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, vertices_),
@@ -97,6 +80,23 @@ void protobuf_AssignDesc_Mesh_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Mesh_Vertex));
+  Mesh_Triangle_descriptor_ = Mesh_descriptor_->nested_type(1);
+  static const int Mesh_Triangle_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh_Triangle, vert1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh_Triangle, vert2_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh_Triangle, vert3_),
+  };
+  Mesh_Triangle_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Mesh_Triangle_descriptor_,
+      Mesh_Triangle::default_instance_,
+      Mesh_Triangle_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh_Triangle, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh_Triangle, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Mesh_Triangle));
 }
 
 namespace {
@@ -110,22 +110,22 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Triangle_descriptor_, &Triangle::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Mesh_descriptor_, &Mesh::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Mesh_Vertex_descriptor_, &Mesh_Vertex::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Mesh_Triangle_descriptor_, &Mesh_Triangle::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_Mesh_2eproto() {
-  delete Triangle::default_instance_;
-  delete Triangle_reflection_;
   delete Mesh::default_instance_;
   delete Mesh_reflection_;
   delete Mesh_Vertex::default_instance_;
   delete Mesh_Vertex_reflection_;
+  delete Mesh_Triangle::default_instance_;
+  delete Mesh_Triangle_reflection_;
 }
 
 void protobuf_AddDesc_Mesh_2eproto() {
@@ -138,23 +138,23 @@ void protobuf_AddDesc_Mesh_2eproto() {
   ::protobuf::protobuf_AddDesc_Types_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\nMesh.proto\022\010protobuf\032\016Skeleton.proto\032\013"
-    "Types.proto\"7\n\010Triangle\022\r\n\005vert1\030\001 \002(\r\022\r"
-    "\n\005vert2\030\002 \002(\r\022\r\n\005vert3\030\003 \002(\r\"\376\001\n\004Mesh\022\025\n"
-    "\rmaterial_path\030\001 \002(\t\022\'\n\010vertices\030\002 \003(\0132\025"
-    ".protobuf.Mesh.Vertex\022!\n\010skeleton\030\003 \002(\0132"
-    "\017.protobuf.Joint\022%\n\ttriangles\030\004 \003(\0132\022.pr"
-    "otobuf.Triangle\032l\n\006Vertex\022 \n\010position\030\001 "
-    "\001(\0132\016.protobuf.vec3\022\036\n\006normal\030\002 \001(\0132\016.pr"
-    "otobuf.vec3\022 \n\010texcoord\030\003 \001(\0132\016.protobuf"
-    ".vec3", 365);
+    "Types.proto\"\274\002\n\004Mesh\022\025\n\rmaterial_path\030\001 "
+    "\002(\t\022\'\n\010vertices\030\002 \003(\0132\025.protobuf.Mesh.Ve"
+    "rtex\022!\n\010skeleton\030\003 \001(\0132\017.protobuf.Joint\022"
+    "*\n\ttriangles\030\004 \003(\0132\027.protobuf.Mesh.Trian"
+    "gle\032l\n\006Vertex\022 \n\010position\030\001 \001(\0132\016.protob"
+    "uf.vec3\022\036\n\006normal\030\002 \001(\0132\016.protobuf.vec3\022"
+    " \n\010texcoord\030\003 \001(\0132\016.protobuf.vec3\0327\n\010Tri"
+    "angle\022\r\n\005vert1\030\001 \002(\r\022\r\n\005vert2\030\002 \002(\r\022\r\n\005v"
+    "ert3\030\003 \002(\r", 370);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Mesh.proto", &protobuf_RegisterTypes);
-  Triangle::default_instance_ = new Triangle();
   Mesh::default_instance_ = new Mesh();
   Mesh_Vertex::default_instance_ = new Mesh_Vertex();
-  Triangle::default_instance_->InitAsDefaultInstance();
+  Mesh_Triangle::default_instance_ = new Mesh_Triangle();
   Mesh::default_instance_->InitAsDefaultInstance();
   Mesh_Vertex::default_instance_->InitAsDefaultInstance();
+  Mesh_Triangle::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Mesh_2eproto);
 }
 
@@ -164,295 +164,6 @@ struct StaticDescriptorInitializer_Mesh_2eproto {
     protobuf_AddDesc_Mesh_2eproto();
   }
 } static_descriptor_initializer_Mesh_2eproto_;
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Triangle::kVert1FieldNumber;
-const int Triangle::kVert2FieldNumber;
-const int Triangle::kVert3FieldNumber;
-#endif  // !_MSC_VER
-
-Triangle::Triangle()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Triangle::InitAsDefaultInstance() {
-}
-
-Triangle::Triangle(const Triangle& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Triangle::SharedCtor() {
-  _cached_size_ = 0;
-  vert1_ = 0u;
-  vert2_ = 0u;
-  vert3_ = 0u;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Triangle::~Triangle() {
-  SharedDtor();
-}
-
-void Triangle::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Triangle::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Triangle::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Triangle_descriptor_;
-}
-
-const Triangle& Triangle::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_Mesh_2eproto();
-  return *default_instance_;
-}
-
-Triangle* Triangle::default_instance_ = NULL;
-
-Triangle* Triangle::New() const {
-  return new Triangle;
-}
-
-void Triangle::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    vert1_ = 0u;
-    vert2_ = 0u;
-    vert3_ = 0u;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Triangle::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 vert1 = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &vert1_)));
-          set_has_vert1();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_vert2;
-        break;
-      }
-
-      // required uint32 vert2 = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_vert2:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &vert2_)));
-          set_has_vert2();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_vert3;
-        break;
-      }
-
-      // required uint32 vert3 = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_vert3:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &vert3_)));
-          set_has_vert3();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Triangle::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required uint32 vert1 = 1;
-  if (has_vert1()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->vert1(), output);
-  }
-
-  // required uint32 vert2 = 2;
-  if (has_vert2()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->vert2(), output);
-  }
-
-  // required uint32 vert3 = 3;
-  if (has_vert3()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->vert3(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Triangle::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required uint32 vert1 = 1;
-  if (has_vert1()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->vert1(), target);
-  }
-
-  // required uint32 vert2 = 2;
-  if (has_vert2()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->vert2(), target);
-  }
-
-  // required uint32 vert3 = 3;
-  if (has_vert3()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->vert3(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Triangle::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 vert1 = 1;
-    if (has_vert1()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->vert1());
-    }
-
-    // required uint32 vert2 = 2;
-    if (has_vert2()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->vert2());
-    }
-
-    // required uint32 vert3 = 3;
-    if (has_vert3()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->vert3());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Triangle::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Triangle* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Triangle*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Triangle::MergeFrom(const Triangle& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_vert1()) {
-      set_vert1(from.vert1());
-    }
-    if (from.has_vert2()) {
-      set_vert2(from.vert2());
-    }
-    if (from.has_vert3()) {
-      set_vert3(from.vert3());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Triangle::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Triangle::CopyFrom(const Triangle& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Triangle::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
-
-  return true;
-}
-
-void Triangle::Swap(Triangle* other) {
-  if (other != this) {
-    std::swap(vert1_, other->vert1_);
-    std::swap(vert2_, other->vert2_);
-    std::swap(vert3_, other->vert3_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Triangle::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Triangle_descriptor_;
-  metadata.reflection = Triangle_reflection_;
-  return metadata;
-}
-
 
 // ===================================================================
 
@@ -769,6 +480,295 @@ void Mesh_Vertex::Swap(Mesh_Vertex* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
+const int Mesh_Triangle::kVert1FieldNumber;
+const int Mesh_Triangle::kVert2FieldNumber;
+const int Mesh_Triangle::kVert3FieldNumber;
+#endif  // !_MSC_VER
+
+Mesh_Triangle::Mesh_Triangle()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void Mesh_Triangle::InitAsDefaultInstance() {
+}
+
+Mesh_Triangle::Mesh_Triangle(const Mesh_Triangle& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Mesh_Triangle::SharedCtor() {
+  _cached_size_ = 0;
+  vert1_ = 0u;
+  vert2_ = 0u;
+  vert3_ = 0u;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Mesh_Triangle::~Mesh_Triangle() {
+  SharedDtor();
+}
+
+void Mesh_Triangle::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void Mesh_Triangle::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Mesh_Triangle::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Mesh_Triangle_descriptor_;
+}
+
+const Mesh_Triangle& Mesh_Triangle::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Mesh_2eproto();
+  return *default_instance_;
+}
+
+Mesh_Triangle* Mesh_Triangle::default_instance_ = NULL;
+
+Mesh_Triangle* Mesh_Triangle::New() const {
+  return new Mesh_Triangle;
+}
+
+void Mesh_Triangle::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    vert1_ = 0u;
+    vert2_ = 0u;
+    vert3_ = 0u;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Mesh_Triangle::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint32 vert1 = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &vert1_)));
+          set_has_vert1();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_vert2;
+        break;
+      }
+
+      // required uint32 vert2 = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_vert2:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &vert2_)));
+          set_has_vert2();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_vert3;
+        break;
+      }
+
+      // required uint32 vert3 = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_vert3:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &vert3_)));
+          set_has_vert3();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Mesh_Triangle::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required uint32 vert1 = 1;
+  if (has_vert1()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->vert1(), output);
+  }
+
+  // required uint32 vert2 = 2;
+  if (has_vert2()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->vert2(), output);
+  }
+
+  // required uint32 vert3 = 3;
+  if (has_vert3()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->vert3(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* Mesh_Triangle::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required uint32 vert1 = 1;
+  if (has_vert1()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->vert1(), target);
+  }
+
+  // required uint32 vert2 = 2;
+  if (has_vert2()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->vert2(), target);
+  }
+
+  // required uint32 vert3 = 3;
+  if (has_vert3()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->vert3(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int Mesh_Triangle::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required uint32 vert1 = 1;
+    if (has_vert1()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->vert1());
+    }
+
+    // required uint32 vert2 = 2;
+    if (has_vert2()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->vert2());
+    }
+
+    // required uint32 vert3 = 3;
+    if (has_vert3()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->vert3());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Mesh_Triangle::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Mesh_Triangle* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Mesh_Triangle*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Mesh_Triangle::MergeFrom(const Mesh_Triangle& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_vert1()) {
+      set_vert1(from.vert1());
+    }
+    if (from.has_vert2()) {
+      set_vert2(from.vert2());
+    }
+    if (from.has_vert3()) {
+      set_vert3(from.vert3());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Mesh_Triangle::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Mesh_Triangle::CopyFrom(const Mesh_Triangle& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Mesh_Triangle::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+
+  return true;
+}
+
+void Mesh_Triangle::Swap(Mesh_Triangle* other) {
+  if (other != this) {
+    std::swap(vert1_, other->vert1_);
+    std::swap(vert2_, other->vert2_);
+    std::swap(vert3_, other->vert3_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Mesh_Triangle::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Mesh_Triangle_descriptor_;
+  metadata.reflection = Mesh_Triangle_reflection_;
+  return metadata;
+}
+
+
+// -------------------------------------------------------------------
+
+#ifndef _MSC_VER
 const int Mesh::kMaterialPathFieldNumber;
 const int Mesh::kVerticesFieldNumber;
 const int Mesh::kSkeletonFieldNumber;
@@ -885,7 +885,7 @@ bool Mesh::MergePartialFromCodedStream(
         break;
       }
 
-      // required .protobuf.Joint skeleton = 3;
+      // optional .protobuf.Joint skeleton = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -899,7 +899,7 @@ bool Mesh::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .protobuf.Triangle triangles = 4;
+      // repeated .protobuf.Mesh.Triangle triangles = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -947,13 +947,13 @@ void Mesh::SerializeWithCachedSizes(
       2, this->vertices(i), output);
   }
 
-  // required .protobuf.Joint skeleton = 3;
+  // optional .protobuf.Joint skeleton = 3;
   if (has_skeleton()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->skeleton(), output);
   }
 
-  // repeated .protobuf.Triangle triangles = 4;
+  // repeated .protobuf.Mesh.Triangle triangles = 4;
   for (int i = 0; i < this->triangles_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->triangles(i), output);
@@ -984,14 +984,14 @@ void Mesh::SerializeWithCachedSizes(
         2, this->vertices(i), target);
   }
 
-  // required .protobuf.Joint skeleton = 3;
+  // optional .protobuf.Joint skeleton = 3;
   if (has_skeleton()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->skeleton(), target);
   }
 
-  // repeated .protobuf.Triangle triangles = 4;
+  // repeated .protobuf.Mesh.Triangle triangles = 4;
   for (int i = 0; i < this->triangles_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1016,7 +1016,7 @@ int Mesh::ByteSize() const {
           this->material_path());
     }
 
-    // required .protobuf.Joint skeleton = 3;
+    // optional .protobuf.Joint skeleton = 3;
     if (has_skeleton()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1032,7 +1032,7 @@ int Mesh::ByteSize() const {
         this->vertices(i));
   }
 
-  // repeated .protobuf.Triangle triangles = 4;
+  // repeated .protobuf.Mesh.Triangle triangles = 4;
   total_size += 1 * this->triangles_size();
   for (int i = 0; i < this->triangles_size(); i++) {
     total_size +=
@@ -1091,7 +1091,7 @@ void Mesh::CopyFrom(const Mesh& from) {
 }
 
 bool Mesh::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   for (int i = 0; i < vertices_size(); i++) {
     if (!this->vertices(i).IsInitialized()) return false;

@@ -3,11 +3,7 @@ package protobuf;
 import "Skeleton.proto";
 import "Types.proto";
 
-message Triangle {
-	required uint32 vert1 = 1;
-	required uint32 vert2 = 2;
-	required uint32 vert3 = 3;
-}
+
 
 message Mesh {
 	message Vertex
@@ -16,12 +12,17 @@ message Mesh {
 		optional vec3 normal = 2;
 		optional vec3 texcoord = 3;
 	}
+	message Triangle {
+		required uint32 vert1 = 1;
+		required uint32 vert2 = 2;
+		required uint32 vert3 = 3;
+	}
 
 	required string material_path = 1;
 
 	repeated Vertex vertices = 2;
 
-	required Joint skeleton = 3;
+	optional Joint skeleton = 3;
 
 	repeated Triangle triangles = 4;
 }

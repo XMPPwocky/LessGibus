@@ -35,113 +35,11 @@ void  protobuf_AddDesc_Mesh_2eproto();
 void protobuf_AssignDesc_Mesh_2eproto();
 void protobuf_ShutdownFile_Mesh_2eproto();
 
-class Triangle;
 class Mesh;
 class Mesh_Vertex;
+class Mesh_Triangle;
 
 // ===================================================================
-
-class Triangle : public ::google::protobuf::Message {
- public:
-  Triangle();
-  virtual ~Triangle();
-
-  Triangle(const Triangle& from);
-
-  inline Triangle& operator=(const Triangle& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Triangle& default_instance();
-
-  void Swap(Triangle* other);
-
-  // implements Message ----------------------------------------------
-
-  Triangle* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Triangle& from);
-  void MergeFrom(const Triangle& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required uint32 vert1 = 1;
-  inline bool has_vert1() const;
-  inline void clear_vert1();
-  static const int kVert1FieldNumber = 1;
-  inline ::google::protobuf::uint32 vert1() const;
-  inline void set_vert1(::google::protobuf::uint32 value);
-
-  // required uint32 vert2 = 2;
-  inline bool has_vert2() const;
-  inline void clear_vert2();
-  static const int kVert2FieldNumber = 2;
-  inline ::google::protobuf::uint32 vert2() const;
-  inline void set_vert2(::google::protobuf::uint32 value);
-
-  // required uint32 vert3 = 3;
-  inline bool has_vert3() const;
-  inline void clear_vert3();
-  static const int kVert3FieldNumber = 3;
-  inline ::google::protobuf::uint32 vert3() const;
-  inline void set_vert3(::google::protobuf::uint32 value);
-
-  // @@protoc_insertion_point(class_scope:protobuf.Triangle)
- private:
-  inline void set_has_vert1();
-  inline void clear_has_vert1();
-  inline void set_has_vert2();
-  inline void clear_has_vert2();
-  inline void set_has_vert3();
-  inline void clear_has_vert3();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 vert1_;
-  ::google::protobuf::uint32 vert2_;
-  ::google::protobuf::uint32 vert3_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
-  friend void  protobuf_AddDesc_Mesh_2eproto();
-  friend void protobuf_AssignDesc_Mesh_2eproto();
-  friend void protobuf_ShutdownFile_Mesh_2eproto();
-
-  void InitAsDefaultInstance();
-  static Triangle* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class Mesh_Vertex : public ::google::protobuf::Message {
  public:
@@ -251,6 +149,108 @@ class Mesh_Vertex : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Mesh_Triangle : public ::google::protobuf::Message {
+ public:
+  Mesh_Triangle();
+  virtual ~Mesh_Triangle();
+
+  Mesh_Triangle(const Mesh_Triangle& from);
+
+  inline Mesh_Triangle& operator=(const Mesh_Triangle& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Mesh_Triangle& default_instance();
+
+  void Swap(Mesh_Triangle* other);
+
+  // implements Message ----------------------------------------------
+
+  Mesh_Triangle* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Mesh_Triangle& from);
+  void MergeFrom(const Mesh_Triangle& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint32 vert1 = 1;
+  inline bool has_vert1() const;
+  inline void clear_vert1();
+  static const int kVert1FieldNumber = 1;
+  inline ::google::protobuf::uint32 vert1() const;
+  inline void set_vert1(::google::protobuf::uint32 value);
+
+  // required uint32 vert2 = 2;
+  inline bool has_vert2() const;
+  inline void clear_vert2();
+  static const int kVert2FieldNumber = 2;
+  inline ::google::protobuf::uint32 vert2() const;
+  inline void set_vert2(::google::protobuf::uint32 value);
+
+  // required uint32 vert3 = 3;
+  inline bool has_vert3() const;
+  inline void clear_vert3();
+  static const int kVert3FieldNumber = 3;
+  inline ::google::protobuf::uint32 vert3() const;
+  inline void set_vert3(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:protobuf.Mesh.Triangle)
+ private:
+  inline void set_has_vert1();
+  inline void clear_has_vert1();
+  inline void set_has_vert2();
+  inline void clear_has_vert2();
+  inline void set_has_vert3();
+  inline void clear_has_vert3();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 vert1_;
+  ::google::protobuf::uint32 vert2_;
+  ::google::protobuf::uint32 vert3_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Mesh_2eproto();
+  friend void protobuf_AssignDesc_Mesh_2eproto();
+  friend void protobuf_ShutdownFile_Mesh_2eproto();
+
+  void InitAsDefaultInstance();
+  static Mesh_Triangle* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Mesh : public ::google::protobuf::Message {
  public:
   Mesh();
@@ -304,6 +304,7 @@ class Mesh : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
 
   typedef Mesh_Vertex Vertex;
+  typedef Mesh_Triangle Triangle;
 
   // accessors -------------------------------------------------------
 
@@ -331,7 +332,7 @@ class Mesh : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex >*
       mutable_vertices();
 
-  // required .protobuf.Joint skeleton = 3;
+  // optional .protobuf.Joint skeleton = 3;
   inline bool has_skeleton() const;
   inline void clear_skeleton();
   static const int kSkeletonFieldNumber = 3;
@@ -340,16 +341,16 @@ class Mesh : public ::google::protobuf::Message {
   inline ::protobuf::Joint* release_skeleton();
   inline void set_allocated_skeleton(::protobuf::Joint* skeleton);
 
-  // repeated .protobuf.Triangle triangles = 4;
+  // repeated .protobuf.Mesh.Triangle triangles = 4;
   inline int triangles_size() const;
   inline void clear_triangles();
   static const int kTrianglesFieldNumber = 4;
-  inline const ::protobuf::Triangle& triangles(int index) const;
-  inline ::protobuf::Triangle* mutable_triangles(int index);
-  inline ::protobuf::Triangle* add_triangles();
-  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle >&
+  inline const ::protobuf::Mesh_Triangle& triangles(int index) const;
+  inline ::protobuf::Mesh_Triangle* mutable_triangles(int index);
+  inline ::protobuf::Mesh_Triangle* add_triangles();
+  inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Triangle >&
       triangles() const;
-  inline ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle >*
+  inline ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Triangle >*
       mutable_triangles();
 
   // @@protoc_insertion_point(class_scope:protobuf.Mesh)
@@ -364,7 +365,7 @@ class Mesh : public ::google::protobuf::Message {
   ::std::string* material_path_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex > vertices_;
   ::protobuf::Joint* skeleton_;
-  ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle > triangles_;
+  ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Triangle > triangles_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
@@ -380,76 +381,6 @@ class Mesh : public ::google::protobuf::Message {
 
 
 // ===================================================================
-
-// Triangle
-
-// required uint32 vert1 = 1;
-inline bool Triangle::has_vert1() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Triangle::set_has_vert1() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Triangle::clear_has_vert1() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Triangle::clear_vert1() {
-  vert1_ = 0u;
-  clear_has_vert1();
-}
-inline ::google::protobuf::uint32 Triangle::vert1() const {
-  return vert1_;
-}
-inline void Triangle::set_vert1(::google::protobuf::uint32 value) {
-  set_has_vert1();
-  vert1_ = value;
-}
-
-// required uint32 vert2 = 2;
-inline bool Triangle::has_vert2() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Triangle::set_has_vert2() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Triangle::clear_has_vert2() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Triangle::clear_vert2() {
-  vert2_ = 0u;
-  clear_has_vert2();
-}
-inline ::google::protobuf::uint32 Triangle::vert2() const {
-  return vert2_;
-}
-inline void Triangle::set_vert2(::google::protobuf::uint32 value) {
-  set_has_vert2();
-  vert2_ = value;
-}
-
-// required uint32 vert3 = 3;
-inline bool Triangle::has_vert3() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Triangle::set_has_vert3() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void Triangle::clear_has_vert3() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void Triangle::clear_vert3() {
-  vert3_ = 0u;
-  clear_has_vert3();
-}
-inline ::google::protobuf::uint32 Triangle::vert3() const {
-  return vert3_;
-}
-inline void Triangle::set_vert3(::google::protobuf::uint32 value) {
-  set_has_vert3();
-  vert3_ = value;
-}
-
-// -------------------------------------------------------------------
 
 // Mesh_Vertex
 
@@ -569,6 +500,76 @@ inline void Mesh_Vertex::set_allocated_texcoord(::protobuf::vec3* texcoord) {
 
 // -------------------------------------------------------------------
 
+// Mesh_Triangle
+
+// required uint32 vert1 = 1;
+inline bool Mesh_Triangle::has_vert1() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Mesh_Triangle::set_has_vert1() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Mesh_Triangle::clear_has_vert1() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Mesh_Triangle::clear_vert1() {
+  vert1_ = 0u;
+  clear_has_vert1();
+}
+inline ::google::protobuf::uint32 Mesh_Triangle::vert1() const {
+  return vert1_;
+}
+inline void Mesh_Triangle::set_vert1(::google::protobuf::uint32 value) {
+  set_has_vert1();
+  vert1_ = value;
+}
+
+// required uint32 vert2 = 2;
+inline bool Mesh_Triangle::has_vert2() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Mesh_Triangle::set_has_vert2() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Mesh_Triangle::clear_has_vert2() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Mesh_Triangle::clear_vert2() {
+  vert2_ = 0u;
+  clear_has_vert2();
+}
+inline ::google::protobuf::uint32 Mesh_Triangle::vert2() const {
+  return vert2_;
+}
+inline void Mesh_Triangle::set_vert2(::google::protobuf::uint32 value) {
+  set_has_vert2();
+  vert2_ = value;
+}
+
+// required uint32 vert3 = 3;
+inline bool Mesh_Triangle::has_vert3() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Mesh_Triangle::set_has_vert3() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Mesh_Triangle::clear_has_vert3() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Mesh_Triangle::clear_vert3() {
+  vert3_ = 0u;
+  clear_has_vert3();
+}
+inline ::google::protobuf::uint32 Mesh_Triangle::vert3() const {
+  return vert3_;
+}
+inline void Mesh_Triangle::set_vert3(::google::protobuf::uint32 value) {
+  set_has_vert3();
+  vert3_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // Mesh
 
 // required string material_path = 1;
@@ -666,7 +667,7 @@ Mesh::mutable_vertices() {
   return &vertices_;
 }
 
-// required .protobuf.Joint skeleton = 3;
+// optional .protobuf.Joint skeleton = 3;
 inline bool Mesh::has_skeleton() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -704,27 +705,27 @@ inline void Mesh::set_allocated_skeleton(::protobuf::Joint* skeleton) {
   }
 }
 
-// repeated .protobuf.Triangle triangles = 4;
+// repeated .protobuf.Mesh.Triangle triangles = 4;
 inline int Mesh::triangles_size() const {
   return triangles_.size();
 }
 inline void Mesh::clear_triangles() {
   triangles_.Clear();
 }
-inline const ::protobuf::Triangle& Mesh::triangles(int index) const {
+inline const ::protobuf::Mesh_Triangle& Mesh::triangles(int index) const {
   return triangles_.Get(index);
 }
-inline ::protobuf::Triangle* Mesh::mutable_triangles(int index) {
+inline ::protobuf::Mesh_Triangle* Mesh::mutable_triangles(int index) {
   return triangles_.Mutable(index);
 }
-inline ::protobuf::Triangle* Mesh::add_triangles() {
+inline ::protobuf::Mesh_Triangle* Mesh::add_triangles() {
   return triangles_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle >&
+inline const ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Triangle >&
 Mesh::triangles() const {
   return triangles_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::protobuf::Triangle >*
+inline ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Triangle >*
 Mesh::mutable_triangles() {
   return &triangles_;
 }

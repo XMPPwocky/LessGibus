@@ -54,7 +54,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	log.open("log.txt");
 	
 	ResourceManager	*rsrc = world.getManager<ResourceManager>();
-	std::string *mdata = (rsrc)->load<std::string>("../../assets/mesh/square.mesh");
+	std::string *mdata = (rsrc)->load<std::string>("../../assets/mesh/trivial.mesh");
 
 	protobuf::Mesh m;
 	m.ParseFromString(*mdata);
