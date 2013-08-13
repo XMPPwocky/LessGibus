@@ -84,13 +84,20 @@ namespace coment
 	{
 		// If not already in collection
 		if (std::find(_entities.begin(), _entities.end(), (Entity)e) == _entities.end())
+		{
+			added(e);
 			_entities.push_back(e);
+		}
 	}
 
 	// Remove an entity
 	void EntitySystem::removeEntity(EntityInfo& e)
 	{
-		removeFirst(_entities, (Entity)e);
+		if (std::find(_entities.begin(), _entities.end(), (Entity)e) == _entities.end())
+		{
+			removeFirst(_entities, (Entity)e);
+			remove(e);
+		}
 	}
 
 	// Set the world

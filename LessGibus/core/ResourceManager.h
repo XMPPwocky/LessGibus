@@ -8,6 +8,7 @@
 #include <boost/filesystem.hpp>
 #include <typeinfo>
 #include <map>
+#include <boost/any.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -17,7 +18,7 @@ class ResourceManager
 {
 public:
 	template <typename T>
-	T* load(const fs::path &filename);
+	std::shared_ptr<T> load(const fs::path &filename);
 
 protected:
 	template <typename T> 
@@ -27,7 +28,7 @@ protected:
 	std::string *loadResource(const fs::path & filename);
 
 
-	typedef std::map<fs::path, void *> Cache;
+	typedef std::map<fs::path, boost::any> Cache;
 
 
 	template <typename T>
@@ -46,11 +47,11 @@ ResourceManager::Cache *ResourceManager::getCache()
 }
 
 template <typename T>
-T* ResourceManager::load(const fs::path & name)
+std::shared_ptr<T> ResourceManager::load(const fs::path & name)
 {
 	Cache *cache = getCache<T>();
 
-	T* resource = nullptr;
+	std::shared_ptr<T> resource = nullptr;
 
 	// Check if resource exists
 	Cache::iterator lb = cache->lower_bound(name);
@@ -58,13 +59,15 @@ T* ResourceManager::load(const fs::path & name)
 	if (lb != cache->end() && !(cache->key_comp()(name, lb->first)))
 	{
 		// The key already exists
-		resource = static_cast<T *>(lb->second);
+		resource = boost::any_cast<std::shared_ptr<T>>(lb->second);
 	}
 	else
 	{
-		if (resource = loadResource<T>(name))
+		if (T* raw_ptr = (loadResource<T>(name)))
 		{
-			cache->insert(lb, Cache::value_type(name, resource));
+			resource = std::shared_ptr<T>(raw_ptr);
+			cache->insert(lb, Cache::value_type(name,
+				(resource)));
 		}
 		else
 		{

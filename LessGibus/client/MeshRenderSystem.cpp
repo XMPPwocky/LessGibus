@@ -11,21 +11,23 @@ void MeshRenderSystem::registered()
 	registerComponent<MeshComponent>();
 }
 
-
-void MeshRenderSystem::begin()
+void MeshRenderSystem::added(const coment::Entity &e)
 {
-
+	// Add entity to scene graph
 }
-void MeshRenderSystem::process(const coment::Entity& entity)
+void MeshRenderSystem::removed(const coment::Entity &e)
 {
-	MeshComponent *mesh_comp = _world->getComponent<MeshComponent>(entity);
-	std::shared_ptr<Mesh> mesh = mesh_comp->mesh;
-
-	//gl::UniformMatrix4fv(mesh->shaderprogram->getUniformLocation("MVP"), 1, 0, glm::value_ptr(MVP));
-	gl::BindVertexArray(mesh->getVAO());
-	gl::DrawElements(gl::TRIANGLES, mesh->getNumtris(), gl::UNSIGNED_INT, nullptr);
+	// Remove entity from scene graph
 }
-void MeshRenderSystem::end()
+
+void MeshRenderSystem::processEntities(std::vector<coment::Entity>& entities)
 {
-	
+	// Render scene graph
+
+	//MeshComponent *mesh_comp = _world->getComponent<MeshComponent>(entity);
+	//std::shared_ptr<Mesh> mesh = mesh_comp->mesh;
+
+	////gl::UniformMatrix4fv(mesh->shaderprogram->getUniformLocation("MVP"), 1, 0, glm::value_ptr(MVP));
+	//gl::BindVertexArray(mesh->getVAO());
+	//gl::DrawElements(gl::TRIANGLES, mesh->getNumtris(), gl::UNSIGNED_INT, nullptr);
 }

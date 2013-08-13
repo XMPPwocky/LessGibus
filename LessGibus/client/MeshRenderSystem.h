@@ -13,16 +13,18 @@
 #include "MeshComponent.h"
 #include "Mesh.h"
 class MeshRenderSystem :
-	public coment::EntityProcessingSystem
+	public coment::EntitySystem
 {
 	glm::mat4 m_projection;
 protected:
 
 	void begin();
 	void end();
+	void added(const coment::Entity &e);
+	void removed(const coment::Entity &e);
 public:
 	MeshRenderSystem();
 	void registered();
-	void process(const coment::Entity& entity);
+	void processEntities(std::vector<coment::Entity>& entities);
 };
 

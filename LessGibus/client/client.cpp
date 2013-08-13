@@ -7,6 +7,8 @@
 #include "load_mesh.h"
 #include "load_shaderprogram.h"
 #include "ShaderProgram.h"
+#include "CameraManager.h"
+
 
 #include <iostream>
 #include <fstream>
@@ -45,7 +47,12 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	ResourceManager resourceManager;
 	world.registerManager<ResourceManager>(resourceManager);
-	
+	CameraManager cameraManager;
+	world.registerManager<CameraManager>(cameraManager);
+
+	Camera cam;
+
+	cameraManager.setCamera("main", Camera::ptr(&cam));
 	MeshRenderSystem mesh_render_system;
 	world.registerSystem<MeshRenderSystem>(mesh_render_system);
 
@@ -56,8 +63,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	log.open("log.txt");
 	
 	ResourceManager	*rsrc = world.getManager<ResourceManager>();
-	const std::string *mdata = (rsrc)->load<std::string>("../tools/example.mesh");
-	const std::string *sdata = (rsrc)->load<std::string>("../tools/example.shad");
+	std::shared_ptr<const std::string> mdata = (rsrc)->load<std::string>("../tools/example.mesh");
+	std::shared_ptr<const std::string> sdata = (rsrc)->load<std::string>("../tools/example.shad");
 
 	protobuf::Mesh m;
 	m.ParseFromString(*mdata);

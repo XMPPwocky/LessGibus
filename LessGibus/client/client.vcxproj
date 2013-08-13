@@ -88,6 +88,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraManager.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="GLBuffers.h" />
     <ClInclude Include="load_mesh.h" />
@@ -101,6 +103,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="GLBuffers.cpp" />
     <ClCompile Include="load_mesh.cpp" />

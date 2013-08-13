@@ -15,7 +15,7 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 	{
 		fs::path filename = (*i).filename();
 		
-		const std::string * shader_text = rsrc.load<std::string>(AssetDirectoryPath / filename);
+		std::shared_ptr<const std::string> shader_text = rsrc.load<std::string>(AssetDirectoryPath / filename);
 		const char * shader_text_cstr = shader_text->c_str();
 
 		GLenum shader_type;
