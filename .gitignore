@@ -10,7 +10,7 @@ glutil/
 assets/
 boost/
 protobuf/
-
+utf8/
 ## protobuf generated code
 *.pb.cc
 *.pb.h
