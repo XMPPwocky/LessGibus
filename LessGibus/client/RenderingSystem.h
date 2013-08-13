@@ -13,13 +13,15 @@
 #include "MeshComponent.h"
 #include "Mesh.h"
 #include <list>
-class MeshRenderSystem :
+class RenderingSystem :
 	public coment::EntitySystem
 {
-	glm::mat4 m_projection;
+	static const GLuint GLOBAL_MATRICES_BINDING = 0;
+	GLuint _matrices_ubo;
+
+	glm::mat4 _projection;
 
 	typedef std::list<coment::Entity> SceneGraph;
-
 	SceneGraph _scenegraph;
 protected:
 
@@ -28,8 +30,10 @@ protected:
 	void onAdded(const coment::Entity &e);
 	void onRemoved(const coment::Entity &e);
 public:
-	MeshRenderSystem();
-	void registered();
+	RenderingSystem();
+	~RenderingSystem();
+	void onRegistered();
+	void registerComponents();
 	void processEntities(std::vector<coment::Entity>& entities);
 };
 

@@ -7,8 +7,7 @@
 #include "load_mesh.h"
 #include "load_shaderprogram.h"
 #include "ShaderProgram.h"
-#include "CameraManager.h"
-
+#include "ShaderProgramComponent.h"
 
 #include <iostream>
 #include <fstream>
@@ -47,17 +46,13 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	ResourceManager resourceManager;
 	world.registerManager<ResourceManager>(resourceManager);
-	CameraManager cameraManager;
-	world.registerManager<CameraManager>(cameraManager);
 
-	Camera *cam = new Camera;
-
-	cameraManager.setCamera("main", Camera::ptr(cam));
-	MeshRenderSystem mesh_render_system;
-	world.registerSystem<MeshRenderSystem>(mesh_render_system);
+	RenderingSystem mesh_render_system;
+	world.registerSystem<RenderingSystem>(mesh_render_system);
 
 	coment::Entity e = world.createEntity();
 	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
+	ShaderProgramComponent *shaderprog = world.addComponent<ShaderProgramComponent>(e);
 
 	std::wfstream log;
 	log.open("log.txt");
@@ -72,7 +67,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	protobuf::ShaderProgram prog;
 	prog.ParseFromString(*sdata);
-	ShaderProgram program = *load_shaderprogram(*rsrc, prog);
+	(*shaderprog).prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(*rsrc, prog));
+
 
 	SDL_Event event; 
 	Uint8 done = 0;
@@ -84,7 +80,6 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	while(!done)  // Enter main loop.
 	{
 		gl::Clear(gl::COLOR_BUFFER_BIT);
-		gl::UseProgram(program.getProgID());
 
 		Uint32 curr_tick = SDL_GetTicks();
 		Uint32 delta = (curr_tick - last_tick);

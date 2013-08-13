@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>../../Coment/coment/include;../../utf8/;../../glutil/include;../../glmesh/include;../../glload/include;../../protobuf/include/;C:/Boost/include/boost-1_54/;../../glm/include/;../../SDL2/include;../core;$(IncludePath)</IncludePath>
-    <LibraryPath>../../Coment/Debug;/C:\Boost\lib;../../SDL2/lib/x86;../../glload/lib;../../glmesh/lib;../../protobuf/Debug;../Debug/;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <LibraryPath>../../Coment/Debug;C:\Boost\lib;../../SDL2/lib/x86;../../glload/lib;../../glmesh/lib;../../protobuf/Debug;../Debug/;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
     <ReferencePath>$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib</ReferencePath>
     <ExecutablePath>$(VCInstallDir)bin;$(WindowsSDK_ExecutablePath_x86);$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(MSBuildToolsPath32);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
   </PropertyGroup>
@@ -95,10 +95,10 @@
     <ClInclude Include="load_shaderprogram.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshComponent.h" />
-    <ClInclude Include="MeshRenderSystem.h" />
-    <ClInclude Include="RenderingManager.h" />
+    <ClInclude Include="RenderingSystem.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="ShaderProgramComponent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -109,10 +109,10 @@
     <ClCompile Include="load_mesh.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
-    <ClCompile Include="MeshRenderSystem.cpp" />
-    <ClCompile Include="RenderingManager.cpp" />
+    <ClCompile Include="RenderingSystem.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="load_shaderprogram.cpp" />
+    <ClCompile Include="ShaderProgramComponent.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

@@ -2,6 +2,10 @@ shaders:
   -
     type: vertex
     filename: shader/example.vert.glsl
+    uniforms:
+      - modelToCameraMatrix
+    uniform_blocks:
+      - GlobalMatrices
   -
     type: fragment
     filename: shader/example.frag.glsl

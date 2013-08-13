@@ -20,7 +20,15 @@ for shader in data['shaders']:
     s = prog.shaders.add()
 
     s.filename = shader['filename']
-    
+
+    if 'uniforms' in shader:
+        for uniform in shader['uniforms']:
+            s.uniforms.append(uniform)
+
+    if 'uniform_blocks' in shader:
+        for uniform_block in shader['uniform_blocks']:
+            s.uniform_blocks.append(uniform_block)
+        
     if (shader['type'] == "compute"):
         s.type = ShaderProgram.COMPUTE_SHADER
     elif (shader['type'] == "vertex"):

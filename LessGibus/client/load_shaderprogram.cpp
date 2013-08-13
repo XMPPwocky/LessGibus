@@ -2,6 +2,8 @@
 #include "load_shaderprogram.h"
 #include "utf8.h"
 #include <boost/filesystem.hpp>
+#include <set>
+#include <map>
 
 namespace fs = boost::filesystem;
 
@@ -9,10 +11,20 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 {
 	GLuint program = gl::CreateProgram();
 	std::vector<GLuint> shaders;
+	std::set<const std::string> uniforms;
+	std::set<const std::string> uniform_blocks;
+
 	for (google::protobuf::RepeatedPtrField<protobuf::ShaderProgram::Shader>::const_iterator i = data.shaders().begin();
 		i != data.shaders().end();
 		i++)
 	{
+		uniforms.insert<google::protobuf::RepeatedPtrField<const std::string>::iterator>
+			((*i).uniforms().begin(),
+			(*i).uniforms().end());
+		uniform_blocks.insert(
+			(*i).uniform_blocks().begin(),
+			(*i).uniform_blocks().end());
+
 		fs::path filename = (*i).filename();
 		
 		std::shared_ptr<const std::string> shader_text = rsrc.load<std::string>(AssetDirectoryPath / filename);
@@ -54,7 +66,6 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 		}
 		shaders.push_back(shader);
 	}
-
 	BOOST_FOREACH(GLuint shader, shaders)
 	{
 		gl::AttachShader(program, shader);
@@ -76,5 +87,22 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 		gl::DeleteShader(shader);
 	}
 
-	return new ShaderProgram(program);
+	std::map<const std::string, GLuint> uniform_locations;
+	std::map<const std::string, GLuint> uniform_block_locations;
+
+	BOOST_FOREACH(const std::string uni_name, uniforms)
+	{
+		uniform_locations[uni_name] =
+			gl::GetUniformLocation(program, uni_name.c_str());
+	}
+
+	BOOST_FOREACH(const std::string uniblock_name, uniform_blocks)
+	{
+		uniform_block_locations[uniblock_name] =
+			gl::GetUniformBlockIndex(program, uniblock_name.c_str());
+	}
+
+
+	return new ShaderProgram(program,
+		uniform_locations, uniform_block_locations);
 }
