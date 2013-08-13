@@ -5,10 +5,13 @@
 #include <cerrno>
 
 #include "ResourceManager.h"
+#include <boost/filesystem.hpp>
 
-static std::string get_file_contents(const char *filename)
+namespace fs = boost::filesystem;
+
+static std::string get_file_contents(const fs::path &filename)
 {
-  std::ifstream in(filename, std::ios::in | std::ios::binary);
+  std::ifstream in(filename.string(), std::ios::in | std::ios::binary);
   if (in)
   {
     std::string contents;

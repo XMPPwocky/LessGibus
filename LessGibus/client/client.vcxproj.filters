@@ -45,6 +45,12 @@
     <ClInclude Include="GLBuffers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="load_shaderprogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -66,6 +72,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLBuffers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="load_shaderprogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

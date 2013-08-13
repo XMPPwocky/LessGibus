@@ -53,6 +53,8 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -89,7 +91,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Material.pb.cc" />
     <ClCompile Include="Mesh.pb.cc" />
+    <ClCompile Include="ShaderProgram.pb.cc" />
     <ClCompile Include="Skeleton.pb.cc" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -102,7 +106,9 @@
     <ClInclude Include="BadDataException.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="get_file_contents.h" />
+    <ClInclude Include="Material.pb.h" />
     <ClInclude Include="mesh.pb.h" />
+    <ClInclude Include="ShaderProgram.pb.h" />
     <ClInclude Include="Skeleton.pb.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="stdafx.h" />
