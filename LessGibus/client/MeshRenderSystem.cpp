@@ -12,12 +12,12 @@ void MeshRenderSystem::registered()
 	registerComponent<MeshComponent>();
 }
 
-void MeshRenderSystem::added(const coment::Entity &e)
+void MeshRenderSystem::onAdded(const coment::Entity &e)
 {
 	// Add entity to scene graph
 	_scenegraph.push_back(e);
 }
-void MeshRenderSystem::removed(const coment::Entity &e)
+void MeshRenderSystem::onRemoved(const coment::Entity &e)
 {
 	// Remove entity from scene graph
 	auto i = std::find(_scenegraph.begin(), _scenegraph.end(), e);

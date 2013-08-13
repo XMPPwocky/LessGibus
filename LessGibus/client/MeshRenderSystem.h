@@ -25,8 +25,8 @@ protected:
 
 //	void begin();
 //	void end();
-	void added(const coment::Entity &e);
-	void removed(const coment::Entity &e);
+	void onAdded(const coment::Entity &e);
+	void onRemoved(const coment::Entity &e);
 public:
 	MeshRenderSystem();
 	void registered();

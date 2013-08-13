@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
-    <IncludePath>../../glload/include;..\..\protobuf\include\;../../glm/include;C:/Boost/include/boost-1_54/;..\coment\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../../Coment/coment/include;../../glload/include;..\..\protobuf\include\;../../glm/include;C:/Boost/include/boost-1_54/;..\coment\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

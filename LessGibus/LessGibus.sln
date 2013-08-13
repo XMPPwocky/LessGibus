@@ -11,10 +11,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{0853764F-A9EA-4EC8-BEC9-E524794F445C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{62519E2C-353D-471D-A049-2F3F5DDF5DCC} = {62519E2C-353D-471D-A049-2F3F5DDF5DCC}
-		{EACED591-60FE-4017-9136-C6BE8C7B4E3D} = {EACED591-60FE-4017-9136-C6BE8C7B4E3D}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Coment", "coment\Coment.vcxproj", "{EACED591-60FE-4017-9136-C6BE8C7B4E3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +31,6 @@ Global
 		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Debug|Win32.Build.0 = Debug|Win32
 		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Release|Win32.ActiveCfg = Release|Win32
 		{0853764F-A9EA-4EC8-BEC9-E524794F445C}.Release|Win32.Build.0 = Release|Win32
-		{EACED591-60FE-4017-9136-C6BE8C7B4E3D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EACED591-60FE-4017-9136-C6BE8C7B4E3D}.Debug|Win32.Build.0 = Debug|Win32
-		{EACED591-60FE-4017-9136-C6BE8C7B4E3D}.Release|Win32.ActiveCfg = Release|Win32
-		{EACED591-60FE-4017-9136-C6BE8C7B4E3D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
