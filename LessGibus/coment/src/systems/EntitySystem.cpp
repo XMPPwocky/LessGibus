@@ -96,7 +96,7 @@ namespace coment
 		if (std::find(_entities.begin(), _entities.end(), (Entity)e) == _entities.end())
 		{
 			removeFirst(_entities, (Entity)e);
-			remove(e);
+			removed(e);
 		}
 	}
 
