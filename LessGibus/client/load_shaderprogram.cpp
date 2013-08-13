@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "load_shaderprogram.h"
+#include "utf8.h"
+#include <boost/filesystem.hpp>
+
+namespace fs = boost::filesystem;
 
 ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderProgram &data)
 {
@@ -9,7 +13,9 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 		i != data.shaders().end();
 		i++)
 	{
-		std::string * shader_text = rsrc.load<std::string>((*i).filename());
+		fs::path filename = (*i).filename();
+		
+		std::string * shader_text = rsrc.load<std::string>(AssetDirectoryPath / filename);
 		const char * shader_text_cstr = shader_text->c_str();
 
 		GLenum shader_type;
@@ -31,7 +37,7 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 		default:
 			shader_type = gl::COMPUTE_SHADER; // prevent compiler error
 			BadShaderException e;
-			BOOST_THROW_EXCEPTION(e << wstring_info(L"Unknown shader type!"));
+			BOOST_THROW_EXCEPTION(e << string_info("Unknown shader type!"));
 			break;
 		}
 
@@ -43,7 +49,7 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 		if (status == gl::FALSE_)
 		{
 			BadShaderException e;
-			BOOST_THROW_EXCEPTION(e << wstring_info(L"Shader compilation failed!"));
+			BOOST_THROW_EXCEPTION(e << string_info("Shader compilation failed!"));
 			// TODO: get the actual error message
 		}
 		shaders.push_back(shader);
@@ -60,7 +66,7 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 	if (status == gl::FALSE_)
 	{
 		BadShaderException e;
-		BOOST_THROW_EXCEPTION(e << wstring_info(L"Program linking failed!"));
+		BOOST_THROW_EXCEPTION(e << string_info("Program linking failed!"));
 		// TODO: get the actual error message
 	}
 

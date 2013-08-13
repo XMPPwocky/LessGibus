@@ -1,0 +1,7 @@
+shaders:
+  -
+    type: vertex
+    filename: shader/example.vert.glsl
+  -
+    type: fragment
+    filename: shader/example.frag.glsl

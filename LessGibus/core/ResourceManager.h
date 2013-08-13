@@ -5,29 +5,32 @@
 #include <Shlwapi.h>
 #include <memory>
 #include "get_file_contents.h"
+#include <boost/filesystem.hpp>
 
-static const std::wstring AssetDirectoryPath = L"../../asset/";
+namespace fs = boost::filesystem;
+
+static const fs::path AssetDirectoryPath = "../../assets/";
 class ResourceManager
 	: public coment::Manager
 {
 public:
 	template <typename T>
-	T* load(const std::string filename);
+	T* load(const fs::path &filename);
 
 protected:
 	template <typename T> 
-	T* loadResource(const std::string filename);
+	T* loadResource(const fs::path &);
 
 	template<>
-	std::string *loadResource(const std::string filename);
+	std::string *loadResource(const fs::path & filename);
 };
 
 
 template <typename T>
-T* ResourceManager::load(const std::string name)
+T* ResourceManager::load(const fs::path & name)
 {
 	// A static map for this resource type
-	typedef std::map<const std::string, T*> ResourceMap;
+	typedef std::map<const fs::path, T*> ResourceMap;
 	static ResourceMap resources;
 
 	T* resource = nullptr;
@@ -57,14 +60,14 @@ T* ResourceManager::load(const std::string name)
 
 
 template <typename T>
-static T* ResourceManager::loadResource(const std::string name)
+static T* ResourceManager::loadResource(const fs::path & name)
 {
 	return nullptr;
 }
 
 template<>
-static std::string *ResourceManager::loadResource(const std::string filename) 
+static std::string *ResourceManager::loadResource(const fs::path & filename) 
 {
-	std::string *s = new std::string(get_file_contents(filename.c_str()));
+	std::string *s = new std::string(get_file_contents(filename));
 	return s;
 }

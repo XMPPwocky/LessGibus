@@ -16,8 +16,6 @@ data = yaml.load(yaml_data)
 
 m = Mesh()
 
-m.material = data["material"]
-
 for vertex in data["vertices"]:
     v = m.vertices.add()
     if "position" in vertex:
