@@ -50,9 +50,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	CameraManager cameraManager;
 	world.registerManager<CameraManager>(cameraManager);
 
-	Camera cam;
+	Camera *cam = new Camera;
 
-	cameraManager.setCamera("main", Camera::ptr(&cam));
+	cameraManager.setCamera("main", Camera::ptr(cam));
 	MeshRenderSystem mesh_render_system;
 	world.registerSystem<MeshRenderSystem>(mesh_render_system);
 
