@@ -3,8 +3,9 @@
 #include <vector>
 #include "GLBuffers.h"
 
-struct Mesh
+class Mesh
 {
+private:
 	// do we destroy the VAO when we are destroyed?
 	bool _own_VAO;
 
@@ -21,5 +22,15 @@ public:
 		std::vector<GLuint> owned_buffers = std::vector<GLuint>(),
 		bool own_VAO = true);
 	~Mesh(void);
+
+	GLuint getVAO()
+	{
+		return _VAO;
+	}
+
+	GLuint getNumtris()
+	{
+		return _numtris;
+	}
 };
 

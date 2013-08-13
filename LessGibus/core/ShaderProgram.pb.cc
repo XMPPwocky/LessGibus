@@ -99,7 +99,7 @@ void protobuf_AssignDesc_ShaderProgram_2eproto() {
   ShaderProgram_Shader_descriptor_ = ShaderProgram_descriptor_->nested_type(0);
   static const int ShaderProgram_Shader_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderProgram_Shader, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderProgram_Shader, path_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShaderProgram_Shader, filename_),
   };
   ShaderProgram_Shader_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -158,15 +158,15 @@ void protobuf_AddDesc_ShaderProgram_2eproto() {
     "\n\023ShaderProgram.proto\022\010protobuf\"2\n\013Shade"
     "rParam\022\024\n\014uniform_name\030\001 \002(\t\022\r\n\005value\030\002 "
     "\002(\t\"G\n\020ShaderParamBlock\022%\n\006params\030\001 \003(\0132"
-    "\025.protobuf.ShaderParam\022\014\n\004name\030\002 \001(\t\"\237\002\n"
+    "\025.protobuf.ShaderParam\022\014\n\004name\030\002 \001(\t\"\243\002\n"
     "\rShaderProgram\022/\n\007shaders\030\001 \003(\0132\036.protob"
-    "uf.ShaderProgram.Shader\032H\n\006Shader\0220\n\004typ"
+    "uf.ShaderProgram.Shader\032L\n\006Shader\0220\n\004typ"
     "e\030\001 \002(\0162\".protobuf.ShaderProgram.ShaderT"
-    "ype\022\014\n\004path\030\002 \002(\t\"\222\001\n\nShaderType\022\022\n\016COMP"
-    "UTE_SHADER\020\001\022\021\n\rVERTEX_SHADER\020\002\022\027\n\023TESS_"
-    "CONTROL_SHADER\020\003\022\032\n\026TESS_EVALUATION_SHAD"
-    "ER\020\004\022\023\n\017GEOMETRY_SHADER\020\005\022\023\n\017FRAGMENT_SH"
-    "ADER\020\006", 446);
+    "ype\022\020\n\010filename\030\002 \002(\t\"\222\001\n\nShaderType\022\022\n\016"
+    "COMPUTE_SHADER\020\001\022\021\n\rVERTEX_SHADER\020\002\022\027\n\023T"
+    "ESS_CONTROL_SHADER\020\003\022\032\n\026TESS_EVALUATION_"
+    "SHADER\020\004\022\023\n\017GEOMETRY_SHADER\020\005\022\023\n\017FRAGMEN"
+    "T_SHADER\020\006", 450);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ShaderProgram.proto", &protobuf_RegisterTypes);
   ShaderParam::default_instance_ = new ShaderParam();
@@ -772,7 +772,7 @@ const int ShaderProgram::ShaderType_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int ShaderProgram_Shader::kTypeFieldNumber;
-const int ShaderProgram_Shader::kPathFieldNumber;
+const int ShaderProgram_Shader::kFilenameFieldNumber;
 #endif  // !_MSC_VER
 
 ShaderProgram_Shader::ShaderProgram_Shader()
@@ -792,7 +792,7 @@ ShaderProgram_Shader::ShaderProgram_Shader(const ShaderProgram_Shader& from)
 void ShaderProgram_Shader::SharedCtor() {
   _cached_size_ = 0;
   type_ = 1;
-  path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  filename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -801,8 +801,8 @@ ShaderProgram_Shader::~ShaderProgram_Shader() {
 }
 
 void ShaderProgram_Shader::SharedDtor() {
-  if (path_ != &::google::protobuf::internal::kEmptyString) {
-    delete path_;
+  if (filename_ != &::google::protobuf::internal::kEmptyString) {
+    delete filename_;
   }
   if (this != default_instance_) {
   }
@@ -832,9 +832,9 @@ ShaderProgram_Shader* ShaderProgram_Shader::New() const {
 void ShaderProgram_Shader::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 1;
-    if (has_path()) {
-      if (path_ != &::google::protobuf::internal::kEmptyString) {
-        path_->clear();
+    if (has_filename()) {
+      if (filename_ != &::google::protobuf::internal::kEmptyString) {
+        filename_->clear();
       }
     }
   }
@@ -864,19 +864,19 @@ bool ShaderProgram_Shader::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_path;
+        if (input->ExpectTag(18)) goto parse_filename;
         break;
       }
 
-      // required string path = 2;
+      // required string filename = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_path:
+         parse_filename:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_path()));
+                input, this->mutable_filename()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->path().data(), this->path().length(),
+            this->filename().data(), this->filename().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -909,13 +909,13 @@ void ShaderProgram_Shader::SerializeWithCachedSizes(
       1, this->type(), output);
   }
 
-  // required string path = 2;
-  if (has_path()) {
+  // required string filename = 2;
+  if (has_filename()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->path().data(), this->path().length(),
+      this->filename().data(), this->filename().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->path(), output);
+      2, this->filename(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -932,14 +932,14 @@ void ShaderProgram_Shader::SerializeWithCachedSizes(
       1, this->type(), target);
   }
 
-  // required string path = 2;
-  if (has_path()) {
+  // required string filename = 2;
+  if (has_filename()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->path().data(), this->path().length(),
+      this->filename().data(), this->filename().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->path(), target);
+        2, this->filename(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -959,11 +959,11 @@ int ShaderProgram_Shader::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
 
-    // required string path = 2;
-    if (has_path()) {
+    // required string filename = 2;
+    if (has_filename()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->path());
+          this->filename());
     }
 
   }
@@ -996,8 +996,8 @@ void ShaderProgram_Shader::MergeFrom(const ShaderProgram_Shader& from) {
     if (from.has_type()) {
       set_type(from.type());
     }
-    if (from.has_path()) {
-      set_path(from.path());
+    if (from.has_filename()) {
+      set_filename(from.filename());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1024,7 +1024,7 @@ bool ShaderProgram_Shader::IsInitialized() const {
 void ShaderProgram_Shader::Swap(ShaderProgram_Shader* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(path_, other->path_);
+    std::swap(filename_, other->filename_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

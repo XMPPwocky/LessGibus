@@ -5,6 +5,8 @@
 #include "client.h"
 #include "Mesh.pb.h"
 #include "load_mesh.h"
+#include "load_shaderprogram.h"
+#include "ShaderProgram.h"
 
 #include <iostream>
 #include <fstream>
@@ -54,35 +56,16 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	log.open("log.txt");
 	
 	ResourceManager	*rsrc = world.getManager<ResourceManager>();
-	std::string *mdata = (rsrc)->load<std::string>("../../assets/mesh/trivial.mesh");
+	std::string *mdata = (rsrc)->load<std::string>("../tools/example.mesh");
+	std::string *sdata = (rsrc)->load<std::string>("../tools/example.prog");
 
 	protobuf::Mesh m;
 	m.ParseFromString(*mdata);
 	mesh->mesh = std::shared_ptr<Mesh>(load_mesh(m));
 
-	std::string *vertshader_str = rsrc->load<std::string>("../../assets/shader/Vertex_trivial.glsl");
-	std::string *fragshader_str = rsrc->load<std::string>("../../assets/shader/Fragment_trivial.glsl");
-	const char *vertshader_data = vertshader_str->c_str();
-	const char *fragshader_data = fragshader_str->c_str();
-	GLuint vertshader = gl::CreateShader(gl::VERTEX_SHADER);
-	GLuint fragshader = gl::CreateShader(gl::FRAGMENT_SHADER);
-	
-	gl::ShaderSource(vertshader,1,&(vertshader_data),NULL);
-	gl::ShaderSource(fragshader,1,&(fragshader_data),NULL);
-	
-	GLint butt = gl::FALSE_;
-	GLint status;
-	gl::CompileShader(vertshader);
-	gl::GetShaderiv(vertshader, gl::COMPILE_STATUS, &status);
-
-	gl::CompileShader(fragshader);
-	gl::GetShaderiv(fragshader, gl::COMPILE_STATUS, &status);
-
-	GLuint program = gl::CreateProgram();
-	gl::AttachShader(program, vertshader);
-	gl::AttachShader(program, fragshader);
-	gl::LinkProgram(program);
-	gl::GetProgramiv(program, gl::LINK_STATUS, &status);
+	protobuf::ShaderProgram prog;
+	prog.ParseFromString(*sdata);
+	ShaderProgram program = *load_shaderprogram(*rsrc, prog);
 
 	SDL_Event event; 
 	Uint8 done = 0;
@@ -94,9 +77,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	while(!done)  // Enter main loop.
 	{
 		gl::Clear(gl::COLOR_BUFFER_BIT);
-		gl::UseProgram(program);
-		
-	
+		gl::UseProgram(program.getProgID());
 
 		Uint32 curr_tick = SDL_GetTicks();
 		Uint32 delta = (curr_tick - last_tick);

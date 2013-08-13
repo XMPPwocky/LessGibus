@@ -26,7 +26,7 @@ message ShaderProgram
 	message Shader
 	{
 		required ShaderType type = 1;
-		required string path = 2;
+		required string filename = 2;
 	}
 
 	repeated Shader shaders = 1;

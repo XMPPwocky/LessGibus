@@ -18,7 +18,7 @@ message Mesh {
 		required uint32 vert3 = 3;
 	}
 
-	required string material_path = 1;
+	optional string DEPRECATED_material = 1;
 
 	repeated Vertex vertices = 2;
 

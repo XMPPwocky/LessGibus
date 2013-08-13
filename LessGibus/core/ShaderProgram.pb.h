@@ -327,28 +327,28 @@ class ShaderProgram_Shader : public ::google::protobuf::Message {
   inline ::protobuf::ShaderProgram_ShaderType type() const;
   inline void set_type(::protobuf::ShaderProgram_ShaderType value);
 
-  // required string path = 2;
-  inline bool has_path() const;
-  inline void clear_path();
-  static const int kPathFieldNumber = 2;
-  inline const ::std::string& path() const;
-  inline void set_path(const ::std::string& value);
-  inline void set_path(const char* value);
-  inline void set_path(const char* value, size_t size);
-  inline ::std::string* mutable_path();
-  inline ::std::string* release_path();
-  inline void set_allocated_path(::std::string* path);
+  // required string filename = 2;
+  inline bool has_filename() const;
+  inline void clear_filename();
+  static const int kFilenameFieldNumber = 2;
+  inline const ::std::string& filename() const;
+  inline void set_filename(const ::std::string& value);
+  inline void set_filename(const char* value);
+  inline void set_filename(const char* value, size_t size);
+  inline ::std::string* mutable_filename();
+  inline ::std::string* release_filename();
+  inline void set_allocated_filename(::std::string* filename);
 
   // @@protoc_insertion_point(class_scope:protobuf.ShaderProgram.Shader)
  private:
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_path();
-  inline void clear_has_path();
+  inline void set_has_filename();
+  inline void clear_has_filename();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* path_;
+  ::std::string* filename_;
   int type_;
 
   mutable int _cached_size_;
@@ -749,73 +749,73 @@ inline void ShaderProgram_Shader::set_type(::protobuf::ShaderProgram_ShaderType 
   type_ = value;
 }
 
-// required string path = 2;
-inline bool ShaderProgram_Shader::has_path() const {
+// required string filename = 2;
+inline bool ShaderProgram_Shader::has_filename() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ShaderProgram_Shader::set_has_path() {
+inline void ShaderProgram_Shader::set_has_filename() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ShaderProgram_Shader::clear_has_path() {
+inline void ShaderProgram_Shader::clear_has_filename() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ShaderProgram_Shader::clear_path() {
-  if (path_ != &::google::protobuf::internal::kEmptyString) {
-    path_->clear();
+inline void ShaderProgram_Shader::clear_filename() {
+  if (filename_ != &::google::protobuf::internal::kEmptyString) {
+    filename_->clear();
   }
-  clear_has_path();
+  clear_has_filename();
 }
-inline const ::std::string& ShaderProgram_Shader::path() const {
-  return *path_;
+inline const ::std::string& ShaderProgram_Shader::filename() const {
+  return *filename_;
 }
-inline void ShaderProgram_Shader::set_path(const ::std::string& value) {
-  set_has_path();
-  if (path_ == &::google::protobuf::internal::kEmptyString) {
-    path_ = new ::std::string;
+inline void ShaderProgram_Shader::set_filename(const ::std::string& value) {
+  set_has_filename();
+  if (filename_ == &::google::protobuf::internal::kEmptyString) {
+    filename_ = new ::std::string;
   }
-  path_->assign(value);
+  filename_->assign(value);
 }
-inline void ShaderProgram_Shader::set_path(const char* value) {
-  set_has_path();
-  if (path_ == &::google::protobuf::internal::kEmptyString) {
-    path_ = new ::std::string;
+inline void ShaderProgram_Shader::set_filename(const char* value) {
+  set_has_filename();
+  if (filename_ == &::google::protobuf::internal::kEmptyString) {
+    filename_ = new ::std::string;
   }
-  path_->assign(value);
+  filename_->assign(value);
 }
-inline void ShaderProgram_Shader::set_path(const char* value, size_t size) {
-  set_has_path();
-  if (path_ == &::google::protobuf::internal::kEmptyString) {
-    path_ = new ::std::string;
+inline void ShaderProgram_Shader::set_filename(const char* value, size_t size) {
+  set_has_filename();
+  if (filename_ == &::google::protobuf::internal::kEmptyString) {
+    filename_ = new ::std::string;
   }
-  path_->assign(reinterpret_cast<const char*>(value), size);
+  filename_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ShaderProgram_Shader::mutable_path() {
-  set_has_path();
-  if (path_ == &::google::protobuf::internal::kEmptyString) {
-    path_ = new ::std::string;
+inline ::std::string* ShaderProgram_Shader::mutable_filename() {
+  set_has_filename();
+  if (filename_ == &::google::protobuf::internal::kEmptyString) {
+    filename_ = new ::std::string;
   }
-  return path_;
+  return filename_;
 }
-inline ::std::string* ShaderProgram_Shader::release_path() {
-  clear_has_path();
-  if (path_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* ShaderProgram_Shader::release_filename() {
+  clear_has_filename();
+  if (filename_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = path_;
-    path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = filename_;
+    filename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void ShaderProgram_Shader::set_allocated_path(::std::string* path) {
-  if (path_ != &::google::protobuf::internal::kEmptyString) {
-    delete path_;
+inline void ShaderProgram_Shader::set_allocated_filename(::std::string* filename) {
+  if (filename_ != &::google::protobuf::internal::kEmptyString) {
+    delete filename_;
   }
-  if (path) {
-    set_has_path();
-    path_ = path;
+  if (filename) {
+    set_has_filename();
+    filename_ = filename;
   } else {
-    clear_has_path();
-    path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_filename();
+    filename_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

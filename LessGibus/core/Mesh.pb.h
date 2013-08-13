@@ -308,17 +308,17 @@ class Mesh : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string material_path = 1;
-  inline bool has_material_path() const;
-  inline void clear_material_path();
-  static const int kMaterialPathFieldNumber = 1;
-  inline const ::std::string& material_path() const;
-  inline void set_material_path(const ::std::string& value);
-  inline void set_material_path(const char* value);
-  inline void set_material_path(const char* value, size_t size);
-  inline ::std::string* mutable_material_path();
-  inline ::std::string* release_material_path();
-  inline void set_allocated_material_path(::std::string* material_path);
+  // optional string DEPRECATED_material = 1;
+  inline bool has_deprecated_material() const;
+  inline void clear_deprecated_material();
+  static const int kDEPRECATEDMaterialFieldNumber = 1;
+  inline const ::std::string& deprecated_material() const;
+  inline void set_deprecated_material(const ::std::string& value);
+  inline void set_deprecated_material(const char* value);
+  inline void set_deprecated_material(const char* value, size_t size);
+  inline ::std::string* mutable_deprecated_material();
+  inline ::std::string* release_deprecated_material();
+  inline void set_allocated_deprecated_material(::std::string* deprecated_material);
 
   // repeated .protobuf.Mesh.Vertex vertices = 2;
   inline int vertices_size() const;
@@ -355,14 +355,14 @@ class Mesh : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:protobuf.Mesh)
  private:
-  inline void set_has_material_path();
-  inline void clear_has_material_path();
+  inline void set_has_deprecated_material();
+  inline void clear_has_deprecated_material();
   inline void set_has_skeleton();
   inline void clear_has_skeleton();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* material_path_;
+  ::std::string* deprecated_material_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Vertex > vertices_;
   ::protobuf::Joint* skeleton_;
   ::google::protobuf::RepeatedPtrField< ::protobuf::Mesh_Triangle > triangles_;
@@ -572,73 +572,73 @@ inline void Mesh_Triangle::set_vert3(::google::protobuf::uint32 value) {
 
 // Mesh
 
-// required string material_path = 1;
-inline bool Mesh::has_material_path() const {
+// optional string DEPRECATED_material = 1;
+inline bool Mesh::has_deprecated_material() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Mesh::set_has_material_path() {
+inline void Mesh::set_has_deprecated_material() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Mesh::clear_has_material_path() {
+inline void Mesh::clear_has_deprecated_material() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Mesh::clear_material_path() {
-  if (material_path_ != &::google::protobuf::internal::kEmptyString) {
-    material_path_->clear();
+inline void Mesh::clear_deprecated_material() {
+  if (deprecated_material_ != &::google::protobuf::internal::kEmptyString) {
+    deprecated_material_->clear();
   }
-  clear_has_material_path();
+  clear_has_deprecated_material();
 }
-inline const ::std::string& Mesh::material_path() const {
-  return *material_path_;
+inline const ::std::string& Mesh::deprecated_material() const {
+  return *deprecated_material_;
 }
-inline void Mesh::set_material_path(const ::std::string& value) {
-  set_has_material_path();
-  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
-    material_path_ = new ::std::string;
+inline void Mesh::set_deprecated_material(const ::std::string& value) {
+  set_has_deprecated_material();
+  if (deprecated_material_ == &::google::protobuf::internal::kEmptyString) {
+    deprecated_material_ = new ::std::string;
   }
-  material_path_->assign(value);
+  deprecated_material_->assign(value);
 }
-inline void Mesh::set_material_path(const char* value) {
-  set_has_material_path();
-  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
-    material_path_ = new ::std::string;
+inline void Mesh::set_deprecated_material(const char* value) {
+  set_has_deprecated_material();
+  if (deprecated_material_ == &::google::protobuf::internal::kEmptyString) {
+    deprecated_material_ = new ::std::string;
   }
-  material_path_->assign(value);
+  deprecated_material_->assign(value);
 }
-inline void Mesh::set_material_path(const char* value, size_t size) {
-  set_has_material_path();
-  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
-    material_path_ = new ::std::string;
+inline void Mesh::set_deprecated_material(const char* value, size_t size) {
+  set_has_deprecated_material();
+  if (deprecated_material_ == &::google::protobuf::internal::kEmptyString) {
+    deprecated_material_ = new ::std::string;
   }
-  material_path_->assign(reinterpret_cast<const char*>(value), size);
+  deprecated_material_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Mesh::mutable_material_path() {
-  set_has_material_path();
-  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
-    material_path_ = new ::std::string;
+inline ::std::string* Mesh::mutable_deprecated_material() {
+  set_has_deprecated_material();
+  if (deprecated_material_ == &::google::protobuf::internal::kEmptyString) {
+    deprecated_material_ = new ::std::string;
   }
-  return material_path_;
+  return deprecated_material_;
 }
-inline ::std::string* Mesh::release_material_path() {
-  clear_has_material_path();
-  if (material_path_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* Mesh::release_deprecated_material() {
+  clear_has_deprecated_material();
+  if (deprecated_material_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = material_path_;
-    material_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = deprecated_material_;
+    deprecated_material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void Mesh::set_allocated_material_path(::std::string* material_path) {
-  if (material_path_ != &::google::protobuf::internal::kEmptyString) {
-    delete material_path_;
+inline void Mesh::set_allocated_deprecated_material(::std::string* deprecated_material) {
+  if (deprecated_material_ != &::google::protobuf::internal::kEmptyString) {
+    delete deprecated_material_;
   }
-  if (material_path) {
-    set_has_material_path();
-    material_path_ = material_path;
+  if (deprecated_material) {
+    set_has_deprecated_material();
+    deprecated_material_ = deprecated_material;
   } else {
-    clear_has_material_path();
-    material_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_deprecated_material();
+    deprecated_material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

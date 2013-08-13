@@ -12,20 +12,22 @@ class ResourceManager
 {
 public:
 	template <typename T>
-	T* load(std::string filename);
+	T* load(const std::string filename);
 
 protected:
 	template <typename T> 
-	T* loadResource(std::string filename);
+	T* loadResource(const std::string filename);
+
+	template<>
+	std::string *loadResource(const std::string filename);
 };
 
 
-// Load a resource of type T from file filename
 template <typename T>
-T* ResourceManager::load(std::string name)
+T* ResourceManager::load(const std::string name)
 {
 	// A static map for this resource type
-	typedef std::map<std::string, T*> ResourceMap;
+	typedef std::map<const std::string, T*> ResourceMap;
 	static ResourceMap resources;
 
 	T* resource = nullptr;
@@ -54,17 +56,14 @@ T* ResourceManager::load(std::string name)
 }
 
 
-
-// Loaders for different types
-// Default - returns nullptr
 template <typename T>
-static T* ResourceManager::loadResource(std::string name)
+static T* ResourceManager::loadResource(const std::string name)
 {
 	return nullptr;
 }
 
 template<>
-static std::string *ResourceManager::loadResource(std::string filename)
+static std::string *ResourceManager::loadResource(const std::string filename) 
 {
 	std::string *s = new std::string(get_file_contents(filename.c_str()));
 	return s;

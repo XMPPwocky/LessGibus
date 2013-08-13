@@ -47,7 +47,7 @@ void protobuf_AssignDesc_Mesh_2eproto() {
   GOOGLE_CHECK(file != NULL);
   Mesh_descriptor_ = file->message_type(0);
   static const int Mesh_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, material_path_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, deprecated_material_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, vertices_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, skeleton_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Mesh, triangles_),
@@ -138,15 +138,15 @@ void protobuf_AddDesc_Mesh_2eproto() {
   ::protobuf::protobuf_AddDesc_Types_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\nMesh.proto\022\010protobuf\032\016Skeleton.proto\032\013"
-    "Types.proto\"\274\002\n\004Mesh\022\025\n\rmaterial_path\030\001 "
-    "\002(\t\022\'\n\010vertices\030\002 \003(\0132\025.protobuf.Mesh.Ve"
-    "rtex\022!\n\010skeleton\030\003 \001(\0132\017.protobuf.Joint\022"
-    "*\n\ttriangles\030\004 \003(\0132\027.protobuf.Mesh.Trian"
-    "gle\032l\n\006Vertex\022 \n\010position\030\001 \001(\0132\016.protob"
-    "uf.vec3\022\036\n\006normal\030\002 \001(\0132\016.protobuf.vec3\022"
-    " \n\010texcoord\030\003 \001(\0132\016.protobuf.vec3\0327\n\010Tri"
-    "angle\022\r\n\005vert1\030\001 \002(\r\022\r\n\005vert2\030\002 \002(\r\022\r\n\005v"
-    "ert3\030\003 \002(\r", 370);
+    "Types.proto\"\302\002\n\004Mesh\022\033\n\023DEPRECATED_mater"
+    "ial\030\001 \001(\t\022\'\n\010vertices\030\002 \003(\0132\025.protobuf.M"
+    "esh.Vertex\022!\n\010skeleton\030\003 \001(\0132\017.protobuf."
+    "Joint\022*\n\ttriangles\030\004 \003(\0132\027.protobuf.Mesh"
+    ".Triangle\032l\n\006Vertex\022 \n\010position\030\001 \001(\0132\016."
+    "protobuf.vec3\022\036\n\006normal\030\002 \001(\0132\016.protobuf"
+    ".vec3\022 \n\010texcoord\030\003 \001(\0132\016.protobuf.vec3\032"
+    "7\n\010Triangle\022\r\n\005vert1\030\001 \002(\r\022\r\n\005vert2\030\002 \002("
+    "\r\022\r\n\005vert3\030\003 \002(\r", 376);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Mesh.proto", &protobuf_RegisterTypes);
   Mesh::default_instance_ = new Mesh();
@@ -769,7 +769,7 @@ void Mesh_Triangle::Swap(Mesh_Triangle* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int Mesh::kMaterialPathFieldNumber;
+const int Mesh::kDEPRECATEDMaterialFieldNumber;
 const int Mesh::kVerticesFieldNumber;
 const int Mesh::kSkeletonFieldNumber;
 const int Mesh::kTrianglesFieldNumber;
@@ -792,7 +792,7 @@ Mesh::Mesh(const Mesh& from)
 
 void Mesh::SharedCtor() {
   _cached_size_ = 0;
-  material_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  deprecated_material_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   skeleton_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -802,8 +802,8 @@ Mesh::~Mesh() {
 }
 
 void Mesh::SharedDtor() {
-  if (material_path_ != &::google::protobuf::internal::kEmptyString) {
-    delete material_path_;
+  if (deprecated_material_ != &::google::protobuf::internal::kEmptyString) {
+    delete deprecated_material_;
   }
   if (this != default_instance_) {
     delete skeleton_;
@@ -833,9 +833,9 @@ Mesh* Mesh::New() const {
 
 void Mesh::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_material_path()) {
-      if (material_path_ != &::google::protobuf::internal::kEmptyString) {
-        material_path_->clear();
+    if (has_deprecated_material()) {
+      if (deprecated_material_ != &::google::protobuf::internal::kEmptyString) {
+        deprecated_material_->clear();
       }
     }
     if (has_skeleton()) {
@@ -854,14 +854,14 @@ bool Mesh::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string material_path = 1;
+      // optional string DEPRECATED_material = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_material_path()));
+                input, this->mutable_deprecated_material()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->material_path().data(), this->material_path().length(),
+            this->deprecated_material().data(), this->deprecated_material().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -932,13 +932,13 @@ bool Mesh::MergePartialFromCodedStream(
 
 void Mesh::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required string material_path = 1;
-  if (has_material_path()) {
+  // optional string DEPRECATED_material = 1;
+  if (has_deprecated_material()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->material_path().data(), this->material_path().length(),
+      this->deprecated_material().data(), this->deprecated_material().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->material_path(), output);
+      1, this->deprecated_material(), output);
   }
 
   // repeated .protobuf.Mesh.Vertex vertices = 2;
@@ -967,14 +967,14 @@ void Mesh::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Mesh::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required string material_path = 1;
-  if (has_material_path()) {
+  // optional string DEPRECATED_material = 1;
+  if (has_deprecated_material()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->material_path().data(), this->material_path().length(),
+      this->deprecated_material().data(), this->deprecated_material().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->material_path(), target);
+        1, this->deprecated_material(), target);
   }
 
   // repeated .protobuf.Mesh.Vertex vertices = 2;
@@ -1009,11 +1009,11 @@ int Mesh::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string material_path = 1;
-    if (has_material_path()) {
+    // optional string DEPRECATED_material = 1;
+    if (has_deprecated_material()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->material_path());
+          this->deprecated_material());
     }
 
     // optional .protobuf.Joint skeleton = 3;
@@ -1068,8 +1068,8 @@ void Mesh::MergeFrom(const Mesh& from) {
   vertices_.MergeFrom(from.vertices_);
   triangles_.MergeFrom(from.triangles_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_material_path()) {
-      set_material_path(from.material_path());
+    if (from.has_deprecated_material()) {
+      set_deprecated_material(from.deprecated_material());
     }
     if (from.has_skeleton()) {
       mutable_skeleton()->::protobuf::Joint::MergeFrom(from.skeleton());
@@ -1091,7 +1091,6 @@ void Mesh::CopyFrom(const Mesh& from) {
 }
 
 bool Mesh::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   for (int i = 0; i < vertices_size(); i++) {
     if (!this->vertices(i).IsInitialized()) return false;
@@ -1104,7 +1103,7 @@ bool Mesh::IsInitialized() const {
 
 void Mesh::Swap(Mesh* other) {
   if (other != this) {
-    std::swap(material_path_, other->material_path_);
+    std::swap(deprecated_material_, other->deprecated_material_);
     vertices_.Swap(&other->vertices_);
     std::swap(skeleton_, other->skeleton_);
     triangles_.Swap(&other->triangles_);
