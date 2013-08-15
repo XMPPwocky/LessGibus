@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BadDataException.h" />
+    <ClInclude Include="core_signals.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="get_file_contents.h" />
     <ClInclude Include="Material.pb.h" />

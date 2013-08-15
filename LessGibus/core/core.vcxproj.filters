@@ -71,6 +71,9 @@
     <ClInclude Include="Material.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="core_signals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Mesh.proto" />

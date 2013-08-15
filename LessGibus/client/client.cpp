@@ -8,9 +8,13 @@
 #include "load_shaderprogram.h"
 #include "ShaderProgram.h"
 #include "ShaderProgramComponent.h"
-
+#include "Camera.h"
 #include <iostream>
 #include <fstream>
+#include <boost/signals2.hpp>
+
+using boost::signals2::signal;
+using std::shared_ptr;
 
 #define MAX_LOADSTRING 100
 
@@ -34,7 +38,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	// Create a window. Window mode MUST include SDL_WINDOW_OPENGL for use with OpenGL.
 	SDL_Window *window = SDL_CreateWindow(
-		"SDL2/OpenGL Demo", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_OPENGL
+		"LessGibus", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_OPENGL
 		);
 
 	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
@@ -42,8 +46,17 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	glload::LoadFunctions();
 
+	gl::Enable(gl::DEPTH_TEST);
+	gl::DepthFunc(gl::LEQUAL);
+
+	SDL_Event event;
 	coment::World world;
 
+	signal<void (SDL_Event &)> sdl_events;
+
+	world.getManager<coment::VariableManager>()->setValue<shared_ptr<signal<void (SDL_Event &)>>>(
+		"SDL_events", shared_ptr<signal<void (SDL_Event &)>>(&sdl_events));
+	
 	ResourceManager resourceManager;
 	world.registerManager<ResourceManager>(resourceManager);
 
@@ -54,6 +67,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
 	ShaderProgramComponent *shaderprog = world.addComponent<ShaderProgramComponent>(e);
 
+	world.getManager<coment::VariableManager>()->setValue<std::shared_ptr<Camera>>("active_camera", std::shared_ptr<Camera>(new Camera));
 	std::wfstream log;
 	log.open("log.txt");
 	
@@ -70,33 +84,35 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	(*shaderprog).prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(*rsrc, prog));
 
 
-	SDL_Event event; 
 	Uint8 done = 0;
 	Uint32 last_tick = SDL_GetTicks();
 	int win_width, win_height;
 	SDL_GetWindowSize(window, &win_width, &win_height);
 	//gl::Viewport(0,0,win_height,win_width);
 	gl::ClearColor(1.0f, 0.431f, 0.78f, 1.0f); // fugly neon pink
+
 	while(!done)  // Enter main loop.
 	{
-		gl::Clear(gl::COLOR_BUFFER_BIT);
-
 		Uint32 curr_tick = SDL_GetTicks();
 		Uint32 delta = (curr_tick - last_tick);
 		last_tick = curr_tick;
+
 
 		while(SDL_PollEvent(&event))      // Check for events.
 		{
 			if(event.type == SDL_QUIT || event.type == SDL_QUIT)
 				done = 1;
+
+			sdl_events(event);
 		}
 
 		world.loopStart();
 		world.setDelta(delta/(1000.0f));
 		world.update();
+
 		SDL_GL_SwapWindow(window);
 
-		//SDL_Delay(std::max((Sint32)(1 - delta), 0));              // Pause briefly before moving on to the next cycle.
+		SDL_Delay(std::max((Sint32)(10 - delta), 0));              // Pause briefly before moving on to the next cycle.
 	} 
 
 	// Once finished with OpenGL functions, the SDL_GLContext can be deleted.

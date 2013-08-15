@@ -3,7 +3,7 @@ shaders:
     type: vertex
     filename: shader/example.vert.glsl
     uniforms:
-      - modelToCameraMatrix
+      - modelToClipMatrix
     uniform_blocks:
       - GlobalMatrices
   -

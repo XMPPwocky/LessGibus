@@ -16,10 +16,18 @@
 class RenderingSystem :
 	public coment::EntitySystem
 {
+	//layout(std140) uniform GlobalMatrices
+	//{
+	//	mat4 worldToCameraMatrix;
+	//	mat4 cameraToClipMatrix;
+	//	mat4 worldToClipMatrix;
+	//};
 	static const GLuint GLOBAL_MATRICES_BINDING = 0;
-	GLuint _matrices_ubo;
+	static const unsigned int NUM_GLOBAL_MATRICES = 3;
 
-	glm::mat4 _projection;
+
+	static const unsigned int DRAW_DISTANCE = 4096; // TODO: find out how low we can practically set this (in METERS)
+	GLuint _matrices_ubo;
 
 	typedef std::list<coment::Entity> SceneGraph;
 	SceneGraph _scenegraph;
