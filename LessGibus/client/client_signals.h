@@ -6,4 +6,4 @@
 #include "Camera.h"
 #include <glm/glm.hpp>
 
-typedef signal<std::map<camera_matrix_type, glm::mat4> ()> camera_matrices_get_signal
+typedef boost::signals2::signal<std::map<camera_matrix_type, glm::mat4> ()> camera_matrices_get_signal;
