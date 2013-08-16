@@ -17,6 +17,8 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <SDL.h>
+
 #pragma warning(push)
 
 #include <glload/gl_3_3.hpp>

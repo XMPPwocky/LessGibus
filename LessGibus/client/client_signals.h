@@ -6,4 +6,5 @@
 #include "Camera.h"
 #include <glm/glm.hpp>
 
-typedef std::map<camera_matrix_type, glm::mat4>  get_camera_matrices_signature();
+typedef std::map<camera_matrix_type, glm::mat4> get_camera_matrices_signature();
+typedef void sdl_event_signature(SDL_Event &e);

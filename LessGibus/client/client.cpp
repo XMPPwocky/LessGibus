@@ -10,6 +10,7 @@
 #include "ShaderProgramComponent.h"
 #include "Camera.h"
 #include "CameraSystem.h"
+#include "client_signals.h"
 
 #include <iostream>
 #include <fstream>
@@ -89,6 +90,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	prog.ParseFromString(*sdata);
 	(shaderprog).prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(rsrcmgr, prog));
 
+	
+	std::shared_ptr<boost::signals2::signal<sdl_event_signature>> sdl_sig_ptr =
+		sigmgr.mutable_signal<sdl_event_signature>("sdl_events");
 
 	Uint8 done = 0;
 	Uint32 last_tick = SDL_GetTicks();
@@ -109,7 +113,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 			if(event.type == SDL_QUIT || event.type == SDL_QUIT)
 				done = 1;
 
-//			sdl_events(event);
+			(*sdl_sig_ptr)(event);
 		}
 
 		world.loopStart();
