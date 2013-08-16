@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraSystem.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="client_signals.h" />
     <ClInclude Include="GLBuffers.h" />
@@ -106,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraSystem.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="GLBuffers.cpp" />
     <ClCompile Include="load_mesh.cpp" />

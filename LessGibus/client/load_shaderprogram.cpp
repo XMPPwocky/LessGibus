@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "load_shaderprogram.h"
 #include "utf8.h"
-#include <boost/filesystem.hpp>
 #include <set>
 #include <map>
 

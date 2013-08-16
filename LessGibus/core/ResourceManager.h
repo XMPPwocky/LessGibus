@@ -1,14 +1,14 @@
 #pragma once
+#include "stdafx.h"
+
 #include <coment\managers\manager.h>
 #include <string>
 #include <Windows.h>
 #include <Shlwapi.h>
 #include <memory>
 #include "get_file_contents.h"
-#include <boost/filesystem.hpp>
 #include <typeinfo>
 #include <map>
-#include <boost/any.hpp>
 
 namespace fs = boost::filesystem;
 

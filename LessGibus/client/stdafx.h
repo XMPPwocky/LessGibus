@@ -17,7 +17,6 @@
 #include <memory.h>
 #include <tchar.h>
 
-
 #pragma warning(push)
 
 #include <glload/gl_3_3.hpp>
@@ -28,3 +27,11 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include <boost/bind.hpp>
+#include <boost/signals2.hpp>
+#include <boost/foreach.hpp>
+#include <boost/exception/exception.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/noncopyable.hpp>

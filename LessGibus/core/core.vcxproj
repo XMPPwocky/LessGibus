@@ -49,7 +49,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
@@ -94,6 +94,7 @@
     <ClCompile Include="Material.pb.cc" />
     <ClCompile Include="Mesh.pb.cc" />
     <ClCompile Include="ShaderProgram.pb.cc" />
+    <ClCompile Include="SignalManager.cpp" />
     <ClCompile Include="Skeleton.pb.cc" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -109,7 +110,9 @@
     <ClInclude Include="get_file_contents.h" />
     <ClInclude Include="Material.pb.h" />
     <ClInclude Include="mesh.pb.h" />
+    <ClInclude Include="pointers.h" />
     <ClInclude Include="ShaderProgram.pb.h" />
+    <ClInclude Include="SignalManager.h" />
     <ClInclude Include="Skeleton.pb.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="stdafx.h" />

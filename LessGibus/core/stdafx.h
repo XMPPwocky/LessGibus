@@ -15,3 +15,11 @@
 #include <string>
 
 #include <glload/gl_3_3.hpp>
+
+
+#include <boost/signals2.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/exception/all.hpp>
+#include <boost/exception/error_info.hpp>
+#include <boost/assert.hpp>
+#include <boost/any.hpp>

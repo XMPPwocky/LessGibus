@@ -9,9 +9,12 @@
 #include "ShaderProgram.h"
 #include "ShaderProgramComponent.h"
 #include "Camera.h"
+#include "CameraSystem.h"
+
 #include <iostream>
 #include <fstream>
-#include <boost/signals2.hpp>
+#include "pointers.h"
+#include "SignalManager.h"
 
 using boost::signals2::signal;
 using std::shared_ptr;
@@ -52,36 +55,39 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	SDL_Event event;
 	coment::World world;
 
-	signal<void (SDL_Event &)> sdl_events;
-
-	world.getManager<coment::VariableManager>()->setValue<shared_ptr<signal<void (SDL_Event &)>>>(
-		"SDL_events", shared_ptr<signal<void (SDL_Event &)>>(&sdl_events));
-	
 	ResourceManager resourceManager;
 	world.registerManager<ResourceManager>(resourceManager);
+	SignalManager signalManager;
+	world.registerManager<SignalManager>(signalManager);
 
-	RenderingSystem mesh_render_system;
-	world.registerSystem<RenderingSystem>(mesh_render_system);
+
+	RenderingSystem render_system;
+	world.registerSystem<RenderingSystem>(render_system);
+	CameraSystem camera_system;
+	world.registerSystem<CameraSystem>(camera_system);
 
 	coment::Entity e = world.createEntity();
-	MeshComponent *mesh = world.addComponent<MeshComponent>(e);
-	ShaderProgramComponent *shaderprog = world.addComponent<ShaderProgramComponent>(e);
 
-	world.getManager<coment::VariableManager>()->setValue<std::shared_ptr<Camera>>("active_camera", std::shared_ptr<Camera>(new Camera));
+	MeshComponent &mesh = ptr_to_reference(world.addComponent<MeshComponent>(e));
+	ShaderProgramComponent &shaderprog = ptr_to_reference(world.addComponent<ShaderProgramComponent>(e));
+
 	std::wfstream log;
 	log.open("log.txt");
 	
-	ResourceManager	*rsrc = world.getManager<ResourceManager>();
-	std::shared_ptr<const std::string> mdata = (rsrc)->load<std::string>("../tools/example.mesh");
-	std::shared_ptr<const std::string> sdata = (rsrc)->load<std::string>("../tools/example.shad");
+	ResourceManager	&rsrcmgr = ptr_to_reference(world.getManager<ResourceManager>());
+	SignalManager &sigmgr = ptr_to_reference(world.getManager<SignalManager>());
+	
+
+	std::shared_ptr<const std::string> mdata = rsrcmgr.load<std::string>("../tools/example.mesh");
+	std::shared_ptr<const std::string> sdata = rsrcmgr.load<std::string>("../tools/example.shad");
 
 	protobuf::Mesh m;
 	m.ParseFromString(*mdata);
-	mesh->mesh = std::shared_ptr<Mesh>(load_mesh(m));
+	mesh.mesh = std::shared_ptr<Mesh>(load_mesh(m));
 
 	protobuf::ShaderProgram prog;
 	prog.ParseFromString(*sdata);
-	(*shaderprog).prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(*rsrc, prog));
+	(shaderprog).prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(rsrcmgr, prog));
 
 
 	Uint8 done = 0;
@@ -103,7 +109,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 			if(event.type == SDL_QUIT || event.type == SDL_QUIT)
 				done = 1;
 
-			sdl_events(event);
+//			sdl_events(event);
 		}
 
 		world.loopStart();
@@ -112,7 +118,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 		SDL_GL_SwapWindow(window);
 
-		SDL_Delay(std::max((Sint32)(10 - delta), 0));              // Pause briefly before moving on to the next cycle.
+		//SDL_Delay(std::max((Sint32)(10 - delta), 0));              // Pause briefly before moving on to the next cycle.
 	} 
 
 	// Once finished with OpenGL functions, the SDL_GLContext can be deleted.

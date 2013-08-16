@@ -12,7 +12,7 @@ GLBuffers::GLBuffers(std::vector<GLuint> buffers)
 {
 }
 
-const std::vector<GLuint> GLBuffers::getBuffers(void) const
+const std::vector<GLuint> GLBuffers::get_buffers(void) const
 {
 	return _buffers;
 }

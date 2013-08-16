@@ -1,5 +1,6 @@
 #pragma once
 
-#include <boost/signals2.hpp>
+#include "stdafx.h"
+
 #include <string>
 #include <memory>

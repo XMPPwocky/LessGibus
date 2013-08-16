@@ -8,6 +8,7 @@
 #include <boost/foreach.hpp>
 #include <boost/signals2.hpp>
 #include "Camera.h"
+#include "SignalManager.h"
 
 #include <cmath>
 #include <math.h>
@@ -44,9 +45,11 @@ void RenderingSystem::onRegistered()
 
 void RenderingSystem::onAdded(const coment::Entity &e)
 {
-	ShaderProgramComponent *prog =_world->getComponent<ShaderProgramComponent>(e);
-	gl::UseProgram(prog->prog->getProgID());
-	gl::UniformBlockBinding(prog->prog->getProgID(), prog->prog->getUniformBlockIndex("GlobalMatrices"), GLOBAL_MATRICES_BINDING);
+	ShaderProgramComponent *prog_ptr =_world->getComponent<ShaderProgramComponent>(e);
+	BOOST_ASSERT(prog_ptr != nullptr);
+	ShaderProgramComponent &prog = *prog_ptr;
+	gl::UseProgram(prog.prog->getProgID());
+	gl::UniformBlockBinding(prog.prog->getProgID(), prog.prog->getUniformBlockIndex("GlobalMatrices"), GLOBAL_MATRICES_BINDING);
 	
 	// Add entity to scene graph
 	_scenegraph.push_back(e);
@@ -67,8 +70,8 @@ void RenderingSystem::processEntities(std::vector<coment::Entity>& entities)
 
 	// TODO: Render map
 
-	const unique_ptr<camera_matrices_get_signal> &camera_getter =
-		_world->getManager<coment::VariableManager>()->getValue<unique_ptr<camera_matrices_get_signal>>("get_camera_matrices");
+	shared_ptr<const boost::signals2::signal<get_camera_matrices_signature>> camera_getter =
+		_world->getManager<SignalManager>()->signal<get_camera_matrices_signature>("get_camera_matrices");
 	boost::optional<std::map<camera_matrix_type, glm::mat4>> &camera_matrices_optional = (*camera_getter)();
 	BOOST_ASSERT(camera_matrices_optional.is_initialized());
 	std::map<camera_matrix_type, glm::mat4> camera_matrices = (camera_matrices_optional.get());
@@ -90,11 +93,16 @@ void RenderingSystem::processEntities(std::vector<coment::Entity>& entities)
 	{
 		glm::mat4 model_to_world_matrix; // TODO: Actually put something in here
 		 
-		ShaderProgramComponent *prog_comp = _world->getComponent<ShaderProgramComponent>(e);
-		gl::UniformMatrix4fv(prog_comp->prog->getUniformLocation("modelToClipMatrix"), 1, gl::FALSE_, glm::value_ptr(world_to_clip_matrix * model_to_world_matrix));
-		MeshComponent *mesh_comp = _world->getComponent<MeshComponent>(e);
-		std::shared_ptr<Mesh> mesh = mesh_comp->mesh;
-		gl::UseProgram(prog_comp->prog->getProgID());
+		ShaderProgramComponent *prog_comp_ptr = (_world->getComponent<ShaderProgramComponent>(e));
+		BOOST_ASSERT(prog_comp_ptr != nullptr);
+		ShaderProgramComponent &prog_comp = *prog_comp_ptr;
+
+		gl::UniformMatrix4fv(prog_comp.prog->getUniformLocation("modelToClipMatrix"), 1, gl::FALSE_, glm::value_ptr(world_to_clip_matrix * model_to_world_matrix));
+		MeshComponent *mesh_comp_ptr = _world->getComponent<MeshComponent>(e);
+		BOOST_ASSERT(mesh_comp_ptr != nullptr);
+		MeshComponent &mesh_comp = *mesh_comp_ptr;
+		std::shared_ptr<Mesh> mesh = mesh_comp.mesh;
+		gl::UseProgram(prog_comp.prog->getProgID());
 		gl::BindVertexArray(mesh->getVAO());
 		gl::DrawElements(gl::TRIANGLES, mesh->getNumtris(), gl::UNSIGNED_INT, nullptr);
 

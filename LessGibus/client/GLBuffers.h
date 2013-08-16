@@ -1,5 +1,4 @@
 #pragma once
-#include <boost/noncopyable.hpp>
 #include "stdafx.h"
 
 class GLBuffers
@@ -11,6 +10,6 @@ public:
 	GLBuffers(std::vector<GLuint> buffers = std::vector<GLuint>());
 	(const GLuint) &operator[](const size_t index);
 	~GLBuffers(void);
-	const std::vector<GLuint> getBuffers(void) const;
+	const std::vector<GLuint> get_buffers(void) const;
 };
 

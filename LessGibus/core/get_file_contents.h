@@ -1,11 +1,11 @@
 #pragma once
+#include "stdafx.h"
 
 #include <fstream>
 #include <string>
 #include <cerrno>
 
 #include "ResourceManager.h"
-#include <boost/filesystem.hpp>
 
 namespace fs = boost::filesystem;
 

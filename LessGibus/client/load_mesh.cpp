@@ -5,9 +5,6 @@
 #include "BadDataException.h"
 #include "Exception.h"
 
-#include <boost/foreach.hpp>
-#include <boost/exception/exception.hpp>
-#include <boost/lexical_cast.hpp>
 
 Mesh *load_mesh(const protobuf::Mesh &data)
 {

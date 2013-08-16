@@ -1,8 +1,7 @@
 #pragma once
 
+#include "stdafx.h"
 #include <string>
-#include <boost/exception/all.hpp>
-#include <boost/exception/error_info.hpp>
 
 
 typedef boost::error_info<struct tag_string, std::string> string_info;
