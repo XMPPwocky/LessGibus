@@ -55,8 +55,8 @@ void CameraSystem::handleSDLEvent(SDL_Event &e)
 	case SDL_MOUSEMOTION:
 		if (_pole->IsDragging())
 		{
-		accum_translation.x -= e.motion.xrel;
-		accum_translation.y -= e.motion.yrel;
+		accum_translation.x += e.motion.xrel;
+		accum_translation.y += e.motion.yrel;
 		
 		_pole->MouseMove(accum_translation);
 		}
