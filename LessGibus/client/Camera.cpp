@@ -17,7 +17,7 @@ Camera::Camera(void)
 	vs.rotationScale = 1.0f;
 	vs.largeRadiusDelta = 0.1f;
 	vs.smallRadiusDelta = 0.03f;
-	pole = std::shared_ptr<glutil::ViewPole>(new glutil::ViewPole(vd, vs));
+	pole = std::unique_ptr<glutil::ViewPole>(new glutil::ViewPole(vd, vs));
 }
 
 

@@ -45,6 +45,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		"LessGibus", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL_WINDOW_OPENGL
 		);
 
+	SDL_SetRelativeMouseMode(SDL_TRUE);
+
 	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
 	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 

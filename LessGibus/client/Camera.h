@@ -11,7 +11,7 @@ class Camera
 {
 
 public:
-	std::shared_ptr<glutil::ViewPole> pole;
+	std::unique_ptr<glutil::ViewPole> pole;
 	Camera(void);
 	~Camera(void);
 
