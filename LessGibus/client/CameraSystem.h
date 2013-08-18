@@ -1,7 +1,10 @@
 #pragma once
+#include "stdafx.h"
+
 #include <coment/systems/EntityProcessingSystem.h>
-#include "Camera.h"
+#include "camera_matrix_type.h"
 #include "SignalManager.h"
+#include "glutil/MousePoles.h"
 #include "pointers.h"
 #include <coment/World.h>
 class CameraSystem :

@@ -48,9 +48,6 @@
     <ClInclude Include="ShaderProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RenderingSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,6 +58,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CameraSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerControlSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLInputSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="camera_matrix_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gpu_instrumentation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,9 +101,6 @@
     <ClCompile Include="load_shaderprogram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RenderingSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -99,6 +108,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CameraSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerControlSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLInputSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

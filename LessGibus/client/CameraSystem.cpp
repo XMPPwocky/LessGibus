@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "CameraSystem.h"
 #include "client_signals.h"
-
+#include <glutil/MousePoles.h>
+#include "CameraComponent.h"
 
 CameraSystem::CameraSystem(void) :
 	ZFAR(500), ZNEAR(0.5)
@@ -43,6 +44,7 @@ void CameraSystem::onRegistered(void)
 
 void CameraSystem::registerComponents(void)
 {
+	registerComponent<CameraComponent>();
 }
 void CameraSystem::processEntities(std::vector<coment::Entity> &ents)
 {

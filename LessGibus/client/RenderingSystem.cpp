@@ -7,7 +7,7 @@
 #include <coment/managers/VariableManager.h>
 #include <boost/foreach.hpp>
 #include <boost/signals2.hpp>
-#include "Camera.h"
+#include "camera_matrix_type.h"
 #include "SignalManager.h"
 
 #include <cmath>

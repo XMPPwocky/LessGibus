@@ -89,31 +89,37 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="CameraSystem.h" />
+    <ClInclude Include="camera_matrix_type.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="client_signals.h" />
     <ClInclude Include="GLBuffers.h" />
+    <ClInclude Include="gpu_instrumentation.h" />
     <ClInclude Include="load_mesh.h" />
     <ClInclude Include="load_shaderprogram.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshComponent.h" />
+    <ClInclude Include="PlayerControlSystem.h" />
     <ClInclude Include="RenderingSystem.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SDLInputSystem.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderProgramComponent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="CameraSystem.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="GLBuffers.cpp" />
     <ClCompile Include="load_mesh.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="PlayerControlSystem.cpp" />
     <ClCompile Include="RenderingSystem.cpp" />
+    <ClCompile Include="SDLInputSystem.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="load_shaderprogram.cpp" />
     <ClCompile Include="ShaderProgramComponent.cpp" />
