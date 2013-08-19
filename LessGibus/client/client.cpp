@@ -12,8 +12,6 @@
 #include "CameraSystem.h"
 #include "client_signals.h"
 
-#include <NvPm
-
 #include <iostream>
 #include <fstream>
 #include "pointers.h"
