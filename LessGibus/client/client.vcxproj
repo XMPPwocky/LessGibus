@@ -44,6 +44,7 @@
     <ReferencePath>$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib</ReferencePath>
     <ExecutablePath>$(VCInstallDir)bin;$(WindowsSDK_ExecutablePath_x86);$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(MSBuildToolsPath32);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
     <IncludePath>../core/;$(IncludePath)</IncludePath>
+    <LibraryPath>../Debug;C:\installed_libs\protobuf-2.5.0\vsprojects\Debug;C:\installed_libs\SDL2\lib\x86;C:\installed_libs\Boost\lib;C:\installed_libs\Coment\Debug;C:\installed_libs\glmesh\lib;C:\installed_libs\glload\lib;C:\installed_libs\glutil\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
