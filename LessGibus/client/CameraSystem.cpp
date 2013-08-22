@@ -30,15 +30,11 @@ CameraSystem::~CameraSystem(void)
 
 void CameraSystem::onRegistered(void)
 {
-	SignalManager &sigmgr = ptr_to_reference(_world->getManager<SignalManager>());
+	SignalManager *sigmgr = checkptr(_world->getManager<SignalManager>());
 	std::shared_ptr<boost::signals2::signal<get_camera_matrices_signature>> cam_sig_ptr =
-		sigmgr.mutable_signal<get_camera_matrices_signature>("get_camera_matrices");
+		sigmgr->mutable_signal<get_camera_matrices_signature>("get_camera_matrices");
 
 	_get_camera_matrices_sig_connection = cam_sig_ptr->connect(boost::bind(&CameraSystem::camera_matrices, this));
-
-	std::shared_ptr<boost::signals2::signal<sdl_event_signature>> sdl_sig_ptr =
-		sigmgr.mutable_signal<sdl_event_signature>("sdl_events");
-	_sdl_events_sig_connection = sdl_sig_ptr->connect(boost::bind(&CameraSystem::handleSDLEvent, this, _1));
 
 }
 
@@ -46,54 +42,9 @@ void CameraSystem::registerComponents(void)
 {
 	registerComponent<CameraComponent>();
 }
+
 void CameraSystem::processEntities(std::vector<coment::Entity> &ents)
 {
-}
-
-void CameraSystem::handleSDLEvent(SDL_Event &e)
-{
-	switch (e.type)
-	{
-	case SDL_MOUSEMOTION:
-		if (_pole->IsDragging())
-		{
-		accum_translation.x += e.motion.xrel;
-		accum_translation.y += e.motion.yrel;
-		
-		_pole->MouseMove(accum_translation);
-		}
-
-
-		break;
-	case SDL_MOUSEBUTTONDOWN:
-		if (e.button.button == SDL_BUTTON_LEFT)
-			_pole->MouseClick(glutil::MB_LEFT_BTN, true, 0, glm::ivec2( accum_translation.x, accum_translation.y ));
-		break;
-	case SDL_MOUSEBUTTONUP:
-		if (e.button.button == SDL_BUTTON_LEFT)
-			_pole->MouseClick(glutil::MB_LEFT_BTN, false, 0, glm::ivec2( accum_translation.x, accum_translation.y ));
-		break;
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.scancode)
-		{
-		case SDL_SCANCODE_W:
-			_pole->CharPress('w'); break;
-		case SDL_SCANCODE_A:
-			_pole->CharPress('a'); break;
-		case SDL_SCANCODE_S:
-			_pole->CharPress('s'); break;
-		case SDL_SCANCODE_D:
-			_pole->CharPress('d'); break;
-		}
-		break;
-	case SDL_MOUSEWHEEL:
-		_pole->MouseWheel(e.wheel.y, 0, glm::ivec2()); 
-		break;
-		
-	default:
-		// no-op
-		break;
-	}
 }
 
 std::map<camera_matrix_type, glm::mat4> CameraSystem::camera_matrices(void)

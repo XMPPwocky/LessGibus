@@ -7,8 +7,8 @@ using std::shared_ptr;
 using std::unique_ptr;
 
 template <class T>
-static T& ptr_to_reference(T *ptr)
+static T* checkptr(T *ptr)
 {
 	BOOST_ASSERT(ptr != nullptr);
-	return *ptr;
+	return ptr;
 }

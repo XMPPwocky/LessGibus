@@ -12,6 +12,7 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 	std::vector<GLuint> shaders;
 	std::set<const std::string> uniforms;
 	std::set<const std::string> uniform_blocks;
+	std::set<const std::string> vertex_attribs;
 
 	for (google::protobuf::RepeatedPtrField<protobuf::ShaderProgram::Shader>::const_iterator i = data.shaders().begin();
 		i != data.shaders().end();
@@ -23,6 +24,9 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 		uniform_blocks.insert(
 			(*i).uniform_blocks().begin(),
 			(*i).uniform_blocks().end());
+		vertex_attribs.insert(
+			(*i).vertex_attribs().begin(),
+			(*i).vertex_attribs().end());
 
 		fs::path filename = (*i).filename();
 		
@@ -88,6 +92,7 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 
 	std::map<const std::string, GLuint> uniform_locations;
 	std::map<const std::string, GLuint> uniform_block_locations;
+	std::map<const std::string, GLuint> vertex_attrib_locations;
 
 	BOOST_FOREACH(const std::string uni_name, uniforms)
 	{
@@ -95,13 +100,19 @@ ShaderProgram *load_shaderprogram(ResourceManager &rsrc, const protobuf::ShaderP
 			gl::GetUniformLocation(program, uni_name.c_str());
 	}
 
+
 	BOOST_FOREACH(const std::string uniblock_name, uniform_blocks)
 	{
 		uniform_block_locations[uniblock_name] =
 			gl::GetUniformBlockIndex(program, uniblock_name.c_str());
 	}
-
+		
+	BOOST_FOREACH(const std::string attrib_name, vertex_attribs)
+	{
+		vertex_attrib_locations[attrib_name] =
+			gl::GetAttribLocation(program, attrib_name.c_str());
+	}
 
 	return new ShaderProgram(program,
-		uniform_locations, uniform_block_locations);
+		uniform_locations, uniform_block_locations, vertex_attrib_locations);
 }

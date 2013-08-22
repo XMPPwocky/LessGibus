@@ -123,7 +123,7 @@
   <ItemGroup>
     <CustomBuild Include="Mesh.proto">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\protobuf\protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling Mesh.proto</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
     </CustomBuild>
@@ -131,7 +131,7 @@
   <ItemGroup>
     <CustomBuild Include="Skeleton.proto">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\protobuf\protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling Skeleton.proto</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
     </CustomBuild>
@@ -139,7 +139,7 @@
   <ItemGroup>
     <CustomBuild Include="Material.proto">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\protobuf\protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling Material.proto</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
     </CustomBuild>
@@ -147,7 +147,7 @@
   <ItemGroup>
     <CustomBuild Include="ShaderProgram.proto">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\protobuf\protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling ShaderProgram.proto</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
     </CustomBuild>
@@ -155,7 +155,7 @@
   <ItemGroup>
     <CustomBuild Include="Types.proto">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\protobuf\protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling Types.proto</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
     </CustomBuild>

@@ -8,7 +8,7 @@ class SignalManager :
 {
 protected:
 	typedef std::map<const std::string, boost::any> SignalMap;
-	typedef std::map<decltype(typeid(void).name()), SignalMap> SignalTypeMap;
+	typedef std::map<const char *, SignalMap> SignalTypeMap;
 
 private:
 	SignalTypeMap _signals;

@@ -28,6 +28,7 @@ message ShaderProgram
 		required string filename = 2;
 		repeated string uniforms = 3;
 		repeated string uniform_blocks = 4;
+		repeated string vertex_attribs = 5;
 	}
 
 	repeated Shader shaders = 1;

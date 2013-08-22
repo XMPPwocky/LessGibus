@@ -1,8 +1,15 @@
 package protobuf;
 
-message vec3
+message DataType
 {
-	required float x = 1;
-	required float y = 2;
-	required float z = 3;
+	enum Type
+	{
+		TYPE_FLOAT = 1;
+		TYPE_UNSIGNED_INT = 2;
+		TYPE_SIGNED_INT = 3;
+	}
+	optional Type type = 1;
+	optional uint64 repeats = 2;
+	optional uint64 bytes_per_repeat = 3;
+	optional uint64 alignment = 4;
 }

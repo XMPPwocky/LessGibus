@@ -4,8 +4,9 @@
 
 ShaderProgram::ShaderProgram(GLuint prog_id,
 							 std::map<const std::string, GLuint> uniforms,
-							 std::map<const std::string, GLuint> interface_blocks)
-	: _prog_id(prog_id), _uniforms(uniforms), _uniform_blocks(interface_blocks)
+							 std::map<const std::string, GLuint> interface_blocks,
+							 std::map<const std::string, GLuint> vertex_attribs)
+	: _prog_id(prog_id), _uniforms(uniforms), _uniform_blocks(interface_blocks), _vertex_attribs(vertex_attribs)
 {
 
 }

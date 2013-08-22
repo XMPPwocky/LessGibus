@@ -6,23 +6,37 @@ import "Types.proto";
 
 
 message Mesh {
-	message Vertex
+	message VertexAttrib
 	{
-		optional vec3 position = 1;
-		optional vec3 normal = 2;
-		optional vec3 texcoord = 3;
+		
+		// The difference between AttribType and DataType: AttribType is the fundamental type of the GLSL varying
+		// while DataType is the actual type of the data in the buffer object
+		enum AttribType
+		{
+			ATTRIBTYPE_FLOAT = 1;
+			ATTRIBTYPE_INT = 2;
+			ATTRIBTYPE_DOUBLE = 3;
+		}
+		
+
+		optional DataType data_type = 1;
+		optional AttribType attrib_type = 2;
+		optional bool normalize = 3;
+		optional bytes data = 4;
+		optional string name = 5;
+
+
 	}
+
 	message Triangle {
 		required uint32 vert1 = 1;
 		required uint32 vert2 = 2;
 		required uint32 vert3 = 3;
 	}
 
-	optional string DEPRECATED_material = 1;
+	repeated VertexAttrib vertexattribs = 1;
 
-	repeated Vertex vertices = 2;
+	optional Joint skeleton = 2;
 
-	optional Joint skeleton = 3;
-
-	repeated Triangle triangles = 4;
+	repeated Triangle triangles = 3;
 }

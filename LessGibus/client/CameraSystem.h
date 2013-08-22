@@ -22,7 +22,6 @@ class CameraSystem :
 
 	// signal handlers
 	std::map<camera_matrix_type, glm::mat4> camera_matrices(void);
-	void handleSDLEvent(SDL_Event &e);
 protected:
 	void onAdded(void);
 	void onRemoved(void);

@@ -71,30 +71,33 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	coment::Entity e = world.createEntity();
 
-	MeshComponent &mesh = ptr_to_reference(world.addComponent<MeshComponent>(e));
-	ShaderProgramComponent &shaderprog = ptr_to_reference(world.addComponent<ShaderProgramComponent>(e));
+	MeshComponent *mesh = checkptr(world.addComponent<MeshComponent>(e));
+	ShaderProgramComponent *shaderprog = checkptr(world.addComponent<ShaderProgramComponent>(e));
 
 	std::wfstream log;
 	log.open("log.txt");
 	
-	ResourceManager	&rsrcmgr = ptr_to_reference(world.getManager<ResourceManager>());
-	SignalManager &sigmgr = ptr_to_reference(world.getManager<SignalManager>());
+	ResourceManager	*rsrcmgr = checkptr(world.getManager<ResourceManager>());
+	SignalManager *sigmgr = checkptr(world.getManager<SignalManager>());
 	
 
-	std::shared_ptr<const std::string> mdata = rsrcmgr.load<std::string>("../tools/example.mesh");
-	std::shared_ptr<const std::string> sdata = rsrcmgr.load<std::string>("../tools/example.shad");
+	std::shared_ptr<const std::string> mdata = rsrcmgr->load<std::string>("../tools/example.mesh");
+	std::shared_ptr<const std::string> sdata = rsrcmgr->load<std::string>("../tools/example.shad");
 
-	protobuf::Mesh m;
-	m.ParseFromString(*mdata);
-	mesh.mesh = std::shared_ptr<Mesh>(load_mesh(m));
+
 
 	protobuf::ShaderProgram prog;
 	prog.ParseFromString(*sdata);
-	(shaderprog).prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(rsrcmgr, prog));
+	(shaderprog)->prog = std::shared_ptr<ShaderProgram>(load_shaderprogram(*rsrcmgr, prog));
+
+	protobuf::Mesh m;
+	m.ParseFromString(*mdata);
+	mesh->mesh = std::shared_ptr<Mesh>(load_mesh(m, shaderprog->prog->getVertexAttribLocations()));
+
 
 	
 	std::shared_ptr<boost::signals2::signal<sdl_event_signature>> sdl_sig_ptr =
-		sigmgr.mutable_signal<sdl_event_signature>("sdl_events");
+		sigmgr->mutable_signal<sdl_event_signature>("sdl_events");
 
 	Uint8 done = 0;
 	Uint32 last_tick = SDL_GetTicks();
