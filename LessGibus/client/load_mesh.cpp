@@ -22,6 +22,8 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 	const google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib> vertexattribs = data.vertexattribs();
 	size_t VBO_element_size = 0;
 	std::map<GLuint, ptrdiff_t> attrib_offsets;
+	std::map<GLuint, size_t> attrib_sizes;
+
 	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib>::const_iterator i = vertexattribs.begin();
 		i != vertexattribs.end();
 		i++)
@@ -53,15 +55,38 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 		attrib_offsets[curr_location] = VBO_element_size;
 
 		// add the size of this
-		VBO_element_size += static_cast<size_t>(
+		size_t this_size = static_cast<size_t>(
 			(*i).data_type().bytes_per_repeat() * (*i).data_type().repeats());
-		
+		attrib_sizes[curr_location] = this_size;
+		VBO_element_size += this_size;
+
+
 
 	}
 
+	// load VBO data
 
 
+
+	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib>::const_iterator attrib = vertexattribs.begin();
+		attrib != vertexattribs.end();
+		attrib++)
+	{
+		
+		GLuint attrib_location = attrib_locations.at((*attrib).name());
+		size_t attrib_offset = attrib_offsets[attrib_location];
+		size_t attrib_size = attrib_sizes[attrib_location];
+
+		for (size_t vertex_num = 0; vertex_num < data.num_vertices(); vertex_num++)
+		{
+			size_t vertex_start = (vertex_num * VBO_element_size);
+			VBO_data.replace(vertex_start + attrib_offset, vertex_start + attrib_size,
+				(*attrib).data().substr(attrib_size * vertex_num, attrib_size * (vertex_num + 1)));
+		}
+	}
     
+	// TODO: upload to GPU
+
 	// and triangles in an element buffer
 	std::vector<uint32_t> triangles_data;
 	triangles_data.reserve(data.triangles_size()*3);

@@ -39,4 +39,6 @@ message Mesh {
 	optional Joint skeleton = 2;
 
 	repeated Triangle triangles = 3;
+
+	optional uint32 num_vertices = 4;
 }
