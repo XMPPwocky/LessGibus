@@ -38,7 +38,7 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 		}
 		else {
 			curr_align = static_cast<ptrdiff_t>((*i).data_type().bytes_per_repeat());
-			if ((*i).data_type().repeats() != 0) {
+			if ((*i).data_type().repeats() != 1) {
 				curr_align = curr_align * 4; // align to 4 * base data type
 			}
 		}
