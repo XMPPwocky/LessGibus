@@ -63,7 +63,7 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 
     
 	// and triangles in an element buffer
-	std::vector<UINT32> triangles_data;
+	std::vector<uint32_t> triangles_data;
 	triangles_data.reserve(data.triangles_size()*3);
 	const auto tris = data.triangles();
 	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::Triangle>::const_iterator i = tris.begin(); i != tris.end(); i++)
@@ -76,7 +76,7 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 	gl::GenBuffers(1, &elembuffer);
 	gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, elembuffer);
 	gl::BufferData(gl::ELEMENT_ARRAY_BUFFER,
-		triangles_data.size() * sizeof(UINT32),
+		triangles_data.size() * sizeof(uint32_t),
 		triangles_data.data(),
 		gl::STATIC_DRAW);
 
