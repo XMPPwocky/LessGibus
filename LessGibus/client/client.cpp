@@ -99,8 +99,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	std::shared_ptr<boost::signals2::signal<sdl_event_signature>> sdl_sig_ptr =
 		sigmgr->mutable_signal<sdl_event_signature>("sdl_events");
 
-	Uint8 done = 0;
-	Uint32 last_tick = SDL_GetTicks();
+	boolean done = false;
+	uint32_t last_tick = SDL_GetTicks();
 	int win_width, win_height;
 	SDL_GetWindowSize(window, &win_width, &win_height);
 	//gl::Viewport(0,0,win_height,win_width);
@@ -108,15 +108,15 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	while(!done)  // Enter main loop.
 	{
-		Uint32 curr_tick = SDL_GetTicks();
-		Uint32 delta = (curr_tick - last_tick);
+		uint32_t curr_tick = SDL_GetTicks();
+		uint32_t delta = (curr_tick - last_tick);
 		last_tick = curr_tick;
 
 
 		while(SDL_PollEvent(&event))      // Check for events.
 		{
 			if(event.type == SDL_QUIT || event.type == SDL_QUIT)
-				done = 1;
+				done = true;
 
 			(*sdl_sig_ptr)(event);
 		}
