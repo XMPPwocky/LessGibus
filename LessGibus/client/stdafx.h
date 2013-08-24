@@ -37,3 +37,4 @@
 #include <boost/exception/exception.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/assign.hpp>

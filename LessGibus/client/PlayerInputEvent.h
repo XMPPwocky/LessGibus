@@ -6,7 +6,7 @@ struct PlayerInputEvent
 {
 	struct MouseMotionEventInfo
 	{
-		// the amount the mouse has moved since the last mouse motion event
+		// the amount, in pixels, the mouse has moved since the last mouse motion event
 		glm::ivec2 delta;
 
 		// the position in window coordinates of the mouse cursor
@@ -21,7 +21,7 @@ struct PlayerInputEvent
 		// is key pressed?
 		bool pressed;
 
-		// did the key change just now (e.g. did the last keyboard event also have this key pressed)
+		// did the key change just now (e.g. did the last keyboard event have a different value of pressed)
 		// probably not useful
 		bool edge;
 

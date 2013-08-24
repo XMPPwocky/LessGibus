@@ -1,8 +1,10 @@
 #pragma once
 
+#include "stdafx.h"
+
 enum Keybinding
 {
-	KEYBIND_MOVEUP, // default W
+	KEYBIND_MOVEFORWARD, // default W
 	KEYBIND_MOVEDOWN, // default S
 	KEYBIND_MOVELEFT, // default A
 	KEYBIND_MOVERIGHT, // default D
@@ -18,3 +20,6 @@ enum ModifierKey
 	MODIFIER_2, // default alt
 	MODIFIER_3  // default shift
 };
+
+static const std::map<char, Keybinding> default_keybinds = boost::assign::map_list_of
+	('w', KEYBIND_MOVEFORWARD);

@@ -9,3 +9,4 @@
 
 typedef std::map<camera_matrix_type, glm::mat4> get_camera_matrices_signature();
 typedef void sdl_event_signature(const SDL_Event &e);
+typedef void player_input_event_signature(const PlayerInputEvent &e);

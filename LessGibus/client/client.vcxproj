@@ -95,10 +95,12 @@
     <ClInclude Include="client.h" />
     <ClInclude Include="client_signals.h" />
     <ClInclude Include="GLBuffers.h" />
+    <ClInclude Include="keybindings.h" />
     <ClInclude Include="load_shaderprogram.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="PlayerControlSystem.h" />
+    <ClInclude Include="PlayerInputEvent.h" />
     <ClInclude Include="RenderingSystem.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SDLInputSystem.h" />
@@ -116,6 +118,7 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="PlayerControlSystem.cpp" />
+    <ClCompile Include="PlayerInputEvent.cpp" />
     <ClCompile Include="RenderingSystem.cpp" />
     <ClCompile Include="SDLInputSystem.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />

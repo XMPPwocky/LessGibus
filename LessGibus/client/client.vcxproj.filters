@@ -69,6 +69,12 @@
     <ClInclude Include="camera_matrix_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="keybindings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInputEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -111,6 +117,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CameraComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInputEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

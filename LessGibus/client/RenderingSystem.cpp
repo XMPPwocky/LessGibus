@@ -83,9 +83,6 @@ void RenderingSystem::processEntities(std::vector<coment::Entity>& entities)
 	gl::BufferSubData(gl::UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4)*2, glm::value_ptr(camera_matrices[CAMERA_MATRIX_CAMERATOCLIP]));
 	gl::BufferSubData(gl::UNIFORM_BUFFER, sizeof(glm::mat4)*2, sizeof(glm::mat4)*3, glm::value_ptr(world_to_clip_matrix));
 
-	static float rotation;
-	rotation = fmodf(rotation + (10*_world->getDelta()), 360);
-
 	// Render scene graph
 	coment::Entity e;
 	
@@ -107,10 +104,4 @@ void RenderingSystem::processEntities(std::vector<coment::Entity>& entities)
 		gl::DrawElements(gl::TRIANGLES, mesh->getNumtris(), gl::UNSIGNED_INT, nullptr);
 
 	}
-	//
-	//
-
-	////gl::UniformMatrix4fv(mesh->shaderprogram->getUniformLocation("MVP"), 1, 0, glm::value_ptr(MVP));
-	//gl::BindVertexArray(mesh->getVAO());
-	//gl::DrawElements(gl::TRIANGLES, mesh->getNumtris(), gl::UNSIGNED_INT, nullptr);
 }

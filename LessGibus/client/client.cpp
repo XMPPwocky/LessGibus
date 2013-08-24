@@ -11,6 +11,7 @@
 #include "camera_matrix_type.h"
 #include "CameraSystem.h"
 #include "client_signals.h"
+#include "SDLInputSystem.h"
 
 #include <iostream>
 #include <fstream>
@@ -63,7 +64,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	SignalManager signalManager;
 	world.registerManager<SignalManager>(signalManager);
 
-
+	SDLInputSystem sdl_input_system;
+	world.registerSystem<SDLInputSystem>(sdl_input_system);
 	RenderingSystem render_system;
 	world.registerSystem<RenderingSystem>(render_system);
 	CameraSystem camera_system;
