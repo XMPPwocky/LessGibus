@@ -28,7 +28,11 @@ for shader in data['shaders']:
     if 'uniform_blocks' in shader:
         for uniform_block in shader['uniform_blocks']:
             s.uniform_blocks.append(uniform_block)
-        
+
+    if 'vertex_attribs' in shader:
+        for attrib in shader['vertex_attribs']:
+            s.vertex_attribs.append(attrib)
+            
     if (shader['type'] == "compute"):
         s.type = ShaderProgram.COMPUTE_SHADER
     elif (shader['type'] == "vertex"):

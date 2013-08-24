@@ -95,8 +95,6 @@
     <ClInclude Include="client.h" />
     <ClInclude Include="client_signals.h" />
     <ClInclude Include="GLBuffers.h" />
-    <ClInclude Include="gpu_instrumentation.h" />
-    <ClInclude Include="load_mesh.h" />
     <ClInclude Include="load_shaderprogram.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshComponent.h" />

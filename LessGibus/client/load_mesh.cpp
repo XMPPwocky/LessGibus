@@ -13,12 +13,6 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 	// put mesh data in a VBO
 	std::string VBO_data;
 
-	// make a buffer and bind it
-	GLuint VBO;
-	gl::GenBuffers(1, &VBO);
-	gl::BindBuffer(gl::ARRAY_BUFFER, VBO);
-
-
 	const google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib> vertexattribs = data.vertexattribs();
 	size_t VBO_element_size = 0;
 	std::map<GLuint, ptrdiff_t> attrib_offsets;
@@ -34,9 +28,9 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 		// first: how do we need to align this attribute
 		ptrdiff_t curr_align; // align to curr_align bytes
 
-		if ((*i).data_type().has_alignment())
+		if ((*i).has_alignment())
 		{
-			curr_align = static_cast<ptrdiff_t>((*i).data_type().alignment());
+			curr_align = static_cast<ptrdiff_t>((*i).alignment());
 		}
 		else {
 			curr_align = static_cast<ptrdiff_t>((*i).data_type().bytes_per_repeat());
@@ -64,10 +58,7 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 
 	}
 
-	// load VBO data
-
-
-
+	// pack data into VBO
 	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib>::const_iterator attrib = vertexattribs.begin();
 		attrib != vertexattribs.end();
 		attrib++)
@@ -85,7 +76,12 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 		}
 	}
     
-	// TODO: upload to GPU
+	// upload to GPU
+	GLuint VBO;
+	gl::GenBuffers(1, &VBO);
+	gl::BindBuffer(gl::ARRAY_BUFFER, VBO);
+	gl::BufferData(gl::ARRAY_BUFFER, VBO_data.size(), VBO_data.data(), gl::STATIC_DRAW);
+
 
 	// and triangles in an element buffer
 	std::vector<uint32_t> triangles_data;
@@ -109,11 +105,57 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 	// and the format in a VAO
 	GLuint VAO;
 	gl::GenVertexArrays(1, &VAO);
-	// gl::BindBuffer(gl::ARRAY_BUFFER, VBO); // already done
+	gl::BindBuffer(gl::ARRAY_BUFFER, VBO); // already done
 	gl::BindVertexArray(VAO);
 	gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, elembuffer); // make sure the element buffer is used
-	// glEnableVertexArray and glVertexAttribPointer and such things
+	// bind attrib data
+	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib>::const_iterator attrib = vertexattribs.begin();
+		attrib != vertexattribs.end();
+		attrib++)
+	{
+		GLuint attrib_location = attrib_locations.at((*attrib).name());
+		size_t attrib_offset = attrib_offsets[attrib_location];
+		size_t attrib_size = attrib_sizes[attrib_location];
+		size_t attrib_repeats =  static_cast<size_t>((*attrib).data_type().repeats());
+		bool attrib_normalize = attrib->has_normalize() ? attrib->normalize() : false;
 
+		GLenum attrib_gltype = gl::INVALID_ENUM; // placeholder
+		switch ((*attrib).data_type().type())
+		{
+		case protobuf::DataType::TYPE_FLOAT:
+			// it's a floating point value of...
+			switch ((*attrib).data_type().bytes_per_repeat()) 
+			{
+			case 4:
+				// 4 bytes. 32-bit single-precision float.
+				attrib_gltype = gl::FLOAT;
+				break;
+			default:
+				BOOST_THROW_EXCEPTION(BadDataException() << string_info("Unknown floating point vertex attrib width"));
+				break;
+			}
+			break;
+		default:
+
+			BOOST_THROW_EXCEPTION(BadDataException() << string_info("Unknown vertex attrib data type"));
+			break;
+		}
+
+		gl::EnableVertexAttribArray(attrib_location);
+
+		switch((*attrib).attrib_type())
+		{
+		case protobuf::Mesh::VertexAttrib::ATTRIBTYPE_FLOAT:
+			gl::VertexAttribPointer(attrib_location, attrib_repeats, attrib_gltype, attrib_normalize, VBO_element_size,
+				reinterpret_cast<void *>(attrib_offset));
+			break;
+		//case protobuf::Mesh::VertexAttrib::ATTRIBTYPE_DOUBLE:
+		//case protobuf::Mesh::VertexAttrib::ATTRIBTYPE_INT:
+		default:
+			BOOST_THROW_EXCEPTION(BadDataException() << string_info("Unknown vertex attrib type"));
+			break;
+		}
+	}
 	// unbind buffer
 	gl::BindBuffer(gl::ARRAY_BUFFER, 0);
 	

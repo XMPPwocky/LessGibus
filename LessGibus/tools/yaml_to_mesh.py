@@ -1,6 +1,6 @@
-from protobuf import Mesh
+from protobuf import Mesh, DataType
 
-import yaml, sys
+import yaml, sys, struct
 
 if (len(sys.argv) >= 3):
     infilename = sys.argv[1]
@@ -16,12 +16,22 @@ data = yaml.load(yaml_data)
 
 m = Mesh()
 
-for vertex in data["vertices"]:
-    v = m.vertices.add()
+# what attribs do we need?
+position_attrib = m.vertexattribs.add()
+position_attrib.data_type.type = DataType.TYPE_FLOAT # floating point value
+position_attrib.data_type.repeats = 3 # 3D
+position_attrib.data_type.bytes_per_repeat = 4 # single-precision float
+position_attrib.attrib_type = Mesh.VertexAttrib.ATTRIBTYPE_FLOAT
+position_attrib.data = "";
+position_attrib.name = "VertexPosition";
+
+for vertex in data['vertices']:
+    # Pack position
     if "position" in vertex:
-        v.position.x = vertex['position'][0]
-        v.position.y = vertex['position'][1]
-        v.position.z = vertex['position'][2]
+        pos = vertex["position"]
+        position_attrib.data += struct.pack("<3f", pos[0], pos[1], pos[2])
+
+m.num_vertices = len(data['vertices'])
 
 for triangle in data["triangles"]:
     tri = m.triangles.add()

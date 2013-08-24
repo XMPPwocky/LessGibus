@@ -6,6 +6,8 @@ shaders:
       - modelToClipMatrix
     uniform_blocks:
       - GlobalMatrices
+    vertex_attribs:
+      - VertexPosition
   -
     type: fragment
     filename: shader/example.frag.glsl

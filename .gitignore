@@ -7,7 +7,6 @@ glload/
 glloadgen/
 glmesh/
 glutil/
-assets/
 boost/
 protobuf/
 utf8/
