@@ -1,6 +1,6 @@
 package protobuf;
 
-import "Skeleton.proto";
+import "AttachmentPoints.proto
 import "Types.proto";
 
 
@@ -37,7 +37,7 @@ message Mesh {
 
 	repeated VertexAttrib vertexattribs = 1;
 
-	optional Joint skeleton = 2;
+	repeated AttachmentPoint attachment_points = 2;
 
 	repeated Triangle triangles = 3;
 

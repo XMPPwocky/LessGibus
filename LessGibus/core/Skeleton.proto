@@ -1,9 +1,0 @@
-package protobuf;
-
-message Joint {
-	repeated Joint children = 1;
-
-	// 4x4 matrix, row-by-row
-	repeated float currpose_transform = 2 [packed=true];
-	repeated float bindpose_transform = 3 [packed=true];
-}

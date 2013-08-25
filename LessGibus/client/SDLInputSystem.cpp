@@ -29,6 +29,7 @@ void SDLInputSystem::onRegistered(void)
 void SDLInputSystem::handleSDLEvent(const SDL_Event &sdl_evt)
 {
 	PlayerInputEvent player_evt;
+	bool fire = false;
 
 	switch (sdl_evt.type)
 	{
@@ -47,6 +48,8 @@ void SDLInputSystem::handleSDLEvent(const SDL_Event &sdl_evt)
 				Keybinding bind = (*i).second;
  				kbd_info.key = bind;
 				player_evt.keyboard = kbd_info;
+
+				fire = true;
 			}
 
 
@@ -57,9 +60,13 @@ void SDLInputSystem::handleSDLEvent(const SDL_Event &sdl_evt)
 		mouse_info.delta = glm::ivec2(sdl_evt.motion.xrel, sdl_evt.motion.yrel);
 		mouse_info.absolute = glm::ivec2(sdl_evt.motion.x, sdl_evt.motion.y);
 		player_evt.mousemotion = mouse_info;
+
+		fire = true;
 		break;
 	}
 
-	SignalManager *signal_manager = checkptr(_world->getManager<SignalManager>());
-	(*signal_manager->mutable_signal<player_input_event_signature>("player_input_events"))(player_evt); // fire event
+	if (fire) {
+		SignalManager *signal_manager = checkptr(_world->getManager<SignalManager>());
+		(*signal_manager->mutable_signal<player_input_event_signature>("player_input_events"))(player_evt); // fire event
+	}
 }

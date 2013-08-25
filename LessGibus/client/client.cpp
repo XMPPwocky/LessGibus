@@ -12,6 +12,7 @@
 #include "CameraSystem.h"
 #include "client_signals.h"
 #include "SDLInputSystem.h"
+#include "PlayerControlSystem.h"
 
 #include <iostream>
 #include <fstream>
@@ -66,6 +67,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	SDLInputSystem sdl_input_system;
 	world.registerSystem<SDLInputSystem>(sdl_input_system);
+	PlayerControlSystem player_control_system;
+	world.registerSystem<PlayerControlSystem>(player_control_system);
 	RenderingSystem render_system;
 	world.registerSystem<RenderingSystem>(render_system);
 	CameraSystem camera_system;
@@ -108,6 +111,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	//gl::Viewport(0,0,win_height,win_width);
 	gl::ClearColor(1.0f, 0.431f, 0.78f, 1.0f); // fugly neon pink
 
+	bool grab_mouse = false;
 	while(!done)  // Enter main loop.
 	{
 		uint32_t curr_tick = SDL_GetTicks();
@@ -119,6 +123,13 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		{
 			if(event.type == SDL_QUIT || event.type == SDL_QUIT)
 				done = true;
+
+			if(event.type == SDL_KEYDOWN) if(event.key.keysym.sym = SDLK_ESCAPE)
+			{
+				grab_mouse = !grab_mouse;
+				SDL_SetRelativeMouseMode(grab_mouse ? SDL_TRUE : SDL_FALSE);
+			}
+				
 
 			(*sdl_sig_ptr)(event);
 		}
