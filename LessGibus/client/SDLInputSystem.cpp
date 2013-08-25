@@ -61,5 +61,5 @@ void SDLInputSystem::handleSDLEvent(const SDL_Event &sdl_evt)
 	}
 
 	SignalManager *signal_manager = checkptr(_world->getManager<SignalManager>());
-	signal_manager->mutable_signal<player_input_event_signature>("player_input_events")(player_evt); // fire event
+	(*signal_manager->mutable_signal<player_input_event_signature>("player_input_events"))(player_evt); // fire event
 }

@@ -5,6 +5,7 @@
 #include <memory>
 #include "CameraComponent.h"
 #include "camera_matrix_type.h"
+#include "PlayerInputEvent.h"
 #include <glm/glm.hpp>
 
 typedef std::map<camera_matrix_type, glm::mat4> get_camera_matrices_signature();
