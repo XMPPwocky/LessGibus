@@ -39,6 +39,12 @@
     <ClCompile Include="SignalManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AttachedComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AttachmentPointsComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -83,10 +89,15 @@
     <ClInclude Include="SignalManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AttachedComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachmentPointsComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Mesh.proto" />
-    <CustomBuild Include="Skeleton.proto" />
     <CustomBuild Include="Material.proto" />
     <CustomBuild Include="ShaderProgram.proto" />
     <CustomBuild Include="Types.proto" />

@@ -34,7 +34,7 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 		}
 		else {
 			curr_align = static_cast<ptrdiff_t>((*i).data_type().bytes_per_repeat());
-			if ((*i).data_type().repeats() != 1) {
+			if ((*i).data_type().repeats() > 1) {
 				curr_align = curr_align * 4; // align to 4 * base data type
 			}
 		}
@@ -59,6 +59,7 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 	}
 
 	// pack data into VBO
+	VBO_data.resize(VBO_element_size * data.num_vertices()); 
 	for (google::protobuf::RepeatedPtrField<protobuf::Mesh::VertexAttrib>::const_iterator attrib = vertexattribs.begin();
 		attrib != vertexattribs.end();
 		attrib++)
@@ -71,8 +72,8 @@ Mesh *load_mesh(const protobuf::Mesh &data, const std::map<const std::string, GL
 		for (size_t vertex_num = 0; vertex_num < data.num_vertices(); vertex_num++)
 		{
 			size_t vertex_start = (vertex_num * VBO_element_size);
-			VBO_data.replace(vertex_start + attrib_offset, vertex_start + attrib_size,
-				(*attrib).data().substr(attrib_size * vertex_num, attrib_size * (vertex_num + 1)));
+			VBO_data.replace(vertex_start + attrib_offset, attrib_size,
+				(*attrib).data().substr(attrib_size * vertex_num, attrib_size));
 		}
 	}
     

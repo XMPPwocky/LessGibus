@@ -64,7 +64,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glutilD.lib;glloadD.lib;glmeshD.lib;libprotobuf.lib;opengl32.lib;glu32.lib;Coment.lib;SDL2.lib;core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glimgD.lib;glutilD.lib;glloadD.lib;glmeshD.lib;libprotobuf.lib;opengl32.lib;glu32.lib;Coment.lib;SDL2.lib;core.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

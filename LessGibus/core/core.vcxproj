@@ -92,6 +92,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AttachedComponent.cpp" />
+    <ClCompile Include="AttachmentPointsComponent.cpp" />
     <ClCompile Include="Material.pb.cc" />
     <ClCompile Include="Mesh.pb.cc" />
     <ClCompile Include="ShaderProgram.pb.cc" />
@@ -105,6 +107,8 @@
     <ClCompile Include="Types.pb.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttachedComponent.h" />
+    <ClInclude Include="AttachmentPointsComponent.h" />
     <ClInclude Include="BadDataException.h" />
     <ClInclude Include="core_signals.h" />
     <ClInclude Include="Exception.h" />
@@ -125,14 +129,6 @@
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling Mesh.proto</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="Skeleton.proto">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">protoc.exe --error_format=msvs --proto_path=$(ProjectDir) --python_out=$(ProjectDir)/../tools/protobuf --cpp_out=pch=stdafx.h:$(ProjectDir) %(FullPath)</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling Skeleton.proto</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).pb.h;$(ProjectDir)%(Filename).pb.cc</Outputs>
     </CustomBuild>
   </ItemGroup>

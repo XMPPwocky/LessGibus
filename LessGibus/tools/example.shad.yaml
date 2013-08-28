@@ -8,6 +8,7 @@ shaders:
       - GlobalMatrices
     vertex_attribs:
       - VertexPosition
+      - ColorTexture1_uv
   -
     type: fragment
     filename: shader/example.frag.glsl

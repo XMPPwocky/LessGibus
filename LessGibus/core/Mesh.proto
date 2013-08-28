@@ -1,9 +1,7 @@
 package protobuf;
 
-import "AttachmentPoints.proto
+// import "AttachmentPoints.proto";
 import "Types.proto";
-
-
 
 message Mesh {
 	message VertexAttrib
@@ -37,7 +35,7 @@ message Mesh {
 
 	repeated VertexAttrib vertexattribs = 1;
 
-	repeated AttachmentPoint attachment_points = 2;
+//	repeated AttachmentPoint attachment_points = 2;
 
 	repeated Triangle triangles = 3;
 

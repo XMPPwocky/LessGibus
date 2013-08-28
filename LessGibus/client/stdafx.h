@@ -24,7 +24,7 @@
 #include <glload/gl_3_3.hpp>
 #include <glload/gl_load.hpp>
 #include <glmesh/glmesh.h>
-
+#include <glimg/glimg.h>
 #pragma warning(pop)
 
 #include <glm/glm.hpp>

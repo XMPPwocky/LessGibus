@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 #include "MeshComponent.h"
 #include <SDL.h>
 #include <SDL_video.h>
@@ -31,6 +32,12 @@ class RenderingSystem :
 
 	typedef std::list<coment::Entity> SceneGraph;
 	SceneGraph _scenegraph;
+
+	
+	std::map<std::string, std::unique_ptr<glimg::ImageSet>> _imgsets;
+	std::map<std::string, GLuint> _samplers, _textures;
+
+	
 protected:
 
 //	void begin();
